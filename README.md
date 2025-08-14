@@ -1,73 +1,103 @@
-# Welcome to your Lovable project
+# 🚀 Meu Portfolio Dev
 
-## Project info
+[![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
+[![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.io/)
 
-**URL**: https://lovable.dev/projects/15075949-7105-484d-91a5-62fd60ba878d
+> Um portfólio moderno e responsivo construído com as tecnologias mais recentes, apresentando projetos e habilidades de desenvolvimento web.
 
-## How can I edit this code?
+## ✨ Funcionalidades
 
-There are several ways of editing your application.
+- 🎨 **Design Moderno**: Interface clean e profissional com animações suaves
+- 📱 **Totalmente Responsivo**: Otimizado para desktop, tablet e mobile
+- 🌙 **Dark/Light Mode**: Alternância entre temas claro e escuro
+- 🌍 **Multilingual**: Suporte para Português e Inglês
+- ⚡ **Performance Otimizada**: Carregamento rápido com lazy loading
+- 🎮 **Projetos Interativos**: Preview de jogos e demos ao vivo
+- 📊 **SEO Otimizado**: Meta tags e structured data implementados
+- 🔧 **Componentes Reutilizáveis**: Arquitetura modular com shadcn/ui
 
-**Use Lovable**
+## 🛠️ Tecnologias
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/15075949-7105-484d-91a5-62fd60ba878d) and start prompting.
+- **React 18** - Biblioteca para interfaces de usuário
+- **TypeScript** - Superset tipado do JavaScript
+- **Vite** - Build tool rápido e moderno
+- **Tailwind CSS** - Framework CSS utility-first
+- **shadcn/ui** - Componentes reutilizáveis
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 Como Executar
 
-**Use your preferred IDE**
+### Pré-requisitos
+- Node.js (versão 18 ou superior)
+- npm ou yarn
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Instalação
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. **Clone o repositório**
+   ```bash
+   git clone https://github.com/seu-usuario/seu-portfolio.git
+   cd seu-portfolio
+   ```
 
-Follow these steps:
+2. **Instale as dependências**
+   ```bash
+   npm install
+   # ou
+   yarn install
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+3. **Configure as variáveis de ambiente**
+   ```bash
+   # Crie um arquivo .env.local baseado no .env.example
+   cp .env.example .env.local
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+4. **Execute o projeto**
+   ```bash
+   npm run dev
+   # ou
+   yarn dev
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+5. **Acesse no navegador**
+   ```
+   http://localhost:5173
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── components/          # Componentes React
+│   ├── ui/             # Componentes shadcn/ui
+│   ├── About.tsx       # Seção sobre
+│   ├── Contact.tsx     # Formulário de contato
+│   ├── Hero.tsx        # Seção principal
+│   ├── Projects.tsx    # Portfolio de projetos
+│   └── Skills.tsx      # Habilidades técnicas
+├── hooks/              # Custom hooks
+├── i18n/               # Configuração de internacionalização
+├── contexts/           # Context providers
+├── assets/             # Imagens e recursos
+└── pages/              # Páginas da aplicação
 ```
 
-**Edit a file directly in GitHub**
+## 🤝 Contribuindo
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
 
-**Use GitHub Codespaces**
+## 📄 Licença
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## What technologies are used for this project?
+## 📞 Contato
 
-This project is built with:
+**Pablo Gomes** - pablooliver853@email.com
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/15075949-7105-484d-91a5-62fd60ba878d) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+---
