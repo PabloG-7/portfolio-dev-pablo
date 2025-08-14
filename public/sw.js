@@ -5,7 +5,6 @@ const urlsToCache = [
   '/static/js/bundle.js',
   '/static/css/main.css',
   '/lovable-uploads/274ab653-078c-4baf-9423-852622909aa4.png',
-  // Add other critical assets
 ];
 
 self.addEventListener('install', (event) => {
