@@ -1,0 +1,181 @@
+{
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "skills": "Habilidades",
+    "experience": "Experiência",
+    "projects": "Projetos",
+    "contact": "Contato"
+  },
+  "hero": {
+    "greeting": "Olá!",
+    "name": "Pablo Gomes",
+    "role": "Desenvolvedor Full Stack",
+    "description": "Transformando ideias em realidade digital.",
+    "description_highlight1": "rápidos e elegantes",
+    "description_highlight2": "tecnologias modernas",
+    "skills": {
+      "database": "Banco de Dados",
+      "tools": "Ferramentas",
+      "fullstack": "Desenvolvedor Full-Stack", 
+      "frontend": "Desenvolvedor Front-end",
+      "backend": "Desenvolvedor Back-end"
+    },
+    "cta_projects": "Ver Projetos",
+    "cta_contact": "Vamos Conversar",
+    "scroll_indicator": "Deslize para explorar"
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "subtitle": "Conheça minha jornada",
+    "description": "💻 Olá! Sou Pablo Gomes, desenvolvedor Full Stack dedicado a criar experiências digitais tão funcionais quanto impactantes.",
+    "journey": "Há pouco mais de 1 ano comecei minha jornada na programação, explorando tecnologias como TypeScript, React, Node.js, MySQL e o clássico trio HTML, CSS e JavaScript.",
+    "education": "Atualmente, curso Análise e Desenvolvimento de Sistemas na UNIP e sigo me desafiando com projetos que me fazem aprender e evoluir a cada dia.",
+    "location": "Localização",
+    "experience": "Experiência",
+    "download_cv": "Download CV",
+    "academic_education": "Formação Acadêmica",
+    "certifications": "Certificações",
+    "courses": "Cursos",
+    "click_to_view": "Clique para visualizar →",
+    "download": "Download",
+    "my_cv": "Meu CV",
+    "download_now": "Baixar agora →",
+    "education_title": "👨‍🎓 ADS - UNIP",
+    "education_period": "2024 - presente",
+    "certificates_modal_title": "📜 Cursos & Certificados",
+    "technical_certifications": "Certificações Técnicas",
+    "complementary_certifications": "Certificações Complementares (SENAI e outros)",
+    "personal_development": "Treinamentos e Desenvolvimento Pessoal (Treinamundo)",
+    "certifications_list": {
+      "excel": "Microsoft Excel – Certificação Excel Processo Seletivo da Hashtag Treinamentos (2025)",
+      "html_css": "HTML5 e CSS3 – Curso em Vídeo (Módulos 1, 2, 3, 4 de 5 – 2024)",
+      "git": "Git e GitHub – Curso em Vídeo (2024)",
+      "mysql": "MySQL – Curso em Vídeo (2024)",
+      "python": "Python 3 – Curso em Vídeo (Mundo 1 de 3 – 2024)",
+      "algorithms": "Algoritmos – Curso em Vídeo (2024)",
+      "javascript": "JavaScript – Curso em Vídeo (2024)",
+      "environmental": "Competência Transversal – Educação Ambiental (SENAI)",
+      "industry": "Desvendando a Indústria 4.0 (SENAI)",
+      "entrepreneurship": "Empreender (SENAI)",
+      "speaking": "A arte de falar bem",
+      "business_vision": "Como desenvolver a visão sistêmica de negócios",
+      "creativity": "Criatividade produtiva",
+      "emotional_intelligence": "Desenvolva inteligência emocional para superar desafios",
+      "waste_elimination": "Elimine desperdício através da implementação dos 5S",
+      "knowledge_management": "Gestão do conhecimento",
+      "champions_mindset": "Mindset dos campeões",
+      "organization": "Você organizado",
+      "public_speaking": "Você tem medo de falar em público? Dicas para superação"
+    }
+  },
+  "skills": {
+    "title": "Minhas Habilidades",
+    "subtitle": "Tecnologias e ferramentas que uso para criar soluções excepcionais",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Banco de Dados",
+      "tools": "Ferramentas"
+    }
+  },
+  "experience": {
+    "title": "Minha Experiência",
+    "subtitle": "Desenvolvendo soluções criativas através de projetos pessoais",
+    "status": {
+      "completed": "Concluído",
+      "in_development": "Em desenvolvimento"
+    },
+    "achievements": "Características:",
+    "technologies": "Tecnologias:",
+    "projects": {
+      "portfolio": {
+        "title": "Portfolio Pessoal Completo",
+        "type": "Projeto Pessoal",
+        "description": "Desenvolvimento de um portfólio pessoal premium com design moderno e animações interativas. Projeto criado para apresentar minhas habilidades e projetos de forma profissional.",
+        "achievements": [
+          "Design responsivo com animações CSS avançadas",
+          "Sistema de componentes reutilizáveis",
+          "Performance otimizada e carregamento rápido",
+          "SEO e acessibilidade implementados"
+        ]
+      },
+      "management": {
+        "title": "Sistema de Gerenciamento",
+        "type": "Projeto Pessoal",
+        "description": "Aplicação full-stack para gerenciamento de tarefas e projetos pessoais, com interface intuitiva e funcionalidades avançadas de organização.",
+        "achievements": [
+          "Autenticação e autorização de usuários",
+          "Dashboard interativo com métricas",
+          "API RESTful completa",
+          "Interface responsiva e moderna"
+        ]
+      },
+      "landing": {
+        "title": "Landing Page Responsiva",
+        "type": "Projeto Pessoal",
+        "description": "Criação de landing page moderna para empresa fictícia, focando em conversão e experiência do usuário com design atrativo e performance otimizada.",
+        "achievements": [
+          "Design mobile-first responsivo",
+          "Animações e micro-interações",
+          "Formulário de contato funcional",
+          "Otimização para velocidade de carregamento"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "title": "Meus Projetos",
+    "subtitle": "Seleção dos meus projetos mais significativos e impactantes",
+    "featured": "Destaque",
+    "play_demo": "Jogar Demo",
+    "view_project": "Ver Projeto",
+    "code": "Código",
+    "view_all": "Ver Todos os Projetos",
+    "descriptions": {
+      "neon_memory": "Jogo de memória futurista com visual neon impressionante. Teste sua memória no futuro com efeitos visuais incríveis!",
+      "inabalavel": "Website imersivo sobre um herói cósmico e forças das trevas, com design espacial, efeitos visuais cósmicos e interações 3D.",
+      "pokedex": "Uma Pokédx interativa construída com React e PokéAPI, com design moderno e responsivo para explorar o mundo Pokémon.",
+      "taskforge": "TaskForge é a evolução do seu gerenciador de tarefas, agora com recursos avançados de produtividade e uma experiência ainda mais imersiva.",
+      "luckpet": "E-commerce para pets com foco em usabilidade e design responsivo. Experiência agradável na compra de produtos para animais.",
+      "kushi": "E-commerce especializado em moda masculina e feminina, com catálogo organizado, promoções sazonais e blog de tendências."
+    }
+  },
+  "contact": {
+    "title": "Vamos Conversar",
+    "intro_title": "Entre em Contato",
+    "intro_description": "Estou sempre aberto a discutir novas oportunidades, projetos interessantes ou simplesmente trocar ideias sobre tecnologia e design.",
+    "form_title": "Envie uma Mensagem",
+    "name": "Nome",
+    "email": "Email",
+    "subject": "Assunto",
+    "message": "Mensagem",
+    "send": "Enviar Mensagem",
+    "placeholders": {
+      "name": "Seu nome completo",
+      "email": "seu@email.com",
+      "subject": "Assunto da mensagem",
+      "message": "Conte-me sobre seu projeto ou ideia..."
+    },
+    "info": {
+      "email": "Email",
+      "phone": "Telefone",
+      "location": "Localização"
+    },
+    "location_value": "São Bernardo do Campo, São Paulo, Brasil",
+    "social_title": "Me siga nas redes"
+  },
+  "footer": {
+    "description": "Desenvolvedor Full Stack",
+    "back_to_top": "Voltar ao topo",
+    "copyright": "Todos os direitos reservados."
+  },
+  "theme": {
+    "light": "Claro",
+    "dark": "Escuro"
+  },
+  "language": {
+    "portuguese": "Português",
+    "english": "English"
+  }
+}
