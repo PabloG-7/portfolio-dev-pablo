@@ -7,6 +7,7 @@
 [![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.io/)
 
 > Um portfólio moderno e responsivo construído com as tecnologias mais recentes, apresentando projetos e habilidades de desenvolvimento web.
+Acesse aqui: [https://portfolio-dev-pablo.vercel.app/]
 
 ## ✨ Funcionalidades
 
@@ -37,8 +38,7 @@
 
 1. **Clone o repositório**
    ```bash
-   git clone https://github.com/seu-usuario/seu-portfolio.git
-   cd seu-portfolio
+   git clone https://github.com/pablog-7/portfolio-dev-pablo.git
    ```
 
 2. **Instale as dependências**
