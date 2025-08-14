@@ -7,7 +7,8 @@
 [![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.io/)
 
 > Um portfólio moderno e responsivo construído com as tecnologias mais recentes, apresentando projetos e habilidades de desenvolvimento web.
-Acesse aqui: [https://portfolio-dev-pablo.vercel.app/]
+
+## 🌐 Acesse aqui: [https://portfolio-dev-pablo.vercel.app/]
 
 ## ✨ Funcionalidades
 
