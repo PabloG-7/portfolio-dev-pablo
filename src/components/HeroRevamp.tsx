@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useMemo, useCallback, memo } from 'react';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -26,7 +25,7 @@ const HeroRevamp = memo(() => {
   useEffect(() => {
     const timer = addTimer(setInterval(() => {
       setCurrentSkill((prev) => (prev + 1) % rotatingSkills.length);
-    }, 3000));
+    }, 4000)); // Increased interval to reduce re-renders
     
     return () => clearInterval(timer);
   }, [rotatingSkills.length, addTimer]);
@@ -72,23 +71,20 @@ const HeroRevamp = memo(() => {
               {t('hero.description')}
             </p>
 
-            {/* Simplified Skills Display */}
+            {/* Optimized Skills Display */}
             <div className="flex justify-center lg:justify-start">
-              <div className={`group relative rounded-2xl border border-border/50 backdrop-blur-sm px-8 py-4 shadow-lg transition-all duration-500 hover:shadow-xl hover:border-primary/40 ${rotatingSkills[currentSkill].bgColor}`}>
+              <div className={`group relative rounded-2xl border border-border/50 backdrop-blur-sm px-8 py-4 shadow-lg transition-shadow duration-300 hover:shadow-xl hover:border-primary/40 ${rotatingSkills[currentSkill].bgColor}`}>
                 <div className="relative flex items-center gap-4">
-                  {/* Dynamic status indicator */}
+                  {/* Optimized status indicator */}
                   <span
-                    key={`dot-${currentSkill}`}
-                    className={`inline-block w-3 h-3 rounded-full animate-pulse transition-all duration-500 ${rotatingSkills[currentSkill].dotColor}`}
+                    className={`inline-block w-3 h-3 rounded-full transition-colors duration-300 ${rotatingSkills[currentSkill].dotColor}`}
                     aria-hidden="true"
-                    style={{ animationDuration: '2s' }}
                   />
                   
-                  {/* Text with smooth transitions */}
+                  {/* Optimized text transitions */}
                   <span 
-                    key={currentSkill}
                     aria-live="polite" 
-                    className={`text-lg sm:text-xl font-semibold transition-all duration-500 ${rotatingSkills[currentSkill].color}`}
+                    className={`text-lg sm:text-xl font-semibold transition-colors duration-300 ${rotatingSkills[currentSkill].color}`}
                   >
                     {rotatingSkills[currentSkill].text}
                   </span>
@@ -156,8 +152,8 @@ const HeroRevamp = memo(() => {
             aria-label="Foto de perfil"
           >
             <div className="relative mx-auto w-96 h-96 md:w-[420px] md:h-[420px] lg:w-96 lg:h-96 xl:w-[450px] xl:h-[450px]">
-              {/* Simple clean border */}
-              <div className="relative w-full h-full rounded-full p-0.5 bg-gradient-to-br from-primary to-accent shadow-xl animate-musical-beat">
+              {/* Optimized clean border */}
+              <div className="relative w-full h-full rounded-full p-0.5 bg-gradient-to-br from-primary to-accent shadow-xl">
                 <div className="w-full h-full rounded-full bg-background overflow-hidden">
                  <LazyImage
                     src="/lovable-uploads/274ab653-078c-4baf-9423-852622909aa4.png"
@@ -184,4 +180,3 @@ const HeroRevamp = memo(() => {
 HeroRevamp.displayName = 'HeroRevamp';
 
 export default HeroRevamp;
-
