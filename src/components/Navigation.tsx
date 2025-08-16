@@ -3,11 +3,13 @@ import { Menu, X, Home, User, Wrench, FolderOpen, Mail } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import ThemeToggle from './ThemeToggle';
 import LanguageToggle from './LanguageToggle';
+import { useModal } from '../contexts/ModalContext';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t } = useTranslation();
+  const { isCoursesModalOpen } = useModal();
 
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 20);
@@ -33,6 +35,11 @@ const Navigation = () => {
     }
     setIsMobileMenuOpen(false);
   }, []);
+
+  // Hide navigation when courses modal is open
+  if (isCoursesModalOpen) {
+    return null;
+  }
 
   return (
     <nav

@@ -30,7 +30,7 @@ const OptimizedSection = memo(({
         isIntersecting ? 'opacity-100' : 'opacity-0'
       } ${className}`}
     >
-      {isIntersecting ? children : <div className="h-32" />}
+      {children}
     </section>
   );
 });

@@ -38,13 +38,6 @@ const Contact = lazy(() =>
 
 const Footer = lazy(() => import('../components/Footer'));
 
-// Optimized loading component
-const SectionLoader = memo(() => (
-  <div className="h-32 flex items-center justify-center">
-    <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-  </div>
-));
-SectionLoader.displayName = 'SectionLoader';
 
 const Index = memo(() => {
   const [isDemoOpen, setIsDemoOpen] = useState(false);
@@ -71,32 +64,32 @@ const Index = memo(() => {
         <Hero />
         
         <OptimizedSection id="about" rootMargin="100px">
-          <Suspense fallback={<SectionLoader />}>
+          <Suspense fallback={null}>
             <About />
           </Suspense>
         </OptimizedSection>
 
         <OptimizedSection id="projects" rootMargin="100px">
-          <Suspense fallback={<SectionLoader />}>
+          <Suspense fallback={null}>
             <Projects onDemoStateChange={handleDemoStateChange} />
           </Suspense>
         </OptimizedSection>
 
         <OptimizedSection id="skills" rootMargin="100px">
-          <Suspense fallback={<SectionLoader />}>
+          <Suspense fallback={null}>
             <Skills />
           </Suspense>
         </OptimizedSection>
 
         <OptimizedSection id="contact" rootMargin="100px">
-          <Suspense fallback={<SectionLoader />}>
+          <Suspense fallback={null}>
             <Contact />
           </Suspense>
         </OptimizedSection>
       </main>
       
       <OptimizedSection rootMargin="50px">
-        <Suspense fallback={<div className="h-20" />}>
+        <Suspense fallback={null}>
           <Footer />
         </Suspense>
       </OptimizedSection>

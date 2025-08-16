@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import { Download, Award, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
+import { useModal } from '../contexts/ModalContext';
 
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
+  const { setIsCoursesModalOpen } = useModal();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -101,7 +103,7 @@ const About = () => {
                 </div>
 
                 {/* Certificates Card */}
-                <Dialog>
+                <Dialog onOpenChange={setIsCoursesModalOpen}>
                   <DialogTrigger asChild>
                     <div className="bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-105 hover:border-accent/30 cursor-pointer group">
                       <div className="flex items-center space-x-4">
@@ -221,7 +223,7 @@ const About = () => {
                   </div>
 
                   {/* Certificates Card */}
-                  <Dialog>
+                  <Dialog onOpenChange={setIsCoursesModalOpen}>
                     <DialogTrigger asChild>
                       <div className="bg-card border border-border rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-105 hover:border-accent/30 cursor-pointer group">
                         <div className="flex items-center space-x-4">
