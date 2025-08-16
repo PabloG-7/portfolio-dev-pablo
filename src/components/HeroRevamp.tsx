@@ -14,11 +14,11 @@ const HeroRevamp = memo(() => {
   }, []);
 
   const rotatingSkills = useMemo(() => [
-    { text: t('hero.skills.database'), color: 'text-purple-400', dotColor: 'bg-purple-400', bgColor: 'bg-purple-400/5' },
-    { text: t('hero.skills.tools'), color: 'text-orange-400', dotColor: 'bg-orange-400', bgColor: 'bg-orange-400/5' },
     { text: t('hero.skills.fullstack'), color: 'text-foreground', dotColor: 'bg-foreground', bgColor: 'bg-primary/5' },
     { text: t('hero.skills.frontend'), color: 'text-blue-400', dotColor: 'bg-blue-400', bgColor: 'bg-blue-400/5' },
-    { text: t('hero.skills.backend'), color: 'text-green-400', dotColor: 'bg-green-400', bgColor: 'bg-green-400/5' }
+    { text: t('hero.skills.backend'), color: 'text-green-400', dotColor: 'bg-green-400', bgColor: 'bg-green-400/5' },
+    { text: t('hero.skills.database'), color: 'text-purple-400', dotColor: 'bg-purple-400', bgColor: 'bg-purple-400/5' },
+    { text: t('hero.skills.tools'), color: 'text-orange-400', dotColor: 'bg-orange-400', bgColor: 'bg-orange-400/5' }
   ], [t]);
   const [currentSkill, setCurrentSkill] = useState(0);
   
@@ -180,3 +180,4 @@ const HeroRevamp = memo(() => {
 HeroRevamp.displayName = 'HeroRevamp';
 
 export default HeroRevamp;
+
