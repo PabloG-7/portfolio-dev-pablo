@@ -1,9 +1,9 @@
+/* Portfolio Design System - Premium Portfolio Theme */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 @layer base {
   :root {
@@ -248,14 +248,20 @@
   }
 
   /* Optimize scrolling performance */
-  * {
+  html {
     scroll-behavior: smooth;
   }
   
   @media (prefers-reduced-motion: reduce) {
-    * {
+    html {
       scroll-behavior: auto;
     }
+  }
+  
+  /* Prevent scroll conflicts on mobile */
+  body {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* Optimize animations with hardware acceleration */
