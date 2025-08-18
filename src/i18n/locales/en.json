@@ -28,9 +28,9 @@
   "about": {
     "title": "About Me",
     "subtitle": "Get to know my journey",
-    "description": "Hi! I'm Pablo Gomes, a Full Stack developer dedicated to creating digital experiences that are as functional as they are impactful.",
-    "journey": "Just over a year ago I started my programming journey, exploring technologies like TypeScript, React, Node.js, MySQL and the classic trio HTML, CSS and JavaScript.",
-    "education": "Currently, I'm studying Systems Analysis and Development at UNIP and I keep challenging myself with projects that make me learn and evolve every day.",
+    "description": "💻 Hi! I'm Pablo Gomes, a Full Stack developer dedicated to creating digital experiences that are as functional as they are impactful.",
+    "journey": "My programming journey began just over a year ago, exploring from frontend — with HTML, CSS, JavaScript, TypeScript, and React — to backend, using Node.js. I also work with databases like MySQL and Supabase, as well as essential tools like Git, GitHub, Vercel, and Excel, which strengthen my development workflow.",
+    "education": "I'm studying Systems Analysis and Development at UNIP, always seeking to evolve through new projects.",
     "location": "Location",
     "experience": "Experience",
     "download_cv": "Download CV",

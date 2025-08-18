@@ -167,7 +167,8 @@ export default {
 				'float-particle': 'float-particle 4s ease-in-out infinite',
 				'scanner': 'scanner 6s linear infinite',
 				'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
-				'glitch': 'glitch 2s ease-in-out infinite'
+				'glitch': 'glitch 2s ease-in-out infinite',
+				'spin-slow': 'spin 8s linear infinite'
 			}
 		}
 	},

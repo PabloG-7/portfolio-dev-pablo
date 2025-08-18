@@ -1,8 +1,7 @@
-import { useState, memo, useMemo, useCallback, useEffect } from 'react';
+import { useState, memo, useMemo, useCallback } from 'react';
 import { ExternalLink, Github, Eye, ArrowRight, Gamepad2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
-import { preloadImages } from '../utils/performanceOptimizations';
 import LazyImage from './LazyImage';
 import GamePreview from './GamePreview';
 
@@ -10,9 +9,9 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
   const [gamePreview, setGamePreview] = useState<{ isOpen: boolean; gameData?: any }>({ isOpen: false });
   const { t } = useTranslation();
   const { elementRef, isIntersecting: isVisible } = useIntersectionObserver({ 
-    threshold: 0.05, // Threshold ainda menor para trigger mais rápido
+    threshold: 0.1, // Menor threshold para dispositivos móveis
     triggerOnce: true,
-    rootMargin: '200px' // Margem muito maior para preload antecipado
+    rootMargin: '50px' // Margem maior para trigger antecipado
   });
 
   const projects = useMemo(() => [
@@ -68,11 +67,6 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
     },
   ], [t]);
 
-  // Preload das imagens assim que o componente for montado
-  useEffect(() => {
-    const imageUrls = projects.map(project => project.image);
-    preloadImages(imageUrls).catch(console.warn);
-  }, [projects]);
 
   const openGamePreview = useCallback((project: any) => {
     setGamePreview({ isOpen: true, gameData: project });
@@ -106,18 +100,25 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className={`group transition-all duration-700 ${
+              className={`group transition-all duration-1000 ${
                 isVisible 
                   ? 'animate-scale-in opacity-100' 
                   : 'opacity-100 sm:opacity-0' // Sempre visível no mobile
               }`}
-              style={{ animationDelay: `${index * 100 + 200}ms` }}
+              style={{ animationDelay: `${index * 200 + 600}ms` }}
             >
-              <div className={`card-premium overflow-hidden h-full ${project.featured ? 'ring-2 ring-gold/50 shadow-lg shadow-gold/20' : ''}`}>
+              <div className={`card-premium overflow-hidden h-full relative ${
+                project.featured 
+                  ? 'bg-gradient-to-br from-gold/10 to-yellow-400/10 border-2 border-transparent bg-clip-padding before:absolute before:inset-0 before:z-[-1] before:m-[-2px] before:rounded-[inherit] before:bg-gradient-to-r before:from-gold before:via-yellow-400 before:to-gold before:animate-spin-slow after:absolute after:inset-0 after:bg-gradient-to-br after:from-transparent after:via-gold/5 after:to-transparent after:pointer-events-none hover:shadow-2xl hover:shadow-gold/20 transition-all duration-700' 
+                  : ''
+              }`}>
                 {/* Featured Badge */}
                 {project.featured && (
-                  <div className="absolute top-3 left-3 z-[1] px-2 py-1 sm:px-3 sm:py-1 bg-gold text-gold-foreground text-xs sm:text-sm font-semibold rounded-full shadow-lg shadow-gold/30">
-                    {t('projects.featured')}
+                  <div className="absolute top-3 left-3 z-[2] px-3 py-2 bg-gradient-to-r from-gold to-yellow-400 text-background text-sm font-bold rounded-lg shadow-xl border border-gold/30 backdrop-blur-sm">
+                    <span className="flex items-center gap-1">
+                      <span className="w-2 h-2 bg-blue-600 rounded-full animate-ping"></span>
+                      {t('projects.featured')}
+                    </span>
                   </div>
                 )}
 
@@ -126,8 +127,8 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                   <LazyImage
                     src={project.image}
                     alt={project.title}
-                    loading={index < 6 ? "eager" : "lazy"}
-                    fetchPriority={index < 3 ? "high" : index < 6 ? "auto" : "low"}
+                    loading="eager"
+                    fetchPriority={index < 3 ? "high" : "low"}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -250,7 +251,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
             href="https://github.com/PabloG-7"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-ghost hover-lift"
+            className="btn-futuristic text-white min-w-[220px]"
           >
             {t('projects.view_all')}
           </a>
