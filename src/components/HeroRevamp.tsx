@@ -31,18 +31,33 @@ const HeroRevamp = memo(() => {
   }, [rotatingSkills.length, addTimer]);
 
   const scrollTo = useCallback((hash: string) => {
-    // Safari fix: small delay to ensure DOM is ready
-    setTimeout(() => {
+    const attemptScroll = (retries = 3) => {
       const el = document.querySelector(hash);
       if (el) {
-        // More reliable scroll for Safari
-        const offset = el.getBoundingClientRect().top + window.pageYOffset;
+        // Safari mobile fix: use getBoundingClientRect for more reliable positioning
+        const rect = el.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const targetPosition = rect.top + scrollTop - 80; // Account for header
+        
         window.scrollTo({
-          top: offset,
+          top: targetPosition,
           behavior: 'smooth'
         });
+        return true;
+      } else if (retries > 0) {
+        // Retry if element not found (DOM might not be ready)
+        setTimeout(() => attemptScroll(retries - 1), 150);
       }
-    }, 100);
+      return false;
+    };
+
+    // Force layout recalculation for Safari mobile
+    if (typeof window !== 'undefined') {
+      document.body.offsetHeight; // Force reflow
+      requestAnimationFrame(() => {
+        attemptScroll();
+      });
+    }
   }, []);
 
   return (
