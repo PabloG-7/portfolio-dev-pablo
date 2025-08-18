@@ -1,19 +1,14 @@
-import { useState, memo, useMemo, useCallback, useEffect } from 'react';
+import { useState, memo, useMemo, useCallback } from 'react';
 import { ExternalLink, Github, Eye, ArrowRight, Gamepad2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
-import { preloadImages } from '../utils/performanceOptimizations';
 import LazyImage from './LazyImage';
 import GamePreview from './GamePreview';
 
 const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean) => void }) => {
   const [gamePreview, setGamePreview] = useState<{ isOpen: boolean; gameData?: any }>({ isOpen: false });
   const { t } = useTranslation();
-  const { elementRef, isIntersecting: isVisible } = useIntersectionObserver({ 
-    threshold: 0.05, // Threshold ainda menor para trigger mais rápido
-    triggerOnce: true,
-    rootMargin: '200px' // Margem muito maior para preload antecipado
-  });
+  // Removido intersection observer para evitar problemas de scroll no Safari
 
   const projects = useMemo(() => [
     {
@@ -68,11 +63,6 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
     },
   ], [t]);
 
-  // Preload das imagens assim que o componente for montado
-  useEffect(() => {
-    const imageUrls = projects.map(project => project.image);
-    preloadImages(imageUrls).catch(console.warn);
-  }, [projects]);
 
   const openGamePreview = useCallback((project: any) => {
     setGamePreview({ isOpen: true, gameData: project });
@@ -82,16 +72,11 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
   return (
     <section
       id="projetos"
-      ref={elementRef as React.RefObject<HTMLDivElement>}
       className="section-padding bg-secondary/20"
     >
       <div className="container-custom">
         {/* Header */}
-        <div
-          className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-100 sm:opacity-0'
-          }`}
-        >
+        <div className="text-center mb-16">
           <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-4">
             {t('projects.title').split(' ')[0]} <span className="gradient-text">{t('projects.title').split(' ')[1]}</span>
           </h2>
@@ -106,12 +91,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className={`group transition-all duration-700 ${
-                isVisible 
-                  ? 'animate-scale-in opacity-100' 
-                  : 'opacity-100 sm:opacity-0' // Sempre visível no mobile
-              }`}
-              style={{ animationDelay: `${index * 100 + 200}ms` }}
+              className="group"
             >
               <div className={`card-premium overflow-hidden h-full ${project.featured ? 'ring-2 ring-gold/50 shadow-lg shadow-gold/20' : ''}`}>
                 {/* Featured Badge */}
@@ -126,8 +106,8 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                   <LazyImage
                     src={project.image}
                     alt={project.title}
-                    loading={index < 6 ? "eager" : "lazy"}
-                    fetchPriority={index < 3 ? "high" : index < 6 ? "auto" : "low"}
+                    loading="eager"
+                    fetchPriority={index < 3 ? "high" : "low"}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -241,11 +221,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
         )}
 
         {/* View More */}
-        <div
-          className={`text-center mt-12 transition-all duration-1000 delay-1000 ${
-            isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-100 sm:opacity-0'
-          }`}
-        >
+        <div className="text-center mt-12">
           <a
             href="https://github.com/PabloG-7"
             target="_blank"
