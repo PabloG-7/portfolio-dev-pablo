@@ -31,33 +31,38 @@ const HeroRevamp = memo(() => {
   }, [rotatingSkills.length, addTimer]);
 
   const scrollTo = useCallback((hash: string) => {
-    const attemptScroll = (retries = 3) => {
-      const el = document.querySelector(hash);
-      if (el) {
-        // Safari mobile fix: use getBoundingClientRect for more reliable positioning
-        const rect = el.getBoundingClientRect();
+    // Aguarda o elemento existir no DOM (para componentes lazy-loaded)
+    const waitForElement = (selector: string, maxRetries = 20) => {
+      return new Promise<HTMLElement | null>((resolve) => {
+        let retries = 0;
+        const checkForElement = () => {
+          const element = document.querySelector(selector) as HTMLElement;
+          if (element) {
+            resolve(element);
+          } else if (retries < maxRetries) {
+            retries++;
+            setTimeout(checkForElement, 100); // Verifica a cada 100ms
+          } else {
+            resolve(null);
+          }
+        };
+        checkForElement();
+      });
+    };
+
+    waitForElement(hash).then((targetElement) => {
+      if (targetElement) {
+        const headerOffset = 80;
+        const rect = targetElement.getBoundingClientRect();
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const targetPosition = rect.top + scrollTop - 80; // Account for header
-        
+        const targetPosition = rect.top + scrollTop - headerOffset;
+
         window.scrollTo({
           top: targetPosition,
           behavior: 'smooth'
         });
-        return true;
-      } else if (retries > 0) {
-        // Retry if element not found (DOM might not be ready)
-        setTimeout(() => attemptScroll(retries - 1), 150);
       }
-      return false;
-    };
-
-    // Force layout recalculation for Safari mobile
-    if (typeof window !== 'undefined') {
-      document.body.offsetHeight; // Force reflow
-      requestAnimationFrame(() => {
-        attemptScroll();
-      });
-    }
+    });
   }, []);
 
   return (
