@@ -8,7 +8,11 @@ import GamePreview from './GamePreview';
 const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean) => void }) => {
   const [gamePreview, setGamePreview] = useState<{ isOpen: boolean; gameData?: any }>({ isOpen: false });
   const { t } = useTranslation();
-  // Removido intersection observer para evitar problemas de scroll no Safari
+  const { elementRef, isIntersecting: isVisible } = useIntersectionObserver({ 
+    threshold: 0.1, // Menor threshold para dispositivos móveis
+    triggerOnce: true,
+    rootMargin: '50px' // Margem maior para trigger antecipado
+  });
 
   const projects = useMemo(() => [
     {
@@ -72,17 +76,26 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
   return (
     <section
       id="projetos"
+      ref={elementRef as React.RefObject<HTMLDivElement>}
       className="section-padding bg-secondary/20"
     >
       <div className="container-custom">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-4">
-            {t('projects.title').split(' ')[0]} <span className="gradient-text">{t('projects.title').split(' ')[1]}</span>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('projects.subtitle')}
-          </p>
+        <div
+          className={`text-center mb-16 transition-all duration-1000 relative ${
+            isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-100 sm:opacity-0'
+          }`}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 rounded-3xl blur-3xl -z-10"></div>
+          <div className="relative py-8">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-6">
+              {t('projects.title').split(' ')[0]} <span className="gradient-text bg-gradient-to-r from-primary via-accent to-primary bg-clip-text animate-gradient-x">{t('projects.title').split(' ')[1]}</span>
+            </h2>
+            <div className="w-32 h-1 bg-gradient-to-r from-primary via-accent to-primary mx-auto mb-6 rounded-full"></div>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              {t('projects.subtitle')}
+            </p>
+          </div>
         </div>
 
 
@@ -91,15 +104,24 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
           {projects.map((project, index) => (
             <div
               key={project.title}
-              className="group"
+              className={`group transition-all duration-1000 ${
+                isVisible 
+                  ? 'animate-scale-in opacity-100' 
+                  : 'opacity-100 sm:opacity-0' // Sempre visível no mobile
+              }`}
+              style={{ animationDelay: `${index * 200 + 600}ms` }}
             >
-              <div className={`card-premium overflow-hidden h-full ${project.featured ? 'ring-2 ring-gold/50 shadow-lg shadow-gold/20' : ''}`}>
+              <div className={`card-premium overflow-hidden h-full relative group/card transform transition-all duration-500 hover:scale-105 hover:rotate-1 ${project.featured ? 'ring-2 ring-gold/50 shadow-lg shadow-gold/20 before:absolute before:inset-0 before:bg-gradient-to-r before:from-gold/10 before:to-accent/10 before:rounded-xl before:-z-10 before:blur-xl' : 'hover:shadow-2xl hover:shadow-primary/20'}`}>
                 {/* Featured Badge */}
                 {project.featured && (
-                  <div className="absolute top-3 left-3 z-[1] px-2 py-1 sm:px-3 sm:py-1 bg-gold text-gold-foreground text-xs sm:text-sm font-semibold rounded-full shadow-lg shadow-gold/30">
-                    {t('projects.featured')}
+                  <div className="absolute top-3 left-3 z-[1] px-3 py-2 bg-gradient-to-r from-gold to-accent text-gold-foreground text-xs sm:text-sm font-semibold rounded-full shadow-lg shadow-gold/30 animate-pulse border border-gold/20">
+                    ✨ {t('projects.featured')}
                   </div>
                 )}
+                
+                {/* Decorative Corner Elements */}
+                <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-full opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute bottom-0 left-0 w-6 h-6 bg-gradient-to-tr from-accent/20 to-transparent rounded-tr-full opacity-0 group-hover/card:opacity-100 transition-opacity duration-300"></div>
 
                 {/* Project Image */}
                 <div className="relative overflow-hidden aspect-[4/3] sm:aspect-[16/10]">
@@ -146,20 +168,26 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                 </div>
 
                 {/* Project Content */}
-                <div className="p-8">
-                  <h3 className="text-2xl font-playfair font-semibold mb-3 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-foreground/80 mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
+                <div className="p-8 relative">
+                  <div className="absolute top-0 left-8 w-12 h-1 bg-gradient-to-r from-primary to-accent rounded-full"></div>
+                  <div className="pt-4">
+                    <h3 className="text-2xl font-playfair font-semibold mb-3 group-hover/card:text-primary transition-all duration-300 group-hover/card:transform group-hover/card:scale-105">
+                      {project.title}
+                    </h3>
+                    <p className="text-foreground/80 mb-4 leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
 
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech) => (
+                    {project.technologies.map((tech, index) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 text-sm bg-border text-foreground rounded-full font-medium"
+                        className="px-3 py-1 text-sm bg-gradient-to-r from-border/50 to-border text-foreground rounded-full font-medium border border-primary/10 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 hover:scale-105"
+                        style={{ 
+                          animationDelay: `${index * 100}ms`,
+                        }}
                       >
                         {tech}
                       </span>
@@ -167,7 +195,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                   </div>
 
                   {/* Actions */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between px-8 pb-8">
                     <div className="flex space-x-4">
                       {project.isGame ? (
                         <button
@@ -221,7 +249,11 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
         )}
 
         {/* View More */}
-        <div className="text-center mt-12">
+        <div
+          className={`text-center mt-12 transition-all duration-1000 delay-1000 ${
+            isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-100 sm:opacity-0'
+          }`}
+        >
           <a
             href="https://github.com/PabloG-7"
             target="_blank"

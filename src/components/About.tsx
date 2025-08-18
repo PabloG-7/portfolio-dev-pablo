@@ -48,13 +48,17 @@ const About = () => {
           }`}
         >
           {/* Header Section */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              {t('about.title').split(' ')[0]} <span className="text-transparent bg-gradient-to-r from-primary to-accent bg-clip-text">{t('about.title').split(' ')[1]}</span>
-            </h2>
-            <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed font-light max-w-3xl mx-auto">
-              {t('about.subtitle')}
-            </p>
+          <div className="text-center mb-16 relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 rounded-3xl blur-3xl"></div>
+            <div className="relative z-10 py-8">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                {t('about.title').split(' ')[0]} <span className="text-transparent bg-gradient-to-r from-primary via-accent to-primary bg-clip-text animate-gradient-x">{t('about.title').split(' ')[1]}</span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto mb-6 rounded-full"></div>
+              <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed font-light max-w-3xl mx-auto">
+                {t('about.subtitle')}
+              </p>
+            </div>
           </div>
 
           {/* Main Content Grid */}
@@ -63,17 +67,21 @@ const About = () => {
             {/* Left Column - Photo and Quick Info */}
             <div className="lg:col-span-1 space-y-8">
               {/* Photo */}
-              <div className="relative max-w-sm mx-auto">
+              <div className="relative max-w-sm mx-auto group">
                 <div className="relative">
-                  <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                  <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                     <img
                       src="/lovable-uploads/70635806-10e5-48bf-a5fd-066ba686f1c5.png"
                       alt="Pablo Gomes"
-                      className="w-full h-auto transition-transform duration-300 hover:scale-105"
+                      className="w-full h-auto transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
-                  <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-2xl -z-10 opacity-75"></div>
+                  <div className="absolute -inset-2 bg-gradient-to-r from-primary via-accent to-primary rounded-3xl -z-10 opacity-75 animate-pulse"></div>
+                  <div className="absolute -inset-1 bg-gradient-to-r from-primary to-accent rounded-3xl -z-10 opacity-90 blur-sm"></div>
                 </div>
+                <div className="absolute -bottom-4 -right-4 w-8 h-8 bg-accent rounded-full animate-bounce opacity-80"></div>
+                <div className="absolute -top-4 -left-4 w-6 h-6 bg-primary rounded-full animate-pulse opacity-60"></div>
               </div>
 
               {/* Quick Actions - Hidden on mobile */}
@@ -177,23 +185,37 @@ const About = () => {
             <div className="lg:col-span-2 space-y-8">
               {/* Description Cards */}
               <div className="space-y-6">
-                <div className="card-premium p-8">
-                  <h3 className="text-2xl font-bold text-primary mb-4">Minha História</h3>
-                  <p className="text-lg leading-relaxed text-foreground/80 mb-4">
-                    {t('about.description')}
-                  </p>
-                  <p className="text-lg leading-relaxed text-foreground/80">
-                    {t('about.journey')}
-                  </p>
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                  <div className="relative card-premium p-8 border-2 border-primary/20 hover:border-primary/40 transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-8 h-8 bg-gradient-to-r from-primary to-accent rounded-lg"></div>
+                      <h3 className="text-2xl font-bold text-primary">Minha História</h3>
+                    </div>
+                    <p className="text-lg leading-relaxed text-foreground/80 mb-4">
+                      {t('about.description')}
+                    </p>
+                    <p className="text-lg leading-relaxed text-foreground/80">
+                      {t('about.journey')}
+                    </p>
+                  </div>
                 </div>
                 
-                <div className="card-premium p-8">
-                  <h3 className="text-2xl font-bold text-primary mb-4">{t('about.academic_education')}</h3>
-                  <p className="text-xl font-semibold text-accent mb-2">{t('about.education_title')}</p>
-                  <p className="text-lg text-primary mb-4">{t('about.education_period')}</p>
-                  <p className="text-lg leading-relaxed text-foreground/80">
-                    {t('about.education')}
-                  </p>
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-accent/10 to-primary/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                  <div className="relative card-premium p-8 border-2 border-accent/20 hover:border-accent/40 transition-all duration-300">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-8 h-8 bg-gradient-to-r from-accent to-primary rounded-lg"></div>
+                      <h3 className="text-2xl font-bold text-accent">{t('about.academic_education')}</h3>
+                    </div>
+                    <div className="space-y-3">
+                      <p className="text-xl font-semibold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">{t('about.education_title')}</p>
+                      <p className="text-lg text-primary/80 font-medium">{t('about.education_period')}</p>
+                      <p className="text-lg leading-relaxed text-foreground/80">
+                        {t('about.education')}
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Mobile Actions - Visible only on mobile */}
