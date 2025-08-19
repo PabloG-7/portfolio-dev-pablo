@@ -135,6 +135,7 @@ const About = () => {
                           <li>• {t('about.certifications_list.python')}</li>
                           <li>• {t('about.certifications_list.algorithms')}</li>
                           <li>• {t('about.certifications_list.javascript')}</li>
+                           <li>• {t('about.certifications_list.react')}</li>
                         </ul>
                       </div>
 

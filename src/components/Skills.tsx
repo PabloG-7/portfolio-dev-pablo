@@ -8,6 +8,7 @@ import javascriptLogo from '../assets/logos/javascript.svg';
 import typescriptLogo from '../assets/logos/typescript.svg';
 import reactLogo from '../assets/logos/react.svg';
 import nodejsLogo from '../assets/logos/nodejs.svg';
+import expressLogo from '../assets/logos/express.svg';
 import mysqlLogo from '../assets/logos/mysql.svg';
 import supabaseLogo from '../assets/logos/supabase.svg';
 import gitLogo from '../assets/logos/git.svg';
@@ -43,7 +44,8 @@ const Skills = () => {
     { name: 'JavaScript', logo: javascriptLogo, category: 'frontend', level: 90 },
     { name: 'TypeScript', logo: typescriptLogo, category: 'frontend', level: 84 },
     { name: 'React', logo: reactLogo, category: 'frontend', level: 84 },
-    { name: 'Node.js', logo: nodejsLogo, category: 'backend', level: 73 },
+    { name: 'Node.js', logo: nodejsLogo, category: 'backend', level: 80 },
+    { name: 'Express', logo: expressLogo, category: 'backend', level: 60 },
     { name: 'MySQL', logo: mysqlLogo, category: 'database', level: 85 },
     { name: 'Supabase', logo: supabaseLogo, category: 'database', level: 73 },
     { name: 'Git', logo: gitLogo, category: 'tools', level: 90 },
