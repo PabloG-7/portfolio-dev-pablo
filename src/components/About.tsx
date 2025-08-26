@@ -67,7 +67,7 @@ const About = () => {
                 <div className="relative">
                   <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                     <img
-                      src="/lovable-uploads/70635806-10e5-48bf-a5fd-066ba686f1c5.png"
+                      src="/lovable-uploads/zap-pablo.jpg"
                       alt="Pablo Gomes"
                       className="w-full h-auto transition-transform duration-300 hover:scale-105"
                     />
