@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // Performance optimizations
+  // Performance optimizations with Safari compatibility
   build: {
     rollupOptions: {
       output: {
@@ -40,6 +40,9 @@ export default defineConfig(({ mode }) => ({
     chunkSizeWarningLimit: 1000,
     // Source maps for production debugging
     sourcemap: mode === 'production' ? 'hidden' : true,
+    // Safari compatibility
+    target: ['es2018', 'safari11'],
+    polyfillModulePreload: true,
   },
   // CSS optimization
   css: {
@@ -57,9 +60,9 @@ export default defineConfig(({ mode }) => ({
       'lucide-react',
     ],
   },
-  // Enable modern JS features
+  // Enable modern JS features with Safari compatibility
   esbuild: {
-    target: 'es2020',
+    target: 'es2018', // Better Safari compatibility
     logOverride: { 'this-is-undefined-in-esm': 'silent' }
   },
 }));
