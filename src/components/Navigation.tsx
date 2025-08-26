@@ -28,10 +28,17 @@ const Navigation = () => {
     { name: t('nav.contact'), href: '#contato', icon: Mail },
   ], [t]);
 
-  const scrollToSection = useCallback((href: string) => {
+    const scrollToSection = useCallback((href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const isMobile = window.innerWidth < 768;
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      
+      if (isMobile || reduceMotion) {
+        element.scrollIntoView({ behavior: 'auto' });
+      } else {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
     setIsMobileMenuOpen(false);
   }, []);

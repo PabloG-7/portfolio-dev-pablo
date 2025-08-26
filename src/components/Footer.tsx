@@ -4,9 +4,10 @@ import { useTranslation } from 'react-i18next';
 const Footer = () => {
   const { t } = useTranslation();
   const scrollToTop = () => {
-    // Use requestAnimationFrame for better mobile performance
     const isMobile = window.innerWidth < 768;
-    if (isMobile) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (isMobile || reduceMotion) {
       window.scrollTo({ top: 0, behavior: 'auto' });
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
