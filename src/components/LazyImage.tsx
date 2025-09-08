@@ -5,7 +5,7 @@ interface LazyImageProps {
   alt: string;
   className?: string;
   loading?: 'lazy' | 'eager';
-  fetchPriority?: 'high' | 'low' | 'auto';
+  fetchPriority?: 'high' | 'low' | 'auto'; // 👈 já tipado
   onLoad?: () => void;
   onError?: () => void;
 }
@@ -15,7 +15,7 @@ const LazyImage = memo(({
   alt, 
   className = '', 
   loading = 'lazy',
-  fetchPriority = 'auto',
+  fetchPriority = 'auto', // 👈 padrão
   onLoad,
   onError
 }: LazyImageProps) => {
@@ -32,12 +32,12 @@ const LazyImage = memo(({
       src={src}
       alt={alt}
       loading={loading}
-      fetchPriority={fetchPriority}
       className={className}
       onLoad={handleLoad}
       onError={handleError}
       decoding="async"
       style={{ contentVisibility: 'auto' }}
+      {...{ fetchpriority: fetchPriority }} // ✅ renderiza atributo HTML correto
     />
   );
 });

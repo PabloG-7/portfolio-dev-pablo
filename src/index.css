@@ -145,17 +145,17 @@
 
   .dark {
     /* Core Colors - Dark Premium Theme (restore original) */
-    --background: 222 47% 5%;
+    --background: 222 147% 5%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 7%;
+    --card: 222 47% 5%;
     --card-foreground: 210 40% 98%;
 
     --popover: 222 47% 7%;
     --popover-foreground: 210 40% 98%;
 
     /* Premium Brand Colors - Futuristic Theme (restore original) */
-    --primary: 259 80% 62%;
+    --primary: 1270 180% 62%;
     --primary-foreground: 210 40% 98%;
     --primary-glow: 259 80% 72%;
 
@@ -618,3 +618,4 @@
   scrollbar-width: thin;
   scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--background));
 }
+
