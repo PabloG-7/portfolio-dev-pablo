@@ -61,19 +61,12 @@
     --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -138,24 +131,24 @@
     --sidebar-primary: 240 5.9% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-accept-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
     /* Core Colors - Dark Premium Theme (restore original) */
-    --background: 222 147% 5%;
+    --background: 222 47% 5%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 5%;
+    --card: 222 47% 7%;
     --card-foreground: 210 40% 98%;
 
     --popover: 222 47% 7%;
     --popover-foreground: 210 40% 98%;
 
     /* Premium Brand Colors - Futuristic Theme (restore original) */
-    --primary: 1270 180% 62%;
+    --primary: 259 80% 62%;
     --primary-foreground: 210 40% 98%;
     --primary-glow: 259 80% 72%;
 
@@ -212,6 +205,14 @@
 @layer base {
   * {
     @apply border-border;
+    -webkit-tap-highlight-color: transparent; /* Remove highlight on tap */
+  }
+
+  html, body {
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; /* Scroll suave em iOS */
+    height: 100%;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -221,6 +222,7 @@
     text-rendering: optimizeSpeed;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior: none; /* Previne bounce effect problemático */
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -245,19 +247,6 @@
   img[loading="eager"], img[fetchpriority="high"] {
     will-change: auto;
     contain: layout style paint;
-  }
-
-  
-  @media (prefers-reduced-motion: reduce) {
-        * {
-      scroll-behavior: auto !important;
-    }
-  }
-  
-  /* Prevent scroll conflicts on mobile */
-  body {
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
   }
 
   /* Optimize animations with hardware acceleration */
@@ -287,6 +276,25 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
+    }
+  }
+
+  /* Mobile-specific fixes */
+  @media (max-width: 768px) {
+    body {
+      position: relative;
+      width: 100%;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Prevenir que elementos interfiram com o scroll */
+    .container-custom {
+      overflow: visible !important;
+    }
+    
+    /* Garantir que sections não tenham overflow hidden */
+    section {
+      overflow: visible !important;
     }
   }
 }
@@ -336,6 +344,7 @@
     background: var(--gradient-card);
     box-shadow: var(--shadow-premium);
     transition: var(--transition-smooth);
+    overflow: visible !important; /* Garantir que não cause problemas de scroll */
   }
   
   .card-premium:hover {
@@ -367,11 +376,13 @@
   /* Section Spacing */
   .section-padding {
     @apply py-20 md:py-32;
+    overflow: visible !important; /* Garantir que sections não interfiram com scroll */
   }
 
   /* Container */
   .container-custom {
     @apply max-w-7xl mx-auto px-6 md:px-8;
+    overflow: visible !important;
   }
 }
 
@@ -425,6 +436,12 @@
   .animate-musical-beat {
     animation: musical-beat 1.2s ease-in-out infinite;
     will-change: transform, box-shadow;
+  }
+
+  /* Utility para scroll suave */
+  .smooth-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
   }
 }
 
@@ -619,3 +636,46 @@
   scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--background));
 }
 
+/* Mobile scroll improvements */
+@media (max-width: 768px) {
+  /* Garantir que todos os elementos permitam scroll */
+  html, body {
+    position: relative;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  /* Remover qualquer overflow hidden problemático */
+  .container-custom,
+  section,
+  div {
+    overflow: visible !important;
+  }
+  
+  /* Melhorar performance de scroll no mobile */
+  .card-premium,
+  .btn-futuristic,
+  .btn-premium {
+    transform: translateZ(0); /* Force GPU acceleration */
+    -webkit-transform: translateZ(0);
+  }
+  
+  /* Prevenir que animações interfiram com scroll */
+  .animate-float,
+  .animate-musical-beat {
+    animation: none !important;
+  }
+}
+
+/* Critical fix for iOS scroll */
+@supports (-webkit-touch-callout: none) {
+  body {
+    height: -webkit-fill-available;
+  }
+  
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
