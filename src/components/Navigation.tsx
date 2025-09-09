@@ -87,7 +87,7 @@ const Navigation = () => {
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full border-2 border-background animate-pulse"></div>
             </div>
             <span className="font-playfair text-xl font-bold gradient-text hidden sm:block">
-              PabloG
+              DEV
             </span>
           </div>
 

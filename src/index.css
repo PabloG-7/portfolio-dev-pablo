@@ -90,7 +90,7 @@
     --popover-foreground: 222 47% 15%;
 
     /* Brand Colors adapted for light theme */
-    --primary: 259 80% 62%;
+    --primary: 930 480% 62%;
     --primary-foreground: 0 0% 98%;
     --primary-glow: 259 80% 72%;
 
@@ -216,7 +216,7 @@
 
   body {
     @apply bg-background text-foreground font-space;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     /* Performance optimizations */
     text-rendering: optimizeSpeed;
     -webkit-font-smoothing: antialiased;
@@ -224,7 +224,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 600;
     text-rendering: optimizeLegibility;
   }
