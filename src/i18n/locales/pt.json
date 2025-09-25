@@ -10,27 +10,27 @@
   "hero": {
     "greeting": "Olá!",
     "name": "Pablo Gomes",
-    "role": "Desenvolvedor Full Stack",
+    "role": "Desenvolvedor Front-end",
     "description": "Transformando ideias em realidade digital.",
     "description_highlight1": "rápidos e elegantes",
     "description_highlight2": "tecnologias modernas",
     "skills": {
-      "database": "Banco de Dados",
-      "tools": "Ferramentas",
-      "fullstack": "Desenvolvedor Full-Stack", 
+      "database": "Experiência do Usuário",
+      "tools": "UI/UX e Responsividade",
+      "fullstack": "Interfaces Modernas", 
       "frontend": "Desenvolvedor Front-end",
-      "backend": "Desenvolvedor Back-end"
+      "backend": "React | TypeScript"
     },
     "cta_projects": "Ver Projetos",
     "cta_contact": "Vamos Conversar",
     "scroll_indicator": "Deslize para explorar"
   },
-  "about": {
+   "about": {
     "title": "Sobre Mim",
-    "subtitle": "Conheça minha jornada",
-    "description": "💻 Olá! Sou Pablo Gomes, desenvolvedor Full Stack dedicado a criar experiências digitais tão funcionais quanto impactantes.",
-    "journey": "Há pouco mais de um ano, iniciei minha jornada com HTML, CSS e JavaScript. Evoluí para React e TypeScript no front-end e, no back-end, atuo com Node.js, tendo também meus primeiros contatos com Express na criação de APIs. Trabalho com MySQL e Supabase para bancos de dados e utilizo a Vercel para deploy.",
-    "education": "Curso Análise e Desenvolvimento de Sistemas na UNIP, sempre buscando evoluir através de novos projetos.",
+    "subtitle": "Conheça minha jornada no desenvolvimento front-end",
+    "description": "💻 Olá! Sou Pablo Gomes, desenvolvedor Front-end especializado em React, TypeScript e criação de interfaces modernas.",
+    "journey": "Minha trajetória anterior na área industrial me proporcionou uma visão única: atenção meticulosa a detalhes, organização e eficiência - habilidades que aplico diretamente no desenvolvimento de interfaces. Hoje, canalizo essa experiência para criar experiências web dinâmicas, acessíveis e visualmente impactantes.",
+    "education": "Atualmente curso Análise e Desenvolvimento de Sistemas na UNIP, com foco especializado em tecnologias front-end e melhores práticas de desenvolvimento web moderno.",
     "location": "Localização",
     "experience": "Experiência",
     "download_cv": "Download CV",
@@ -167,7 +167,7 @@
     "social_title": "Me siga nas redes"
   },
   "footer": {
-    "description": "Desenvolvedor Full Stack",
+    "description": "Desenvolvedor Front-end",
     "back_to_top": "Voltar ao topo",
     "copyright": "Todos os direitos reservados."
   },

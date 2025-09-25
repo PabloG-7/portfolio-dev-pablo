@@ -3,23 +3,23 @@
     "home": "Home",
     "about": "About",
     "skills": "Skills",
-    "experience": "Experience", 
+    "experience": "Experience",
     "projects": "Projects",
     "contact": "Contact"
   },
   "hero": {
-    "greeting": "Hi there!",
+    "greeting": "Hello!",
     "name": "Pablo Gomes",
-    "role": "Full Stack Developer",
+    "role": "Front-end Developer",
     "description": "Transforming ideas into digital reality.",
     "description_highlight1": "fast and elegant",
     "description_highlight2": "modern technologies",
     "skills": {
-      "database": "Database",
-      "tools": "Tools",
-      "fullstack": "Full-Stack Developer",
-      "frontend": "Front-end Developer", 
-      "backend": "Back-end Developer"
+      "database": "User Experience",
+      "tools": "UI/UX and Responsiveness",
+      "fullstack": "Modern Interfaces", 
+      "frontend": "Front-end Developer",
+      "backend": "React | TypeScript"
     },
     "cta_projects": "View Projects",
     "cta_contact": "Let's Talk",
@@ -27,10 +27,10 @@
   },
   "about": {
     "title": "About Me",
-    "subtitle": "Get to know my journey",
-    "description": "💻 Hi! I'm Pablo Gomes, a Full Stack developer dedicated to creating digital experiences that are as functional as they are impactful.",
-    "journey": "Just over a year ago, I began my journey with HTML, CSS, and JavaScript. I have since progressed to using React and TypeScript on the front-end, and on the back-end, I work with Node.js, having also gained initial experience with Express for building APIs. I work with MySQL and Supabase for databases and use Vercel for deployment.",
-    "education": "Systems Analysis and Development course at UNIP, always seeking to evolve through new projects.",
+    "subtitle": "Get to know my front-end development journey",
+    "description": "💻 Hello! I'm Pablo Gomes, a Front-end Developer specialized in React, TypeScript and creating modern interfaces.",
+    "journey": "My previous experience in the industrial area gave me a unique perspective: meticulous attention to detail, organization and efficiency - skills that I apply directly to interface development. Today, I channel this experience to create dynamic, accessible and visually impactful web experiences.",
+    "education": "I'm currently studying Systems Analysis and Development at UNIP, with specialized focus on front-end technologies and modern web development best practices.",
     "location": "Location",
     "experience": "Experience",
     "download_cv": "Download CV",
@@ -48,16 +48,16 @@
     "complementary_certifications": "Complementary Certifications (SENAI and others)",
     "personal_development": "Training and Personal Development (Treinamundo)",
     "certifications_list": {
-      "excel": "Microsoft Excel – Excel Certification Hashtag Trainings Selective Process (2025)",
+      "excel": "Microsoft Excel – Excel Certification Selection Process by Hashtag Treinamentos (2025)",
       "html_css": "HTML5 and CSS3 – Curso em Vídeo (Modules 1, 2, 3, 4 of 5 – 2024)",
       "git": "Git and GitHub – Curso em Vídeo (2024)",
       "mysql": "MySQL – Curso em Vídeo (2024)",
       "python": "Python 3 – Curso em Vídeo (World 1 of 3 – 2024)",
       "algorithms": "Algorithms – Curso em Vídeo (2024)",
       "javascript": "JavaScript – Curso em Vídeo (2024)",
-       "react": "React from Zero to Mastery (w/ hooks, router, API, Projects) – Udemy (2025)",
-      "environmental": "Cross-Curricular Competence – Environmental Education (SENAI)",
-      "industry": "Unveiling Industry 4.0 (SENAI)",
+      "react": "React from Zero to Mastery (with hooks, router, API, Projects) – Udemy (2025)",
+      "environmental": "Transversal Competence – Environmental Education (SENAI)",
+      "industry": "Understanding Industry 4.0 (SENAI)",
       "entrepreneurship": "Entrepreneurship (SENAI)",
       "speaking": "The art of speaking well",
       "business_vision": "How to develop systemic business vision",
@@ -65,9 +65,9 @@
       "emotional_intelligence": "Develop emotional intelligence to overcome challenges",
       "waste_elimination": "Eliminate waste through 5S implementation",
       "knowledge_management": "Knowledge management",
-      "champions_mindset": "Champions mindset",
+      "champions_mindset": "Champion's mindset",
       "organization": "Get organized",
-      "public_speaking": "Are you afraid of public speaking? Tips for overcoming"
+      "public_speaking": "Afraid of public speaking? Tips for overcoming"
     }
   },
   "skills": {
@@ -81,7 +81,7 @@
     }
   },
   "experience": {
-    "title": "My Experience", 
+    "title": "My Experience",
     "subtitle": "Developing creative solutions through personal projects",
     "status": {
       "completed": "Completed",
@@ -93,18 +93,18 @@
       "portfolio": {
         "title": "Complete Personal Portfolio",
         "type": "Personal Project",
-        "description": "Development of a premium personal portfolio with modern design and interactive animations. Project created to showcase my skills and projects professionally.",
+        "description": "Development of a premium personal portfolio with modern design and interactive animations. Project created to professionally showcase my skills and projects.",
         "achievements": [
           "Responsive design with advanced CSS animations",
           "Reusable component system",
           "Optimized performance and fast loading",
-          "Implemented SEO and accessibility"
+          "SEO and accessibility implemented"
         ]
       },
       "management": {
         "title": "Management System",
-        "type": "Personal Project", 
-        "description": "Full-stack application for managing personal tasks and projects, with intuitive interface and advanced organization features.",
+        "type": "Personal Project",
+        "description": "Full-stack application for task and project management, with intuitive interface and advanced organization features.",
         "achievements": [
           "User authentication and authorization",
           "Interactive dashboard with metrics",
@@ -115,31 +115,31 @@
       "landing": {
         "title": "Responsive Landing Page",
         "type": "Personal Project",
-        "description": "Creation of modern landing page for fictional company, focusing on conversion and user experience with attractive design and optimized performance.",
+        "description": "Creation of a modern landing page for a fictional company, focusing on conversion and user experience with attractive design and optimized performance.",
         "achievements": [
           "Mobile-first responsive design",
           "Animations and micro-interactions",
           "Functional contact form",
-          "Loading speed optimization"
+          "Optimized for loading speed"
         ]
       }
     }
   },
   "projects": {
     "title": "My Projects",
-    "subtitle": "Selection of my most significant and impactful work",
+    "subtitle": "Selection of my most significant and impactful projects",
     "featured": "Featured",
     "play_demo": "Play Demo",
     "view_project": "View Project",
     "code": "Code",
     "view_all": "View All Projects",
     "descriptions": {
-      "neon_memory": "Futuristic memory game with stunning neon visuals. Test your memory in the future with incredible visual effects!",
+      "neon_memory": "Futuristic memory game with impressive neon visuals. Test your memory in the future with incredible visual effects!",
       "inabalavel": "Immersive website about a cosmic hero and dark forces, with space design, cosmic visual effects and 3D interactions.",
       "pokedex": "An interactive Pokédex built with React and PokéAPI, with modern and responsive design to explore the Pokémon world.",
       "taskforge": "TaskForge is the evolution of your task manager, now with advanced productivity features and an even more immersive experience.",
-      "luckpet": "Pet e-commerce focused on usability and responsive design. A pleasant shopping experience for animal products.",
-      "kushi": "E-commerce specialized in men's and women's fashion, with organized catalog, seasonal promotions and trends blog."
+      "luckpet": "E-commerce for pets focusing on usability and responsive design. Pleasant experience when purchasing pet products.",
+      "kushi": "E-commerce specialized in men's and women's fashion, with organized catalog, seasonal promotions and trend blog."
     }
   },
   "contact": {
@@ -149,7 +149,7 @@
     "form_title": "Send a Message",
     "name": "Name",
     "email": "Email",
-    "subject": "Subject", 
+    "subject": "Subject",
     "message": "Message",
     "send": "Send Message",
     "placeholders": {
@@ -167,7 +167,7 @@
     "social_title": "Follow me on social media"
   },
   "footer": {
-    "description": "Full Stack Developer",
+    "description": "Front-end Developer",
     "back_to_top": "Back to top",
     "copyright": "All rights reserved."
   },
@@ -176,7 +176,7 @@
     "dark": "Dark"
   },
   "language": {
-    "portuguese": "Português",
+    "portuguese": "Portuguese",
     "english": "English"
   }
 }
