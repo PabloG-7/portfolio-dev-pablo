@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { Menu, X, Home, User, Wrench, FolderOpen, Mail } from "lucide-react";
+import { Menu, X, Home, User, Code, FolderKanban, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./LanguageToggle";
@@ -14,8 +14,7 @@ const Navigation = () => {
 
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 20);
-
-    // Update active section based on scroll position
+    
     const sections = ["#inicio", "#sobre", "#habilidades", "#projetos", "#contato"];
     const scrollPosition = window.scrollY + 100;
 
@@ -26,10 +25,7 @@ const Navigation = () => {
         const offsetTop = rect.top + window.scrollY;
         const offsetHeight = element.clientHeight;
 
-        if (
-          scrollPosition >= offsetTop &&
-          scrollPosition < offsetTop + offsetHeight
-        ) {
+        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
           setActiveSection(section);
           break;
         }
@@ -46,8 +42,8 @@ const Navigation = () => {
     () => [
       { name: t("nav.home"), href: "#inicio", icon: Home },
       { name: t("nav.about"), href: "#sobre", icon: User },
-      { name: t("nav.skills"), href: "#habilidades", icon: Wrench },
-      { name: t("nav.projects"), href: "#projetos", icon: FolderOpen },
+      { name: t("nav.skills"), href: "#habilidades", icon: Code },
+      { name: t("nav.projects"), href: "#projetos", icon: FolderKanban },
       { name: t("nav.contact"), href: "#contato", icon: Mail },
     ],
     [t]
@@ -56,13 +52,8 @@ const Navigation = () => {
   const scrollToSection = useCallback((href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      const isMobile = window.innerWidth < 768;
-      const reduceMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
-
       element.scrollIntoView({
-        behavior: isMobile || reduceMotion ? "auto" : "smooth",
+        behavior: "smooth",
         block: "start",
       });
     }
@@ -70,7 +61,6 @@ const Navigation = () => {
     setActiveSection(href);
   }, []);
 
-  // Hide navigation when courses modal is open
   if (isCoursesModalOpen) {
     return null;
   }
@@ -79,25 +69,25 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-xl border-b border-border/50 shadow-lg"
+          ? "bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-gray-200/60 dark:border-white/10 shadow-lg"
           : "bg-transparent"
       }`}
     >
       <div className="container-custom">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-14 lg:h-16">
           {/* Logo */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 lg:gap-3 group">
             <div className="relative">
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full border-2 border-background animate-pulse"></div>
+              <div className="w-2 h-2 lg:w-3 lg:h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
             </div>
-            <span className="font-playfair text-lg md:text-xl font-bold gradient-text truncate max-w-[120px] sm:max-w-[160px]">
-              Front-end
+            <span className="text-gray-900 dark:text-white font-bold text-base lg:text-lg tracking-tight">
+              Pablo.dev
             </span>
           </div>
 
-          {/* Desktop Navigation (só aparece a partir de lg:) */}
-          <div className="hidden lg:flex items-center flex-wrap gap-2 xl:gap-4">
-            <div className="flex flex-wrap items-center gap-1 bg-background/80 backdrop-blur-sm rounded-xl p-1 border border-border/50">
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-4 lg:gap-6">
+            <div className="flex items-center gap-1 bg-white/70 dark:bg-white/5 backdrop-blur-md rounded-xl p-1 lg:p-2 border border-gray-200/60 dark:border-white/10 shadow-sm">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = activeSection === item.href;
@@ -106,28 +96,28 @@ const Navigation = () => {
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className={`relative flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 text-sm lg:text-base font-medium ${
+                    className={`relative flex items-center gap-2 px-3 lg:px-4 py-2 rounded-lg transition-all duration-300 text-sm font-medium ${
                       isActive
-                        ? "text-primary bg-primary/10 shadow-sm"
-                        : "text-foreground/80 hover:text-primary hover:bg-primary/5"
+                        ? "text-gray-900 dark:text-white bg-white dark:bg-white/10 border border-gray-200/80 dark:border-white/20 shadow-sm"
+                        : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50/50 dark:hover:bg-white/5"
                     }`}
                   >
-                    <Icon className="w-4 h-4 shrink-0" />
-                    <span className="truncate">{item.name}</span>
+                    <Icon className="w-4 h-4" />
+                    <span>{item.name}</span>
                     {isActive && (
-                      <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-4 h-0.5 bg-primary rounded-full animate-pulse"></div>
+                      <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-3 lg:w-4 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
                     )}
                   </button>
                 );
               })}
             </div>
 
-            {/* Theme and Language Controls */}
-            <div className="flex items-center gap-2 ml-2 pl-2 border-l border-border/50">
-              <div className="bg-background/80 backdrop-blur-sm rounded-lg p-1 border border-border/50">
+            {/* Controls */}
+            <div className="flex items-center gap-1 lg:gap-2">
+              <div className="bg-white/70 dark:bg-white/5 backdrop-blur-md rounded-lg p-1.5 lg:p-2 border border-gray-200/60 dark:border-white/10 shadow-sm">
                 <ThemeToggle />
               </div>
-              <div className="bg-background/80 backdrop-blur-sm rounded-lg p-1 border border-border/50">
+              <div className="bg-white/70 dark:bg-white/5 backdrop-blur-md rounded-lg p-1.5 lg:p-2 border border-gray-200/60 dark:border-white/10 shadow-sm">
                 <LanguageToggle />
               </div>
             </div>
@@ -135,21 +125,20 @@ const Navigation = () => {
 
           {/* Mobile Controls */}
           <div className="lg:hidden flex items-center gap-2">
-            <div className="bg-background/80 backdrop-blur-sm rounded-lg p-1 border border-border/50">
+            <div className="bg-white/70 dark:bg-white/5 backdrop-blur-md rounded-lg p-1.5 border border-gray-200/60 dark:border-white/10">
               <ThemeToggle />
             </div>
-            <div className="bg-background/80 backdrop-blur-sm rounded-lg p-1 border border-border/50">
+            <div className="bg-white/70 dark:bg-white/5 backdrop-blur-md rounded-lg p-1.5 border border-gray-200/60 dark:border-white/10">
               <LanguageToggle />
             </div>
             <button
-              className="p-2 rounded-lg bg-background/80 backdrop-blur-sm border border-border/50 hover:bg-primary/10 hover:text-primary transition-all duration-300"
+              className="p-1.5 rounded-lg bg-white/70 dark:bg-white/5 backdrop-blur-md border border-gray-200/60 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/10 transition-all duration-300"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4 text-gray-700 dark:text-white" />
               ) : (
-                <Menu className="w-5 h-5" />
+                <Menu className="w-4 h-4 text-gray-700 dark:text-white" />
               )}
             </button>
           </div>
@@ -158,9 +147,9 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-background/98 backdrop-blur-xl border-b border-border/50 shadow-lg animate-slide-in-down">
+        <div className="lg:hidden bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border-b border-gray-200/60 dark:border-white/10 shadow-lg">
           <div className="container-custom py-4">
-            <div className="space-y-2">
+            <div className="space-y-1">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = activeSection === item.href;
@@ -169,16 +158,16 @@ const Navigation = () => {
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    className={`flex items-center gap-3 w-full text-left p-3 rounded-xl transition-all duration-300 font-medium ${
+                    className={`flex items-center gap-3 w-full text-left p-3 rounded-xl transition-all duration-300 font-medium border ${
                       isActive
-                        ? "text-primary bg-primary/10 border border-primary/20"
-                        : "text-foreground/80 hover:text-primary hover:bg-primary/5"
+                        ? "text-gray-900 dark:text-white bg-white dark:bg-white/10 border-gray-200/80 dark:border-white/20 shadow-sm"
+                        : "text-gray-600 dark:text-gray-300 border-transparent hover:bg-gray-50/50 dark:hover:bg-white/5"
                     }`}
                   >
-                    <Icon className="w-5 h-5" />
-                    <span className="flex-1">{item.name}</span>
+                    <Icon className="w-4 h-4" />
+                    <span className="flex-1 text-sm">{item.name}</span>
                     {isActive && (
-                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                      <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
                     )}
                   </button>
                 );

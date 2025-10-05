@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Code, Database, Server, Settings, Sparkles, Zap } from 'lucide-react';
 
 // Import logos
 import html5Logo from '../assets/logos/html5.svg';
@@ -19,6 +20,7 @@ import excelLogo from '../assets/logos/excel-new.svg';
 const Skills = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [animatedSkills, setAnimatedSkills] = useState<Set<string>>(new Set());
   const sectionRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
 
@@ -37,6 +39,18 @@ const Skills = () => {
 
     return () => observer.disconnect();
   }, [handleIntersection]);
+
+  // Anima skills sequencialmente
+  useEffect(() => {
+    if (isVisible) {
+      const allSkills = skills.map(skill => skill.name);
+      allSkills.forEach((skillName, index) => {
+        setTimeout(() => {
+          setAnimatedSkills(prev => new Set([...prev, skillName]));
+        }, index * 100);
+      });
+    }
+  }, [isVisible]);
 
   const skills = useMemo(() => [
     { name: 'HTML', logo: html5Logo, category: 'frontend', level: 90 },
@@ -57,31 +71,39 @@ const Skills = () => {
   const categories = useMemo(() => ({
     frontend: { 
       name: t('skills.categories.frontend'), 
-      color: 'hsl(217 91% 60%)',
-      gradient: 'from-blue-500/20 via-cyan-500/20 to-blue-500/20',
+      color: 'text-blue-600 dark:text-blue-400',
+      bgColor: 'bg-blue-500/10',
       borderColor: 'border-blue-500/30',
-      icon: '🎨'
+      hoverColor: 'hover:border-blue-500/50',
+      icon: Code,
+      gradient: 'from-blue-500/20 to-cyan-500/20'
     },
     backend: { 
       name: t('skills.categories.backend'), 
-      color: 'hsl(142 76% 36%)',
-      gradient: 'from-green-500/20 via-emerald-500/20 to-green-500/20',
+      color: 'text-green-600 dark:text-green-400',
+      bgColor: 'bg-green-500/10',
       borderColor: 'border-green-500/30',
-      icon: '⚙️'
+      hoverColor: 'hover:border-green-500/50',
+      icon: Server,
+      gradient: 'from-green-500/20 to-emerald-500/20'
     },
     database: { 
       name: t('skills.categories.database'), 
-      color: 'hsl(262 83% 58%)',
-      gradient: 'from-purple-500/20 via-violet-500/20 to-purple-500/20',
+      color: 'text-purple-600 dark:text-purple-400',
+      bgColor: 'bg-purple-500/10',
       borderColor: 'border-purple-500/30',
-      icon: '🗄️'
+      hoverColor: 'hover:border-purple-500/50',
+      icon: Database,
+      gradient: 'from-purple-500/20 to-violet-500/20'
     },
     tools: { 
       name: t('skills.categories.tools'), 
-      color: 'hsl(25 95% 53%)',
-      gradient: 'from-orange-500/20 via-red-500/20 to-orange-500/20',
+      color: 'text-orange-600 dark:text-orange-400',
+      bgColor: 'bg-orange-500/10',
       borderColor: 'border-orange-500/30',
-      icon: '🛠️'
+      hoverColor: 'hover:border-orange-500/50',
+      icon: Settings,
+      gradient: 'from-orange-500/20 to-red-500/20'
     }
   }), [t]);
 
@@ -96,60 +118,86 @@ const Skills = () => {
     <section
       id="habilidades"
       ref={sectionRef}
-      className="section-padding relative overflow-hidden"
+      className="section-padding relative overflow-hidden bg-slate-50 dark:bg-slate-900"
     >
       {/* Animated Background */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl animate-pulse" 
-             style={{ animationDuration: '4s' }} />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-accent/10 to-primary/10 rounded-full blur-3xl animate-pulse" 
-             style={{ animationDuration: '6s', animationDelay: '2s' }} />
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl animate-float-slow"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl animate-float-slower"></div>
+        
+        {/* Floating particles */}
+        <div className="absolute inset-0">
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-blue-400/30 rounded-full animate-float-random"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${Math.random() * 8 + 8}s`
+              }}
+            />
+          ))}
+        </div>
       </div>
       
       <div className="container-custom relative">
         {/* Header */}
         <div
-          className={`text-center mb-16 transition-all duration-1000 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          className={`text-center mb-12 lg:mb-16 transition-all duration-1000 ${
+            isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-0 translate-y-8'
           }`}
         >
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold mb-4">
-            {t('skills.title').split(' ')[0]} <span className="gradient-text">{t('skills.title').split(' ')[1]}</span>
+          <div className="inline-flex items-center gap-2 mb-4 animate-bounce-gentle">
+            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+          </div>
+
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 lg:mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent">
+              {t('skills.title')}
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed px-4">
             {t('skills.subtitle')}
           </p>
         </div>
 
         {/* Categories Tabs */}
         <div 
-          className={`flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-8 sm:mb-10 md:mb-12 transition-all duration-1000 ease-out ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          className={`flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 transition-all duration-1000 ${
+            isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '200ms' }}
         >
-          {Object.entries(categories).map(([key, category]) => (
-            <button
-              key={key}
-              onClick={() => setActiveCategory(activeCategory === key ? null : key)}
-              className={`group relative px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full transition-all duration-500 ease-out transform hover:scale-105 ${
-                activeCategory === key || activeCategory === null
-                  ? `bg-gradient-to-r ${category.gradient} ${category.borderColor} border backdrop-blur-sm shadow-lg`
-                  : 'bg-muted/50 border border-border/50 opacity-60'
-              }`}
-            >
-              <div className="flex items-center gap-2 sm:gap-3">
-                <span className="text-lg sm:text-xl">{category.icon}</span>
-                <span className="font-medium text-sm sm:text-base">{category.name}</span>
-              </div>
-              {(activeCategory === key || activeCategory === null) && (
-                <div 
-                  className="absolute inset-0 rounded-full opacity-20 animate-pulse"
-                  style={{ backgroundColor: category.color }}
-                />
-              )}
-            </button>
-          ))}
+          {Object.entries(categories).map(([key, category], index) => {
+            const Icon = category.icon;
+            const isActive = activeCategory === key || activeCategory === null;
+            
+            return (
+              <button
+                key={key}
+                onClick={() => setActiveCategory(activeCategory === key ? null : key)}
+                className={`group relative px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl transition-all duration-500 ease-out transform hover:scale-105 flex items-center gap-2 sm:gap-3 ${
+                  isActive
+                    ? `${category.bgColor} ${category.borderColor} border backdrop-blur-sm shadow-lg`
+                    : 'bg-white/60 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-600/60 opacity-60'
+                }`}
+                style={{ animationDelay: `${300 + index * 100}ms` }}
+              >
+                <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${category.color}`} />
+                <span className={`font-medium text-sm sm:text-base ${isActive ? category.color : 'text-slate-600 dark:text-slate-400'}`}>
+                  {category.name}
+                </span>
+                
+                {isActive && (
+                  <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-sparkle" />
+                )}
+              </button>
+            );
+          })}
         </div>
 
         {/* Skills Cards */}
@@ -157,102 +205,146 @@ const Skills = () => {
           {Object.entries(groupedSkills).map(([categoryKey, categorySkills], categoryIndex) => {
             const categoryInfo = categories[categoryKey as keyof typeof categories];
             const shouldShow = activeCategory === null || activeCategory === categoryKey;
+            const Icon = categoryInfo.icon;
             
             return (
               <div
                 key={categoryKey}
                 className={`transition-all duration-700 ease-out ${
-                  shouldShow ? 'opacity-100 max-h-[1000px]' : 'opacity-0 max-h-0 overflow-hidden'
+                  shouldShow ? 'opacity-100 max-h-[2000px]' : 'opacity-0 max-h-0 overflow-hidden'
                 }`}
               >
+                {/* Category Header */}
                 <div 
-                  className={`mb-6 transition-all duration-1000 ease-out ${
-                    isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+                  className={`mb-6 transition-all duration-1000 ${
+                    isVisible ? 'animate-slide-in-left opacity-100' : 'opacity-0 -translate-x-8'
                   }`}
                   style={{ transitionDelay: `${400 + categoryIndex * 100}ms` }}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="text-2xl">{categoryInfo.icon}</span>
-                    <h3 className="text-2xl font-playfair font-semibold">{categoryInfo.name}</h3>
-                    <div className={`flex-1 h-0.5 bg-gradient-to-r ${categoryInfo.gradient} rounded-full ml-4`} />
+                    <div className={`p-2 rounded-lg ${categoryInfo.bgColor} border ${categoryInfo.borderColor}`}>
+                      <Icon className={`w-5 h-5 ${categoryInfo.color}`} />
+                    </div>
+                    <h3 className={`text-xl sm:text-2xl font-bold ${categoryInfo.color}`}>
+                      {categoryInfo.name}
+                    </h3>
+                    <div className="flex-1 h-0.5 bg-gradient-to-r from-slate-200/60 to-slate-200/60 dark:from-slate-600/60 dark:to-slate-600/60 rounded-full ml-4" />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
-                  {categorySkills.map((skill, skillIndex) => (
-                    <div
-                      key={skill.name}
-                      className={`group relative overflow-hidden rounded-2xl transition-all duration-700 ease-out hover:scale-105 hover:-translate-y-2 ${
-                        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                      }`}
-                      style={{ 
-                        transitionDelay: `${600 + categoryIndex * 100 + skillIndex * 100}ms`,
-                        animationFillMode: 'both'
-                      }}
-                    >
-                      {/* Card Background */}
-                      <div className="relative p-3 sm:p-4 md:p-6 bg-card/80 backdrop-blur-sm border border-border/50 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500">
-                        {/* Animated Border */}
-                        <div 
-                          className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${categoryInfo.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px]`}
-                        >
-                          <div className="w-full h-full bg-card rounded-2xl" />
-                        </div>
-
-                        {/* Content */}
-                        <div className="relative z-10">
-                          {/* Logo */}
-                          <div className="flex justify-center mb-2 sm:mb-3 md:mb-4">
-                            <div className="relative group-hover:scale-110 transition-transform duration-500">
-                              <div 
-                                className="absolute inset-0 rounded-lg sm:rounded-xl blur-md opacity-0 group-hover:opacity-60 transition-all duration-500"
-                                style={{ backgroundColor: categoryInfo.color }}
-                              />
-                              <div className="relative p-2 sm:p-2.5 md:p-3 bg-muted/50 rounded-lg sm:rounded-xl">
-                                <img 
-                                  src={skill.logo} 
-                                  alt={`${skill.name} logo`}
-                                  className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 transition-all duration-500 group-hover:drop-shadow-lg"
-                                />
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Skill Name */}
-                          <h4 className="text-center text-xs sm:text-sm md:text-lg font-semibold mb-2 sm:mb-3 md:mb-4 group-hover:scale-105 transition-transform duration-300">
-                            {skill.name}
-                          </h4>
+                {/* Skills Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
+                  {categorySkills.map((skill, skillIndex) => {
+                    const isAnimated = animatedSkills.has(skill.name);
+                    
+                    return (
+                      <div
+                        key={skill.name}
+                        className={`group relative overflow-hidden transition-all duration-700 ease-out hover:scale-105 hover:-translate-y-2 ${
+                          isAnimated ? 'animate-scale-in opacity-100' : 'opacity-0 scale-95'
+                        }`}
+                        style={{ 
+                          transitionDelay: `${500 + categoryIndex * 50 + skillIndex * 80}ms`,
+                        }}
+                      >
+                        {/* Card */}
+                        <div className="relative p-3 sm:p-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200/60 dark:border-slate-600/60 rounded-xl shadow-sm hover:shadow-lg transition-all duration-500 h-full">
                           
-                          {/* Progress Bar */}
-                          <div className="space-y-1 sm:space-y-2">
-                            <div className="flex justify-between items-center text-xs sm:text-sm">
-                              <span className="text-muted-foreground hidden sm:inline">Proficiência</span>
-                              <span className="text-muted-foreground sm:hidden">Prof.</span>
-                              <span className="font-medium">{skill.level}%</span>
+                          {/* Animated Border on Hover */}
+                          <div 
+                            className={`absolute inset-0 rounded-xl bg-gradient-to-r ${categoryInfo.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px]`}
+                          >
+                            <div className="w-full h-full bg-white dark:bg-slate-800 rounded-xl" />
+                          </div>
+
+                          {/* Content */}
+                          <div className="relative z-10 flex flex-col h-full">
+                            {/* Logo */}
+                            <div className="flex justify-center mb-2 sm:mb-3">
+                              <div className="relative group-hover:scale-110 transition-transform duration-500">
+                                {/* Glow effect */}
+                                <div 
+                                  className="absolute inset-0 rounded-lg blur-md opacity-0 group-hover:opacity-40 transition-all duration-500"
+                                  style={{ 
+                                    backgroundColor: categoryInfo.color.includes('blue') ? '#3b82f6' : 
+                                                   categoryInfo.color.includes('green') ? '#10b981' :
+                                                   categoryInfo.color.includes('purple') ? '#8b5cf6' :
+                                                   '#f97316'
+                                  }}
+                                />
+                                <div className="relative p-2 bg-slate-100/60 dark:bg-slate-700/60 rounded-lg border border-slate-200/60 dark:border-slate-600/60">
+                                  <img 
+                                    src={skill.logo} 
+                                    alt={`${skill.name} logo`}
+                                    className="w-6 h-6 sm:w-7 sm:h-7 transition-all duration-500 group-hover:drop-shadow-lg"
+                                  />
+                                </div>
+                              </div>
                             </div>
-                            <div className="relative h-1.5 sm:h-2 bg-muted/50 rounded-full overflow-hidden">
-                              {/* Progress Fill */}
-                              <div 
-                                className="absolute top-0 left-0 h-full rounded-full transition-all duration-1500 ease-out"
-                                style={{
-                                  width: isVisible ? `${skill.level}%` : '0%',
-                                  backgroundColor: categoryInfo.color,
-                                  transitionDelay: `${800 + categoryIndex * 100 + skillIndex * 100}ms`
-                                }}
-                              >
-                                {/* Animated shine effect */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse" />
+
+                            {/* Skill Name */}
+                            <h4 className="text-center text-xs sm:text-sm font-semibold mb-2 sm:mb-3 group-hover:scale-105 transition-transform duration-300 flex-grow">
+                              {skill.name}
+                            </h4>
+                            
+                            {/* Progress Bar */}
+                            <div className="space-y-1 sm:space-y-2">
+                              <div className="flex justify-between items-center text-xs">
+                                <span className="text-slate-500 dark:text-slate-400">Nível</span>
+                                <span className="font-medium text-slate-700 dark:text-slate-300">{skill.level}%</span>
+                              </div>
+                              <div className="relative h-1.5 bg-slate-200/60 dark:bg-slate-700/60 rounded-full overflow-hidden">
+                                {/* Progress Fill with Animation */}
+                                <div 
+                                  className="absolute top-0 left-0 h-full rounded-full transition-all duration-2000 ease-out"
+                                  style={{
+                                    width: isAnimated ? `${skill.level}%` : '0%',
+                                    background: `linear-gradient(90deg, ${categoryInfo.color.includes('blue') ? '#3b82f6' : 
+                                      categoryInfo.color.includes('green') ? '#10b981' :
+                                      categoryInfo.color.includes('purple') ? '#8b5cf6' :
+                                      '#f97316'}, ${categoryInfo.color.includes('blue') ? '#06b6d4' : 
+                                      categoryInfo.color.includes('green') ? '#34d399' :
+                                      categoryInfo.color.includes('purple') ? '#a855f7' :
+                                      '#ef4444'})`
+                                  }}
+                                >
+                                  {/* Shine effect */}
+                                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer" />
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
+
+                        {/* Floating element on hover */}
+                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-ping-slow" />
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             );
           })}
+        </div>
+
+        {/* Call to Action */}
+        <div 
+          className={`text-center mt-12 lg:mt-16 transition-all duration-1000 ${
+            isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-0 translate-y-8'
+          }`}
+          style={{ transitionDelay: '1200ms' }}
+        >
+          <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-md rounded-2xl p-6 border border-slate-200/60 dark:border-slate-600/60 max-w-2xl mx-auto">
+            <div className="flex items-center justify-center gap-3 mb-3">
+              <Zap className="w-5 h-5 text-yellow-500 animate-pulse" />
+              <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
+                Tecnologias em Constante Evolução
+              </h3>
+            </div>
+            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+              Sempre aprendendo e me adaptando às novas tecnologias do mercado
+            </p>
+          </div>
         </div>
       </div>
     </section>
