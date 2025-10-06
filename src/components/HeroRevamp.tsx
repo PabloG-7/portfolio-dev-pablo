@@ -15,7 +15,7 @@ const HeroRevamp = memo(() => {
 
   // Efeito Typewriter
   useEffect(() => {
-    const texts = ['React Specialist', 'TypeScript Developer', 'UI/UX Enthusiast'];
+    const texts = ['React & TypeScript', 'Experiência do Usuário', 'UI/UX Designer'];
     
     const tick = () => {
       const i = loopNum % texts.length;
@@ -48,12 +48,25 @@ const HeroRevamp = memo(() => {
 
   return (
     <section id="inicio" className="relative min-h-screen overflow-hidden bg-slate-50 dark:bg-slate-900">
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-400/10 rounded-full animate-float-slow"></div>
-        <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-purple-400/10 rounded-full animate-float-delayed"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-56 h-56 bg-green-400/10 rounded-full animate-float-slower"></div>
-      </div>
+      {/* Background com Rede de Pontos */}
+<div className="absolute inset-0 overflow-hidden">
+  <div className="absolute inset-0 bg-slate-50 dark:bg-slate-900"></div>
+  
+  {/* Rede de pontos conectados */}
+  <div className="absolute inset-0 opacity-30">
+    <div className="absolute top-20 left-20 w-1 h-1 bg-blue-400 rounded-full"></div>
+    <div className="absolute top-32 right-32 w-1 h-1 bg-purple-400 rounded-full"></div>
+    <div className="absolute bottom-28 left-40 w-1 h-1 bg-blue-400 rounded-full"></div>
+    <div className="absolute bottom-40 right-28 w-1 h-1 bg-purple-400 rounded-full"></div>
+    
+    {/* Linhas de conexão */}
+    <div className="absolute top-20 left-20 w-24 h-px bg-gradient-to-r from-blue-400/30 to-transparent rotate-45"></div>
+    <div className="absolute top-32 right-32 w-20 h-px bg-gradient-to-l from-purple-400/30 to-transparent -rotate-45"></div>
+  </div>
+  
+  {/* Bolha principal sutil */}
+  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-blue-200/10 dark:bg-blue-500/5 rounded-full blur-2xl"></div>
+</div>
 
       <header className="container-custom relative min-h-screen flex items-center justify-center pt-20">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full max-w-7xl mx-auto">
@@ -78,17 +91,17 @@ const HeroRevamp = memo(() => {
                 </div>
               </div>
               
-             {/* Typewriter Effect - Minimalist */}
-<div className="flex items-center justify-center lg:justify-start pt-2">
-  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800/50 dark:to-slate-900/50 backdrop-blur-md rounded-xl px-5 py-3 border border-blue-200/50 dark:border-slate-700 transition-all duration-300">
-    <p className="text-lg sm:text-xl text-slate-700 dark:text-slate-300 font-medium">
-      <span className="text-purple-500 dark:text-purple-500 font-semibold">
-        {currentText}
-        <span className="ml-0.5 animate-pulse">|</span>
-      </span>
-    </p>
-  </div>
-</div>
+              {/* Typewriter Effect - Minimalist */}
+              <div className="flex items-center justify-center lg:justify-start pt-2">
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-slate-800/50 dark:to-slate-900/50 backdrop-blur-md rounded-xl px-5 py-3 border border-blue-200/50 dark:border-slate-700 transition-all duration-300">
+                  <p className="text-lg sm:text-xl text-slate-700 dark:text-slate-300 font-medium">
+                    <span className="text-purple-500 dark:text-purple-500 font-semibold">
+                      {currentText}
+                      <span className="ml-0.5 animate-pulse">|</span>
+                    </span>
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* CTAs */}

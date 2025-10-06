@@ -159,7 +159,7 @@ const Contact = () => {
             <div className="w-2 h-2 bg-green-500 rounded-full"></div>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 lg:mb-6 leading-tight">
+          <h2 className="text-5xl sm:text-7xl md:text-7xl lg:text-8xl font-bold mb-4 lg:mb-6 leading-tight">
             <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent">
               {t('contact.title')}
             </span>
@@ -365,17 +365,6 @@ const Contact = () => {
           }`}
           style={{ transitionDelay: '1500ms' }}
         >
-          <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-md rounded-2xl p-6 border border-slate-200/60 dark:border-slate-600/60 max-w-2xl mx-auto">
-            <div className="flex items-center justify-center gap-3 mb-3">
-              <Sparkles className="w-5 h-5 text-yellow-500 animate-sparkle" />
-              <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
-                Vamos Trabalhar Juntos!
-              </h3>
-            </div>
-            <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
-              Estou sempre aberto a discutir novas oportunidades e projetos interessantes
-            </p>
-          </div>
         </div>
       </div>
     </section>

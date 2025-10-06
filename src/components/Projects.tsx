@@ -26,7 +26,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       isGame: true,
       featured: true,
       icon: Zap,
-      featuredStyle: "bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-purple-500/20 dark:border-purple-400/30 shadow-lg shadow-purple-500/10 dark:shadow-purple-400/10",
+      featuredStyle: "bg-gradient-to-br from-blue-800/30 to-blue-800/80 border-green-500/20 dark:border-red-100/90 shadow-lg shadow-green-500/10 dark:shadow-green-400/10",
       animation: "animate-neon-glow"
     },
     {
@@ -65,7 +65,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
     {
       title: 'LUCKPET',
       description: t('projects.descriptions.luckpet'),
-      technologies: ['JavaScript', 'CSS3', 'Supabase', 'Node.js', 'HTML5', 'E-commerce'],
+      technologies: ['JavaScript', 'CSS3', 'Supabase', 'HTML5', 'E-commerce'],
       image: '/lovable-uploads/luckpet-linkedin.png',
       liveUrl: 'https://projeto-luckpet.vercel.app/',
       githubUrl: 'https://github.com/PabloG-7/ecommerce-luckpet',
@@ -115,7 +115,14 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
             isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-0 translate-y-8'
           }`}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 lg:mb-6 leading-tight">
+          {/* Bolinhas coloridas - adicionadas aqui */}
+          <div className="inline-flex items-center gap-3 mb-4 animate-bounce-gentle">
+            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+          </div>
+          
+          <h2 className="text-5xl sm:text-7xl md:text-7xl lg:text-8xl font-bold mb-4 lg:mb-6 leading-tight">
             <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent">
               {t('projects.title')}
             </span>

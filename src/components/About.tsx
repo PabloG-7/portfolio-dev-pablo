@@ -42,26 +42,24 @@ const About = () => {
       ref={sectionRef}
       className="section-padding relative overflow-hidden bg-white dark:bg-slate-900"
     >
-      {/* Animated Background */}
+      {/* Background com Rede de Pontos - Opção 4 */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl animate-float-slower"></div>
+        <div className="absolute inset-0 bg-slate-50 dark:bg-slate-900"></div>
         
-        {/* Animated particles */}
-        <div className="absolute inset-0">
-          {[...Array(12)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-blue-400/20 rounded-full animate-float-random"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${Math.random() * 10 + 10}s`
-              }}
-            />
-          ))}
+        {/* Rede de pontos conectados */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-20 left-20 w-1 h-1 bg-blue-400 rounded-full"></div>
+          <div className="absolute top-32 right-32 w-1 h-1 bg-purple-400 rounded-full"></div>
+          <div className="absolute bottom-28 left-40 w-1 h-1 bg-blue-400 rounded-full"></div>
+          <div className="absolute bottom-40 right-28 w-1 h-1 bg-purple-400 rounded-full"></div>
+          
+          {/* Linhas de conexão */}
+          <div className="absolute top-20 left-20 w-24 h-px bg-gradient-to-r from-blue-400/30 to-transparent rotate-45"></div>
+          <div className="absolute top-32 right-32 w-20 h-px bg-gradient-to-l from-purple-400/30 to-transparent -rotate-45"></div>
         </div>
+        
+        {/* Bolha principal sutil */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-blue-200/10 dark:bg-blue-500/5 rounded-full blur-2xl"></div>
       </div>
 
       <div className="container-custom relative z-10">
@@ -78,7 +76,7 @@ const About = () => {
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
             </div>
             
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 lg:mb-6 leading-tight max-w-4xl mx-auto">
+            <h2 className="text-5xl sm:text-7xl md:text-7xl lg:text-8xl font-bold mb-4 lg:mb-6 leading-tight max-w-4xl mx-auto">
               <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent">
                 {t('about.title')}
               </span>
