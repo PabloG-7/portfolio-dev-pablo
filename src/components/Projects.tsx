@@ -1,5 +1,5 @@
 import { useState, memo, useMemo, useCallback } from 'react';
-import { ExternalLink, Github, Eye, ArrowRight, Gamepad2, Sparkles, Star, Code, Palette, Zap } from 'lucide-react';
+import { ExternalLink, Github, Eye, ArrowRight, Gamepad2, Sparkles, Star, Code, Palette, Zap, Clock, Building2, Stethoscope, Shirt, Database, GamepadIcon, ShoppingCart, ListTodo } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import LazyImage from './LazyImage';
@@ -18,71 +18,129 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
   const projects = useMemo(() => [
     {
       title: 'NEON MEMORY',
-      description: t('projects.descriptions.neon_memory'),
-      technologies: ['TypeScript', 'React', 'Supabase', 'Vite', 'Tailwind CSS', 'Vercel'],
+      description: 'Jogo da memória moderno com tema neon, multiplayer em tempo real e modos de jogo variados. Desenvolvido com tecnologias modernas para melhor performance e experiência imersiva.',
+      technologies: ['TypeScript', 'React', 'Supabase', 'Vite', 'Tailwind CSS', 'Web Audio API', 'PostgreSQL', 'PWA'],
       image: '/lovable-uploads/neon-linkedin.png',
       liveUrl: 'https://jogo-memoria-gold.vercel.app/',
       githubUrl: 'https://github.com/PabloG-7/jogo-memoria',
       isGame: true,
       featured: true,
-      icon: Zap,
-      featuredStyle: "bg-gradient-to-br from-blue-800/30 to-blue-800/80 border-green-500/20 dark:border-red-100/90 shadow-lg shadow-green-500/10 dark:shadow-green-400/10",
-      animation: "animate-neon-glow"
+      icon: GamepadIcon,
+      featuredStyle: "bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-purple-500/20 dark:border-purple-400/30 shadow-lg shadow-purple-500/10 dark:shadow-purple-400/10",
+      animation: "animate-neon-glow",
+      features: [
+        'Multiplayer em tempo real com sistema de salas',
+        '3 modos singleplayer: Normal, Velocidade e Difícil',
+        'Design neon moderno com animações fluidas',
+        'Sistema de ranking online em tempo real',
+        'Interface totalmente responsiva e PWA',
+        'Efeitos sonoros imersivos com Web Audio API',
+        'Sincronização automática entre jogadores'
+      ],
+      personal: true,
+      category: 'Jogo da Memória'
     },
     {
-      title: 'INABALÁVEL',
-      description: t('projects.descriptions.inabalavel'),
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'GSAP', 'AOS', 'Particles.js'],
-      image: '/lovable-uploads/inabalavel-linkedin.png',
-      liveUrl: 'https://pablog-7.github.io/inabalavel-heroi-vilao/',
-      githubUrl: 'https://github.com/PabloG-7/inabalavel-heroi-vilao',
-      icon: Code,
-      featuredStyle: "",
-      animation: ""
+      title: 'DR. BRUNO RIBEIRO',
+      description: 'Site institucional para fisioterapeuta especializado. Design moderno com foco em conversão, formulário de contato integrado e otimizado para SEO.',
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'GSAP', 'FormSubmit', 'Responsive Design'],
+      image: '/lovable-uploads/drbruno-portfolio.png',
+      liveUrl: '#',
+      githubUrl: '#',
+      icon: Stethoscope,
+      featuredStyle: "bg-gradient-to-br from-blue-500/10 to-teal-500/10 border-blue-500/20 dark:border-blue-400/30",
+      animation: "",
+      status: 'Em desenvolvimento',
+      freelance: true,
+      client: 'Dr. Bruno Ribeiro - Fisioterapeuta',
+      features: [
+        'Site institucional responsivo',
+        'Formulário de contato funcional com FormSubmit',
+        'Design moderno e profissional para área da saúde',
+        'Otimizado para SEO e conversão',
+        'Animações suaves com GSAP'
+      ]
     },
     {
-      title: 'POKÉDEX',
-      description: t('projects.descriptions.pokedex'),
-      technologies: ['React', 'PokéAPI', 'Axios', 'Tailwind CSS', 'Vercel'],
-      image: '/lovable-uploads/pokedex-linkedin.png',
-      liveUrl: 'https://pokedex-nine-vert.vercel.app/',
-      githubUrl: 'https://github.com/PabloG-7/pokedex',
-      icon: Palette,
-      featuredStyle: "",
-      animation: ""
+      title: 'HC STORE',
+      description: 'E-commerce completo para influenciador digital. Catálogo de produtos integrado com WhatsApp, design moderno e focado em experiência do usuário.',
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'E-commerce', 'WhatsApp Integration', 'UI/UX Design'],
+      image: '/lovable-uploads/hebert-portfolio.png',
+      liveUrl: '#',
+      githubUrl: '#',
+      icon: Shirt,
+      featuredStyle: "bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-purple-500/20 dark:border-purple-400/30",
+      animation: "",
+      status: 'Em desenvolvimento',
+      freelance: true,
+      client: 'Hebert Criston - Influenciador Digital',
+      features: [
+        'Catálogo de produtos dinâmico',
+        'Integração direta com WhatsApp para vendas',
+        'Design moderno e totalmente responsivo',
+        'Focado em conversão e experiência do usuário',
+        'Performance otimizada para mobile'
+      ]
     },
     {
       title: 'TASKFORGE',
-      description: t('projects.descriptions.taskforge'),
-      technologies: ['React', 'TypeScript', 'Vite', 'Gerenciador de Tarefas'],
+      description: 'Aplicação de gerenciamento de tarefas com interface intuitiva e funcionalidades avançadas. Organize suas atividades com eficiência e praticidade.',
+      technologies: ['React', 'TypeScript', 'Vite', 'Local Storage', 'Tailwind CSS'],
       image: '/lovable-uploads/taskforge-linkedin.png',
       liveUrl: 'https://gerenciador-de-tarefas-wine.vercel.app/',
       githubUrl: 'https://github.com/PabloG-7/taskforge',
-      icon: Code,
-      featuredStyle: "",
-      animation: ""
+      icon: ListTodo,
+      featuredStyle: "bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/20 dark:border-green-400/30",
+      animation: "",
+      features: [
+        'Criação, edição e exclusão de tarefas',
+        'Organização por categorias e prioridades',
+        'Persistência de dados no Local Storage',
+        'Interface moderna e responsiva',
+        'Filtros e busca avançada'
+      ],
+      personal: true,
+      category: 'Produtividade'
     },
     {
       title: 'LUCKPET',
-      description: t('projects.descriptions.luckpet'),
+      description: 'E-commerce completo para petshop com catálogo de produtos, carrinho de compras e integração com sistema de pagamentos. Foco em usabilidade e conversão.',
       technologies: ['JavaScript', 'CSS3', 'Supabase', 'HTML5', 'E-commerce'],
       image: '/lovable-uploads/luckpet-linkedin.png',
       liveUrl: 'https://projeto-luckpet.vercel.app/',
       githubUrl: 'https://github.com/PabloG-7/ecommerce-luckpet',
-      icon: Palette,
-      featuredStyle: "",
-      animation: ""
+      icon: ShoppingCart,
+      featuredStyle: "bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-500/20 dark:border-orange-400/30",
+      animation: "",
+      features: [
+        'Catálogo completo de produtos para pets',
+        'Carrinho de compras funcional',
+        'Integração com Supabase para dados',
+        'Design responsivo e amigável',
+        'Sistema de categorias e filtros'
+      ],
+      personal: true,
+      category: 'E-commerce'
     },
     {
-      title: 'KUSHI',
-      description: t('projects.descriptions.kushi'),
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'E-commerce', 'Moda'],
-      image: '/lovable-uploads/kushi-linkedin.png',
-      liveUrl: 'https://pablog-7.github.io/ecommerce-kushi/',
-      githubUrl: 'https://github.com/PabloG-7/ecommerce-kushi',
-      icon: Code,
-      featuredStyle: "",
-      animation: ""
+      title: 'POKÉDEX',
+      description: 'Aplicação web interativa que consome a PokéAPI para exibir informações detalhadas sobre Pokémon. Interface moderna com busca e filtros avançados.',
+      technologies: ['React', 'PokéAPI', 'Axios', 'Tailwind CSS', 'Vercel'],
+      image: '/lovable-uploads/pokedex-linkedin.png',
+      liveUrl: 'https://pokedex-nine-vert.vercel.app/',
+      githubUrl: 'https://github.com/PabloG-7/pokedex',
+      icon: Zap,
+      featuredStyle: "bg-gradient-to-br from-yellow-500/10 to-red-500/10 border-yellow-500/20 dark:border-yellow-400/30",
+      animation: "",
+      features: [
+        'Consumo da PokéAPI com Axios',
+        'Busca e filtros por tipo, região e nome',
+        'Design responsivo com tema Pokémon',
+        'Detalhes completos de cada Pokémon',
+        'Performance otimizada para mobile'
+      ],
+      personal: true,
+      category: 'API Integration'
     },
   ], [t]);
 
@@ -137,6 +195,8 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
           {projects.map((project, index) => {
             const ProjectIcon = project.icon;
             const isFeatured = project.featured;
+            const isFreelance = project.freelance;
+            const isPersonal = project.personal;
             
             return (
               <div
@@ -150,8 +210,10 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                 onMouseEnter={() => setHoveredProject(index)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
-                <div className={`relative overflow-hidden h-full bg-white/70 dark:bg-white/5 backdrop-blur-md rounded-2xl border border-gray-200/60 dark:border-white/10 transition-all duration-500 hover:shadow-xl hover:border-gray-300/60 dark:hover:border-white/20 hover:scale-[1.02] ${
-                  isFeatured ? project.featuredStyle : ''
+                <div className={`relative overflow-hidden h-full bg-white/70 dark:bg-white/5 backdrop-blur-md rounded-2xl border transition-all duration-500 hover:shadow-xl hover:scale-[1.02] ${
+                  isFeatured ? `${project.featuredStyle} border-purple-500/30` : 
+                  isFreelance ? 'border-orange-500/30 border-dashed' : 
+                  'border-gray-200/60 dark:border-white/10'
                 }`}>
                   
                   {/* Featured Badge */}
@@ -162,6 +224,37 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                     </div>
                   )}
 
+                  {/* Freelance Badge */}
+                  {isFreelance && (
+                    <div className="absolute top-3 left-3 z-20 px-3 py-1.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
+                      <Building2 className="w-3 h-3" />
+                      <span>Freelance</span>
+                    </div>
+                  )}
+
+                  {/* Personal Project Badge */}
+                  {isPersonal && (
+                    <div className="absolute top-3 left-3 z-20 px-3 py-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
+                      <Code className="w-3 h-3" />
+                      <span>Projeto Pessoal</span>
+                    </div>
+                  )}
+
+                  {/* Status Badge para projetos em desenvolvimento */}
+                  {isFreelance && project.status && (
+                    <div className="absolute top-3 right-3 z-20 px-3 py-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      <span>{project.status}</span>
+                    </div>
+                  )}
+
+                  {/* Category Badge para projetos pessoais */}
+                  {isPersonal && project.category && (
+                    <div className="absolute top-3 right-3 z-20 px-3 py-1.5 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
+                      <span>{project.category}</span>
+                    </div>
+                  )}
+
                   {/* Project Image Container */}
                   <div className="relative overflow-hidden aspect-[4/3]">
                     <LazyImage
@@ -169,7 +262,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                       alt={project.title}
                       className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${
                         isFeatured ? 'group-hover:rotate-1' : ''
-                      }`}
+                      } ${isFreelance ? 'opacity-80' : ''}`}
                     />
                     
                     {/* Overlay */}
@@ -186,6 +279,14 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                           >
                             <Gamepad2 className="w-4 h-4 lg:w-5 lg:h-5" />
                           </button>
+                        ) : isFreelance ? (
+                          <button
+                            className="p-3 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition-all duration-300 hover:scale-110 cursor-not-allowed opacity-70"
+                            aria-label="Projeto em desenvolvimento"
+                            disabled
+                          >
+                            <Clock className="w-4 h-4 lg:w-5 lg:h-5" />
+                          </button>
                         ) : (
                           <a
                             href={project.liveUrl}
@@ -197,15 +298,17 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                             <Eye className="w-4 h-4 lg:w-5 lg:h-5" />
                           </a>
                         )}
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-3 bg-gray-700 text-white rounded-xl hover:bg-gray-600 transition-all duration-300 hover:scale-110"
-                          aria-label="Ver código no GitHub"
-                        >
-                          <Github className="w-4 h-4 lg:w-5 lg:h-5" />
-                        </a>
+                        {!isFreelance && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-3 bg-gray-700 text-white rounded-xl hover:bg-gray-600 transition-all duration-300 hover:scale-110"
+                            aria-label="Ver código no GitHub"
+                          >
+                            <Github className="w-4 h-4 lg:w-5 lg:h-5" />
+                          </a>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -213,25 +316,60 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                   {/* Project Content */}
                   <div className="p-4 lg:p-6">
                     <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-3">
-                      <div className={`p-1.5 lg:p-2 rounded-lg bg-white dark:bg-white/5 border border-gray-200/60 dark:border-white/10 ${
-                        isFeatured ? 'text-purple-500 dark:text-purple-400 animate-bounce-slow' : 'text-blue-500 dark:text-blue-400'
+                      <div className={`p-1.5 lg:p-2 rounded-lg bg-white dark:bg-white/5 border transition-colors duration-300 ${
+                        isFeatured ? 'text-purple-500 dark:text-purple-400 border-purple-500/20 animate-bounce-slow' : 
+                        isFreelance ? 'text-orange-500 dark:text-orange-400 border-orange-500/20' : 
+                        'text-blue-500 dark:text-blue-400 border-blue-500/20'
                       }`}>
                         <ProjectIcon className="w-3 h-3 lg:w-4 lg:h-4" />
                       </div>
                       <h3 className={`text-lg lg:text-xl font-semibold group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300 line-clamp-1 ${
-                        isFeatured ? 'text-purple-600 dark:text-purple-400' : 'text-gray-900 dark:text-white'
+                        isFeatured ? 'text-purple-600 dark:text-purple-400' : 
+                        isFreelance ? 'text-orange-600 dark:text-orange-400' : 
+                        'text-gray-900 dark:text-white'
                       }`}>
                         {project.title}
                       </h3>
                     </div>
 
+                    {/* Client info for freelance projects */}
+                    {isFreelance && project.client && (
+                      <p className="text-sm text-blue-600 dark:text-blue-400 mb-2 font-medium">
+                        Cliente: {project.client}
+                      </p>
+                    )}
+
                     <p className="text-gray-600 dark:text-gray-300 mb-3 lg:mb-4 leading-relaxed line-clamp-2 text-sm lg:text-base">
                       {project.description}
                     </p>
 
+                    {/* Features list for all projects */}
+                    {project.features && (
+                      <div className="mb-3 lg:mb-4">
+                        <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2">PRINCIPAIS FUNCIONALIDADES:</p>
+                        <ul className="text-xs text-gray-600 dark:text-gray-300 space-y-1">
+                          {project.features.slice(0, 3).map((feature, idx) => (
+                            <li key={idx} className="flex items-start">
+                              <span className={`mr-1 ${
+                                isFeatured ? 'text-purple-500' :
+                                isFreelance ? 'text-orange-500' :
+                                'text-green-500'
+                              }`}>•</span>
+                              <span className="flex-1">{feature}</span>
+                            </li>
+                          ))}
+                          {project.features.length > 3 && (
+                            <li className="text-gray-400 text-xs">
+                              +{project.features.length - 3} outras funcionalidades
+                            </li>
+                          )}
+                        </ul>
+                      </div>
+                    )}
+
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-1.5 lg:gap-2 mb-3 lg:mb-5">
-                      {project.technologies.slice(0, 3).map((tech) => (
+                      {project.technologies.slice(0, 4).map((tech) => (
                         <span
                           key={tech}
                           className="px-2 py-1 text-xs bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-300 rounded-full font-medium border border-gray-200/60 dark:border-white/10"
@@ -239,9 +377,9 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                           {tech}
                         </span>
                       ))}
-                      {project.technologies.length > 3 && (
+                      {project.technologies.length > 4 && (
                         <span className="px-2 py-1 text-xs bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 rounded-full font-medium">
-                          +{project.technologies.length - 3}
+                          +{project.technologies.length - 4}
                         </span>
                       )}
                     </div>
@@ -257,6 +395,11 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                             <Gamepad2 className="w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-300 group-hover/action:scale-110" />
                             <span>{t('projects.play_demo')}</span>
                           </button>
+                        ) : isFreelance ? (
+                          <span className="flex items-center space-x-1 lg:space-x-2 text-orange-600 dark:text-orange-400 font-medium text-sm">
+                            <Clock className="w-3 h-3 lg:w-4 lg:h-4" />
+                            <span>Em desenvolvimento</span>
+                          </span>
                         ) : (
                           <a
                             href={project.liveUrl}
@@ -270,16 +413,20 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                         )}
                       </div>
                       <div className="flex space-x-2 lg:space-x-3">
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-white transition-colors font-medium group/action"
-                        >
-                          <Github className="w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-300 group-hover/action:scale-110" />
-                        </a>
-                        <ArrowRight className={`w-3 h-3 lg:w-4 lg:h-4 text-gray-400 group-hover:translate-x-1 transition-all duration-300 ${
-                          isFeatured ? 'group-hover:text-purple-500 dark:group-hover:text-purple-400' : 'group-hover:text-blue-500 dark:group-hover:text-blue-400'
+                        {!isFreelance && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-white transition-colors font-medium group/action"
+                          >
+                            <Github className="w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-300 group-hover/action:scale-110" />
+                          </a>
+                        )}
+                        <ArrowRight className={`w-3 h-3 lg:w-4 lg:h-4 transition-all duration-300 group-hover:translate-x-1 ${
+                          isFeatured ? 'text-purple-400 group-hover:text-purple-500' :
+                          isFreelance ? 'text-orange-400 group-hover:text-orange-500' :
+                          'text-gray-400 group-hover:text-blue-500'
                         }`} />
                       </div>
                     </div>
