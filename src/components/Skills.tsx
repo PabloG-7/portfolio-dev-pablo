@@ -71,39 +71,39 @@ const Skills = () => {
   const categories = useMemo(() => ({
     frontend: { 
       name: t('skills.categories.frontend'), 
-      color: 'text-blue-600 dark:text-blue-400',
-      bgColor: 'bg-blue-500/10',
-      borderColor: 'border-blue-500/30',
-      hoverColor: 'hover:border-blue-500/50',
+      color: 'text-amber-600 dark:text-amber-400',
+      bgColor: 'bg-amber-500/10',
+      borderColor: 'border-amber-500/30',
+      hoverColor: 'hover:border-amber-500/50',
       icon: Code,
-      gradient: 'from-blue-500/20 to-cyan-500/20'
+      gradient: 'from-amber-500/20 to-orange-500/20'
     },
     backend: { 
       name: t('skills.categories.backend'), 
-      color: 'text-green-600 dark:text-green-400',
-      bgColor: 'bg-green-500/10',
-      borderColor: 'border-green-500/30',
-      hoverColor: 'hover:border-green-500/50',
-      icon: Server,
-      gradient: 'from-green-500/20 to-emerald-500/20'
-    },
-    database: { 
-      name: t('skills.categories.database'), 
-      color: 'text-purple-600 dark:text-purple-400',
-      bgColor: 'bg-purple-500/10',
-      borderColor: 'border-purple-500/30',
-      hoverColor: 'hover:border-purple-500/50',
-      icon: Database,
-      gradient: 'from-purple-500/20 to-violet-500/20'
-    },
-    tools: { 
-      name: t('skills.categories.tools'), 
       color: 'text-orange-600 dark:text-orange-400',
       bgColor: 'bg-orange-500/10',
       borderColor: 'border-orange-500/30',
       hoverColor: 'hover:border-orange-500/50',
-      icon: Settings,
+      icon: Server,
       gradient: 'from-orange-500/20 to-red-500/20'
+    },
+    database: { 
+      name: t('skills.categories.database'), 
+      color: 'text-red-600 dark:text-red-400',
+      bgColor: 'bg-red-500/10',
+      borderColor: 'border-red-500/30',
+      hoverColor: 'hover:border-red-500/50',
+      icon: Database,
+      gradient: 'from-red-500/20 to-pink-500/20'
+    },
+    tools: { 
+      name: t('skills.categories.tools'), 
+      color: 'text-amber-700 dark:text-amber-300',
+      bgColor: 'bg-amber-500/10',
+      borderColor: 'border-amber-500/30',
+      hoverColor: 'hover:border-amber-500/50',
+      icon: Settings,
+      gradient: 'from-amber-600/20 to-orange-600/20'
     }
   }), [t]);
 
@@ -118,31 +118,30 @@ const Skills = () => {
     <section
       id="habilidades"
       ref={sectionRef}
-      className="section-padding relative overflow-hidden bg-slate-50 dark:bg-slate-900"
+      className="section-padding relative min-h-screen overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50/30 to-yellow-50/20 dark:from-slate-900 dark:via-orange-950/20 dark:to-amber-950/10"
     >
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl animate-float-slower"></div>
-        
-        {/* Floating particles */}
-        <div className="absolute inset-0">
-          {[...Array(8)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-blue-400/30 rounded-full animate-float-random"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${Math.random() * 8 + 8}s`
-              }}
-            />
-          ))}
-        </div>
+      {/* Background EXATAMENTE igual ao HeroRevamp */}
+      <div className="absolute inset-0 opacity-5 dark:opacity-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.15)_1px,transparent_0)] bg-[size:32px_32px] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.1)_1px,transparent_0)]"></div>
+      </div>
+
+      {/* Partículas flutuantes - EXATAMENTE igual ao HeroRevamp */}
+      <div className="absolute inset-0">
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-amber-500/20 rounded-full animate-float-slow"
+            style={{
+              left: `${15 + i * 12}%`,
+              top: `${20 + i * 10}%`,
+              animationDelay: `${i * 2}s`,
+              animationDuration: '6s'
+            }}
+          />
+        ))}
       </div>
       
-      <div className="container-custom relative">
+      <div className="container-custom relative z-10">
         {/* Header */}
         <div
           className={`text-center mb-12 lg:mb-16 transition-all duration-1000 ${
@@ -150,13 +149,13 @@ const Skills = () => {
           }`}
         >
           <div className="inline-flex items-center gap-2 mb-4 animate-bounce-gentle">
-            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-            <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-red-500 rounded-full"></div>
           </div>
 
-          <h2 className="text-5xl sm:text-7xl md:text-7xl lg:text-8xl font-bold mb-4 lg:mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent">
+          <h2 className="text-5xl sm:text-7xl md:text-7xl lg:text-7xl font-bold mb-4 lg:mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-slate-800 via-orange-600 to-slate-800 dark:from-white dark:via-amber-200 dark:to-white bg-clip-text text-transparent">
               {t('skills.title')}
             </span>
           </h2>
@@ -183,7 +182,7 @@ const Skills = () => {
                 className={`group relative px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl transition-all duration-500 ease-out transform hover:scale-105 flex items-center gap-2 sm:gap-3 ${
                   isActive
                     ? `${category.bgColor} ${category.borderColor} border backdrop-blur-sm shadow-lg`
-                    : 'bg-white/60 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-600/60 opacity-60'
+                    : 'bg-white/60 dark:bg-slate-800/60 border border-amber-200/60 dark:border-amber-500/20 opacity-60'
                 }`}
                 style={{ animationDelay: `${300 + index * 100}ms` }}
               >
@@ -228,7 +227,7 @@ const Skills = () => {
                     <h3 className={`text-xl sm:text-2xl font-bold ${categoryInfo.color}`}>
                       {categoryInfo.name}
                     </h3>
-                    <div className="flex-1 h-0.5 bg-gradient-to-r from-slate-200/60 to-slate-200/60 dark:from-slate-600/60 dark:to-slate-600/60 rounded-full ml-4" />
+                    <div className="flex-1 h-0.5 bg-gradient-to-r from-amber-200/60 to-amber-200/60 dark:from-amber-600/60 dark:to-amber-600/60 rounded-full ml-4" />
                   </div>
                 </div>
 
@@ -248,7 +247,7 @@ const Skills = () => {
                         }}
                       >
                         {/* Card */}
-                        <div className="relative p-3 sm:p-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200/60 dark:border-slate-600/60 rounded-xl shadow-sm hover:shadow-lg transition-all duration-500 h-full">
+                        <div className="relative p-3 sm:p-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-amber-200/60 dark:border-amber-500/20 rounded-xl shadow-sm hover:shadow-lg transition-all duration-500 h-full">
                           
                           {/* Animated Border on Hover */}
                           <div 
@@ -266,13 +265,13 @@ const Skills = () => {
                                 <div 
                                   className="absolute inset-0 rounded-lg blur-md opacity-0 group-hover:opacity-40 transition-all duration-500"
                                   style={{ 
-                                    backgroundColor: categoryInfo.color.includes('blue') ? '#3b82f6' : 
-                                                   categoryInfo.color.includes('green') ? '#10b981' :
-                                                   categoryInfo.color.includes('purple') ? '#8b5cf6' :
-                                                   '#f97316'
+                                    backgroundColor: categoryInfo.color.includes('amber') ? '#f59e0b' : 
+                                                   categoryInfo.color.includes('orange') ? '#f97316' :
+                                                   categoryInfo.color.includes('red') ? '#ef4444' :
+                                                   '#d97706'
                                   }}
                                 />
-                                <div className="relative p-2 bg-slate-100/60 dark:bg-slate-700/60 rounded-lg border border-slate-200/60 dark:border-slate-600/60">
+                                <div className="relative p-2 bg-amber-100/60 dark:bg-amber-500/10 rounded-lg border border-amber-200/60 dark:border-amber-500/20">
                                   <img 
                                     src={skill.logo} 
                                     alt={`${skill.name} logo`}
@@ -293,19 +292,19 @@ const Skills = () => {
                                 <span className="text-slate-500 dark:text-slate-400">Nível</span>
                                 <span className="font-medium text-slate-700 dark:text-slate-300">{skill.level}%</span>
                               </div>
-                              <div className="relative h-1.5 bg-slate-200/60 dark:bg-slate-700/60 rounded-full overflow-hidden">
+                              <div className="relative h-1.5 bg-amber-200/60 dark:bg-amber-700/60 rounded-full overflow-hidden">
                                 {/* Progress Fill with Animation */}
                                 <div 
                                   className="absolute top-0 left-0 h-full rounded-full transition-all duration-2000 ease-out"
                                   style={{
                                     width: isAnimated ? `${skill.level}%` : '0%',
-                                    background: `linear-gradient(90deg, ${categoryInfo.color.includes('blue') ? '#3b82f6' : 
-                                      categoryInfo.color.includes('green') ? '#10b981' :
-                                      categoryInfo.color.includes('purple') ? '#8b5cf6' :
-                                      '#f97316'}, ${categoryInfo.color.includes('blue') ? '#06b6d4' : 
-                                      categoryInfo.color.includes('green') ? '#34d399' :
-                                      categoryInfo.color.includes('purple') ? '#a855f7' :
-                                      '#ef4444'})`
+                                    background: `linear-gradient(90deg, ${categoryInfo.color.includes('amber') ? '#f59e0b' : 
+                                      categoryInfo.color.includes('orange') ? '#f97316' :
+                                      categoryInfo.color.includes('red') ? '#ef4444' :
+                                      '#d97706'}, ${categoryInfo.color.includes('amber') ? '#fbbf24' : 
+                                      categoryInfo.color.includes('orange') ? '#fb923c' :
+                                      categoryInfo.color.includes('red') ? '#f87171' :
+                                      '#f59e0b'})`
                                   }}
                                 >
                                   {/* Shine effect */}
@@ -317,7 +316,7 @@ const Skills = () => {
                         </div>
 
                         {/* Floating element on hover */}
-                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-ping-slow" />
+                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-ping-slow" />
                       </div>
                     );
                   })}
@@ -334,9 +333,9 @@ const Skills = () => {
           }`}
           style={{ transitionDelay: '1200ms' }}
         >
-          <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-md rounded-2xl p-6 border border-slate-200/60 dark:border-slate-600/60 max-w-2xl mx-auto">
+          <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-md rounded-2xl p-6 border border-amber-200/60 dark:border-amber-500/20 max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-3 mb-3">
-              <Zap className="w-5 h-5 text-yellow-500 animate-pulse" />
+              <Zap className="w-5 h-5 text-amber-500 animate-pulse" />
               <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
                 Tecnologias em Constante Evolução
               </h3>

@@ -26,7 +26,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       isGame: true,
       featured: true,
       icon: GamepadIcon,
-      featuredStyle: "bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-purple-500/20 dark:border-purple-400/30 shadow-lg shadow-purple-500/10 dark:shadow-purple-400/10",
+      featuredStyle: "bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-amber-500/20 dark:border-amber-400/30 shadow-lg shadow-amber-500/10 dark:shadow-amber-400/10",
       animation: "animate-neon-glow",
       features: [
         'Multiplayer em tempo real com sistema de salas',
@@ -48,7 +48,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       liveUrl: '#',
       githubUrl: '#',
       icon: Stethoscope,
-      featuredStyle: "bg-gradient-to-br from-blue-500/10 to-teal-500/10 border-blue-500/20 dark:border-blue-400/30",
+      featuredStyle: "bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-500/20 dark:border-orange-400/30",
       animation: "",
       status: 'Em desenvolvimento',
       freelance: true,
@@ -69,7 +69,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       liveUrl: '#',
       githubUrl: '#',
       icon: Shirt,
-      featuredStyle: "bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-purple-500/20 dark:border-purple-400/30",
+      featuredStyle: "bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-amber-500/20 dark:border-amber-400/30",
       animation: "",
       status: 'Em desenvolvimento',
       freelance: true,
@@ -90,7 +90,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       liveUrl: 'https://gerenciador-de-tarefas-wine.vercel.app/',
       githubUrl: 'https://github.com/PabloG-7/taskforge',
       icon: ListTodo,
-      featuredStyle: "bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-green-500/20 dark:border-green-400/30",
+      featuredStyle: "bg-gradient-to-br from-red-500/10 to-pink-500/10 border-red-500/20 dark:border-red-400/30",
       animation: "",
       features: [
         'Criação, edição e exclusão de tarefas',
@@ -110,7 +110,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       liveUrl: 'https://projeto-luckpet.vercel.app/',
       githubUrl: 'https://github.com/PabloG-7/ecommerce-luckpet',
       icon: ShoppingCart,
-      featuredStyle: "bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-500/20 dark:border-orange-400/30",
+      featuredStyle: "bg-gradient-to-br from-orange-500/10 to-amber-500/10 border-orange-500/20 dark:border-orange-400/30",
       animation: "",
       features: [
         'Catálogo completo de produtos para pets',
@@ -152,17 +152,27 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
   return (
     <section
       id="projetos"
-      className="section-padding relative overflow-hidden bg-gray-50 dark:bg-gradient-to-br dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"
+      className="section-padding relative min-h-screen overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50/30 to-yellow-50/20 dark:from-slate-900 dark:via-orange-950/20 dark:to-amber-950/10"
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200/40 dark:bg-blue-500/10 rounded-full blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-200/40 dark:bg-purple-500/10 rounded-full blur-3xl animate-float-slower"></div>
-        
-        {/* Pattern */}
-        <div className="absolute inset-0 opacity-10 dark:opacity-5">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.1)_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.1)_1px,transparent_0)] bg-[length:40px_40px]"></div>
-        </div>
+      {/* Background EXATAMENTE igual ao HeroRevamp */}
+      <div className="absolute inset-0 opacity-5 dark:opacity-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.15)_1px,transparent_0)] bg-[size:32px_32px] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.1)_1px,transparent_0)]"></div>
+      </div>
+
+      {/* Partículas flutuantes - EXATAMENTE igual ao HeroRevamp */}
+      <div className="absolute inset-0">
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-amber-500/20 rounded-full animate-float-slow"
+            style={{
+              left: `${15 + i * 12}%`,
+              top: `${20 + i * 10}%`,
+              animationDelay: `${i * 2}s`,
+              animationDuration: '6s'
+            }}
+          />
+        ))}
       </div>
 
       <div className="container-custom relative z-10">
@@ -173,19 +183,19 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
             isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-0 translate-y-8'
           }`}
         >
-          {/* Bolinhas coloridas - adicionadas aqui */}
+          {/* Bolinhas coloridas */}
           <div className="inline-flex items-center gap-3 mb-4 animate-bounce-gentle">
-            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-            <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-red-500 rounded-full"></div>
           </div>
           
-          <h2 className="text-5xl sm:text-7xl md:text-7xl lg:text-8xl font-bold mb-4 lg:mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 dark:from-white dark:via-gray-100 dark:to-white bg-clip-text text-transparent">
+          <h2 className="text-5xl sm:text-7xl md:text-7xl lg:text-7xl font-bold mb-4 lg:mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-slate-800 via-orange-600 to-slate-800 dark:from-white dark:via-amber-200 dark:to-white bg-clip-text text-transparent">
               {t('projects.title')}
             </span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed px-4">
             {t('projects.subtitle')}
           </p>
         </div>
@@ -211,14 +221,14 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                 onMouseLeave={() => setHoveredProject(null)}
               >
                 <div className={`relative overflow-hidden h-full bg-white/70 dark:bg-white/5 backdrop-blur-md rounded-2xl border transition-all duration-500 hover:shadow-xl hover:scale-[1.02] ${
-                  isFeatured ? `${project.featuredStyle} border-purple-500/30` : 
+                  isFeatured ? `${project.featuredStyle} border-amber-500/30` : 
                   isFreelance ? 'border-orange-500/30 border-dashed' : 
-                  'border-gray-200/60 dark:border-white/10'
+                  'border-amber-200/60 dark:border-amber-500/20'
                 }`}>
                   
                   {/* Featured Badge */}
                   {isFeatured && (
-                    <div className="absolute top-3 left-3 z-20 px-3 py-1.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1 animate-pulse">
+                    <div className="absolute top-3 left-3 z-20 px-3 py-1.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1 animate-pulse">
                       <Sparkles className="w-3 h-3 fill-current" />
                       <span>{t('projects.featured')}</span>
                     </div>
@@ -234,7 +244,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
 
                   {/* Personal Project Badge */}
                   {isPersonal && (
-                    <div className="absolute top-3 left-3 z-20 px-3 py-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
+                    <div className="absolute top-3 left-3 z-20 px-3 py-1.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
                       <Code className="w-3 h-3" />
                       <span>Projeto Pessoal</span>
                     </div>
@@ -242,7 +252,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
 
                   {/* Status Badge para projetos em desenvolvimento */}
                   {isFreelance && project.status && (
-                    <div className="absolute top-3 right-3 z-20 px-3 py-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
+                    <div className="absolute top-3 right-3 z-20 px-3 py-1.5 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
                       <Clock className="w-3 h-3" />
                       <span>{project.status}</span>
                     </div>
@@ -250,7 +260,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
 
                   {/* Category Badge para projetos pessoais */}
                   {isPersonal && project.category && (
-                    <div className="absolute top-3 right-3 z-20 px-3 py-1.5 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
+                    <div className="absolute top-3 right-3 z-20 px-3 py-1.5 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
                       <span>{project.category}</span>
                     </div>
                   )}
@@ -274,7 +284,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                         {project.isGame ? (
                           <button
                             onClick={() => openGamePreview(project)}
-                            className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-110"
+                            className="p-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl hover:shadow-lg hover:shadow-amber-500/25 transition-all duration-300 hover:scale-110"
                             aria-label="Jogar demo"
                           >
                             <Gamepad2 className="w-4 h-4 lg:w-5 lg:h-5" />
@@ -292,7 +302,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-3 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-all duration-300 hover:scale-110"
+                            className="p-3 bg-amber-500 text-white rounded-xl hover:bg-amber-600 transition-all duration-300 hover:scale-110"
                             aria-label="Ver projeto"
                           >
                             <Eye className="w-4 h-4 lg:w-5 lg:h-5" />
@@ -303,7 +313,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-3 bg-gray-700 text-white rounded-xl hover:bg-gray-600 transition-all duration-300 hover:scale-110"
+                            className="p-3 bg-slate-700 text-white rounded-xl hover:bg-slate-600 transition-all duration-300 hover:scale-110"
                             aria-label="Ver código no GitHub"
                           >
                             <Github className="w-4 h-4 lg:w-5 lg:h-5" />
@@ -317,16 +327,16 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                   <div className="p-4 lg:p-6">
                     <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-3">
                       <div className={`p-1.5 lg:p-2 rounded-lg bg-white dark:bg-white/5 border transition-colors duration-300 ${
-                        isFeatured ? 'text-purple-500 dark:text-purple-400 border-purple-500/20 animate-bounce-slow' : 
+                        isFeatured ? 'text-amber-500 dark:text-amber-400 border-amber-500/20 animate-bounce-slow' : 
                         isFreelance ? 'text-orange-500 dark:text-orange-400 border-orange-500/20' : 
-                        'text-blue-500 dark:text-blue-400 border-blue-500/20'
+                        'text-amber-500 dark:text-amber-400 border-amber-500/20'
                       }`}>
                         <ProjectIcon className="w-3 h-3 lg:w-4 lg:h-4" />
                       </div>
-                      <h3 className={`text-lg lg:text-xl font-semibold group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300 line-clamp-1 ${
-                        isFeatured ? 'text-purple-600 dark:text-purple-400' : 
+                      <h3 className={`text-lg lg:text-xl font-semibold group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-300 line-clamp-1 ${
+                        isFeatured ? 'text-amber-600 dark:text-amber-400' : 
                         isFreelance ? 'text-orange-600 dark:text-orange-400' : 
-                        'text-gray-900 dark:text-white'
+                        'text-slate-900 dark:text-white'
                       }`}>
                         {project.title}
                       </h3>
@@ -334,32 +344,32 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
 
                     {/* Client info for freelance projects */}
                     {isFreelance && project.client && (
-                      <p className="text-sm text-blue-600 dark:text-blue-400 mb-2 font-medium">
+                      <p className="text-sm text-amber-600 dark:text-amber-400 mb-2 font-medium">
                         Cliente: {project.client}
                       </p>
                     )}
 
-                    <p className="text-gray-600 dark:text-gray-300 mb-3 lg:mb-4 leading-relaxed line-clamp-2 text-sm lg:text-base">
+                    <p className="text-slate-600 dark:text-slate-300 mb-3 lg:mb-4 leading-relaxed line-clamp-2 text-sm lg:text-base">
                       {project.description}
                     </p>
 
                     {/* Features list for all projects */}
                     {project.features && (
                       <div className="mb-3 lg:mb-4">
-                        <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2">PRINCIPAIS FUNCIONALIDADES:</p>
-                        <ul className="text-xs text-gray-600 dark:text-gray-300 space-y-1">
+                        <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2">PRINCIPAIS FUNCIONALIDADES:</p>
+                        <ul className="text-xs text-slate-600 dark:text-slate-300 space-y-1">
                           {project.features.slice(0, 3).map((feature, idx) => (
                             <li key={idx} className="flex items-start">
                               <span className={`mr-1 ${
-                                isFeatured ? 'text-purple-500' :
+                                isFeatured ? 'text-amber-500' :
                                 isFreelance ? 'text-orange-500' :
-                                'text-green-500'
+                                'text-red-500'
                               }`}>•</span>
                               <span className="flex-1">{feature}</span>
                             </li>
                           ))}
                           {project.features.length > 3 && (
-                            <li className="text-gray-400 text-xs">
+                            <li className="text-slate-400 text-xs">
                               +{project.features.length - 3} outras funcionalidades
                             </li>
                           )}
@@ -372,25 +382,25 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                       {project.technologies.slice(0, 4).map((tech) => (
                         <span
                           key={tech}
-                          className="px-2 py-1 text-xs bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-300 rounded-full font-medium border border-gray-200/60 dark:border-white/10"
+                          className="px-2 py-1 text-xs bg-amber-100 dark:bg-amber-500/5 text-amber-700 dark:text-amber-300 rounded-full font-medium border border-amber-200/60 dark:border-amber-500/20"
                         >
                           {tech}
                         </span>
                       ))}
                       {project.technologies.length > 4 && (
-                        <span className="px-2 py-1 text-xs bg-gray-100 dark:bg-white/5 text-gray-500 dark:text-gray-400 rounded-full font-medium">
+                        <span className="px-2 py-1 text-xs bg-amber-100 dark:bg-amber-500/5 text-amber-500 dark:text-amber-400 rounded-full font-medium">
                           +{project.technologies.length - 4}
                         </span>
                       )}
                     </div>
 
                     {/* Actions */}
-                    <div className="flex items-center justify-between pt-3 border-t border-gray-200/60 dark:border-white/10">
+                    <div className="flex items-center justify-between pt-3 border-t border-amber-200/60 dark:border-amber-500/20">
                       <div className="flex space-x-3 lg:space-x-4">
                         {project.isGame ? (
                           <button
                             onClick={() => openGamePreview(project)}
-                            className="flex items-center space-x-1 lg:space-x-2 text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors font-medium group/action text-sm"
+                            className="flex items-center space-x-1 lg:space-x-2 text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 transition-colors font-medium group/action text-sm"
                           >
                             <Gamepad2 className="w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-300 group-hover/action:scale-110" />
                             <span>{t('projects.play_demo')}</span>
@@ -405,7 +415,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center space-x-1 lg:space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors font-medium group/action text-sm"
+                            className="flex items-center space-x-1 lg:space-x-2 text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 transition-colors font-medium group/action text-sm"
                           >
                             <ExternalLink className="w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-300 group-hover/action:scale-110" />
                             <span>{t('projects.view_project')}</span>
@@ -418,15 +428,15 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center space-x-1 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-white transition-colors font-medium group/action"
+                            className="flex items-center space-x-1 text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-white transition-colors font-medium group/action"
                           >
                             <Github className="w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-300 group-hover/action:scale-110" />
                           </a>
                         )}
                         <ArrowRight className={`w-3 h-3 lg:w-4 lg:h-4 transition-all duration-300 group-hover:translate-x-1 ${
-                          isFeatured ? 'text-purple-400 group-hover:text-purple-500' :
+                          isFeatured ? 'text-amber-400 group-hover:text-amber-500' :
                           isFreelance ? 'text-orange-400 group-hover:text-orange-500' :
-                          'text-gray-400 group-hover:text-blue-500'
+                          'text-slate-400 group-hover:text-amber-500'
                         }`} />
                       </div>
                     </div>
@@ -461,7 +471,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
             href="https://github.com/PabloG-7"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 lg:gap-3 px-6 lg:px-8 py-3 lg:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/25 hover:gap-3 lg:hover:gap-4 hover:scale-105 text-sm lg:text-base"
+            className="inline-flex items-center justify-center gap-2 lg:gap-3 px-6 lg:px-8 py-3 lg:py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-semibold transition-all duration-500 hover:shadow-lg hover:shadow-amber-500/25 hover:gap-3 lg:hover:gap-4 hover:scale-105 text-sm lg:text-base"
           >
             <span>{t('projects.view_all')}</span>
             <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 transition-transform duration-300 group-hover:translate-x-1" />

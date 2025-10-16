@@ -73,18 +73,18 @@ const Contact = () => {
       label: t('contact.info.email'),
       value: 'pablooliver853@gmail.com',
       href: 'mailto:pablooliver853@gmail.com',
-      color: 'text-blue-600 dark:text-blue-400',
-      bgColor: 'bg-blue-500/10',
-      borderColor: 'border-blue-500/20'
+      color: 'text-amber-600 dark:text-amber-400',
+      bgColor: 'bg-amber-500/10',
+      borderColor: 'border-amber-500/20'
     },
     {
       icon: MapPin,
       label: t('contact.info.location'),
       value: t('contact.location_value'),
       href: '#',
-      color: 'text-green-600 dark:text-green-400',
-      bgColor: 'bg-green-500/10',
-      borderColor: 'border-green-500/20'
+      color: 'text-orange-600 dark:text-orange-400',
+      bgColor: 'bg-orange-500/10',
+      borderColor: 'border-orange-500/20'
     },
   ];
 
@@ -93,28 +93,28 @@ const Contact = () => {
       icon: Github,
       href: "https://github.com/PabloG-7",
       label: "GitHub",
-      color: "text-purple-600 dark:text-purple-400",
-      bgColor: "bg-purple-500/10",
-      borderColor: "border-purple-500/20",
-      hoverColor: "hover:bg-purple-500/20"
+      color: "text-amber-600 dark:text-amber-400",
+      bgColor: "bg-amber-500/10",
+      borderColor: "border-amber-500/20",
+      hoverColor: "hover:bg-amber-500/20"
     },
     {
       icon: Linkedin,
       href: "https://www.linkedin.com/in/pablo-gomes-8b574321a/",
       label: "LinkedIn",
-      color: "text-blue-600 dark:text-blue-400",
-      bgColor: "bg-blue-500/10",
-      borderColor: "border-blue-500/20",
-      hoverColor: "hover:bg-blue-500/20"
+      color: "text-orange-600 dark:text-orange-400",
+      bgColor: "bg-orange-500/10",
+      borderColor: "border-orange-500/20",
+      hoverColor: "hover:bg-orange-500/20"
     },
     {
       icon: Instagram,
       href: "https://www.instagram.com/pablogomesss__/",
       label: "Instagram",
-      color: "text-pink-600 dark:text-pink-400",
-      bgColor: "bg-pink-500/10",
-      borderColor: "border-pink-500/20",
-      hoverColor: "hover:bg-pink-500/20"
+      color: "text-red-600 dark:text-red-400",
+      bgColor: "bg-red-500/10",
+      borderColor: "border-red-500/20",
+      hoverColor: "hover:bg-red-500/20"
     }
   ];
 
@@ -122,28 +122,27 @@ const Contact = () => {
     <section
       id="contato"
       ref={sectionRef}
-      className="section-padding relative overflow-hidden bg-white dark:bg-slate-900"
+      className="section-padding relative min-h-screen overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50/30 to-yellow-50/20 dark:from-slate-900 dark:via-orange-950/20 dark:to-amber-950/10"
     >
-      {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl animate-float-slow"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl animate-float-slower"></div>
-        
-        {/* Floating particles */}
-        <div className="absolute inset-0">
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-blue-400/30 rounded-full animate-float-random"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${Math.random() * 8 + 8}s`
-              }}
-            />
-          ))}
-        </div>
+      {/* Background EXATAMENTE igual ao HeroRevamp */}
+      <div className="absolute inset-0 opacity-5 dark:opacity-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.15)_1px,transparent_0)] bg-[size:32px_32px] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.1)_1px,transparent_0)]"></div>
+      </div>
+
+      {/* Partículas flutuantes - EXATAMENTE igual ao HeroRevamp */}
+      <div className="absolute inset-0">
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-amber-500/20 rounded-full animate-float-slow"
+            style={{
+              left: `${15 + i * 12}%`,
+              top: `${20 + i * 10}%`,
+              animationDelay: `${i * 2}s`,
+              animationDuration: '6s'
+            }}
+          />
+        ))}
       </div>
 
       <div className="container-custom relative z-10">
@@ -154,13 +153,13 @@ const Contact = () => {
           }`}
         >
           <div className="inline-flex items-center gap-2 mb-4 animate-bounce-gentle">
-            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-            <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-red-500 rounded-full"></div>
           </div>
 
-          <h2 className="text-5xl sm:text-7xl md:text-7xl lg:text-8xl font-bold mb-4 lg:mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent">
+          <h2 className="text-5xl sm:text-7xl md:text-7xl lg:text-7xl font-bold mb-4 lg:mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-slate-800 via-orange-600 to-slate-800 dark:from-white dark:via-amber-200 dark:to-white bg-clip-text text-transparent">
               {t('contact.title')}
             </span>
           </h2>
@@ -176,9 +175,9 @@ const Contact = () => {
             <div className={`transition-all duration-1000 ${
               animatedItems.includes(0) ? 'animate-slide-in-left opacity-100' : 'opacity-0 -translate-x-8'
             }`}>
-              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-slate-200/60 dark:border-slate-600/60">
+              <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 border border-amber-200/60 dark:border-amber-500/20">
                 <h3 className="text-xl sm:text-2xl font-semibold mb-4 flex items-center gap-3">
-                  <User className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  <User className="w-6 h-6 text-amber-600 dark:text-amber-400" />
                   {t('contact.intro_title')}
                 </h3>
                 <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-base sm:text-lg">
@@ -193,7 +192,7 @@ const Contact = () => {
                 <a
                   key={info.label}
                   href={info.href}
-                  className={`group flex items-center space-x-4 p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200/60 dark:border-slate-600/60 transition-all duration-500 hover:shadow-lg hover:scale-[1.02] hover:border-blue-500/30 dark:hover:border-blue-400/30 ${
+                  className={`group flex items-center space-x-4 p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-amber-200/60 dark:border-amber-500/20 transition-all duration-500 hover:shadow-lg hover:scale-[1.02] hover:border-amber-500/30 dark:hover:border-amber-400/30 ${
                     animatedItems.includes(index + 1) ? 'animate-slide-in-left opacity-100' : 'opacity-0 -translate-x-8'
                   }`}
                   style={{ animationDelay: `${(index + 1) * 150}ms` }}
@@ -203,21 +202,21 @@ const Contact = () => {
                   </div>
                   <div className="flex-1">
                     <p className="text-sm text-slate-500 dark:text-slate-400">{info.label}</p>
-                    <p className="font-medium text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    <p className="font-medium text-slate-800 dark:text-slate-200 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                       {info.value}
                     </p>
                   </div>
-                  <Sparkles className="w-4 h-4 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-sparkle" />
+                  <Sparkles className="w-4 h-4 text-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-sparkle" />
                 </a>
               ))}
             </div>
 
             {/* Social Media */}
-            <div className={`pt-6 border-t border-slate-200/60 dark:border-slate-600/60 transition-all duration-1000 ${
+            <div className={`pt-6 border-t border-amber-200/60 dark:border-amber-500/20 transition-all duration-1000 ${
               animatedItems.includes(3) ? 'animate-slide-in-left opacity-100' : 'opacity-0 -translate-x-8'
             }`} style={{ animationDelay: '450ms' }}>
               <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <MessageCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                <MessageCircle className="w-5 h-5 text-orange-600 dark:text-orange-400" />
                 {t('contact.social_title')}
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -227,7 +226,7 @@ const Contact = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group flex items-center gap-3 p-3 sm:p-4 rounded-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200/60 dark:border-slate-600/60 transition-all duration-500 hover:shadow-lg hover:scale-105 ${social.hoverColor} ${
+                    className={`group flex items-center gap-3 p-3 sm:p-4 rounded-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-amber-200/60 dark:border-amber-500/20 transition-all duration-500 hover:shadow-lg hover:scale-105 ${social.hoverColor} ${
                       animatedItems.includes(index + 4) ? 'animate-scale-in opacity-100' : 'opacity-0 scale-95'
                     }`}
                     style={{ animationDelay: `${(index + 4) * 150}ms` }}
@@ -248,14 +247,14 @@ const Contact = () => {
           <div className={`transition-all duration-1000 ${
             animatedItems.includes(7) ? 'animate-slide-in-right opacity-100' : 'opacity-0 translate-x-8'
           }`} style={{ animationDelay: '1050ms' }}>
-            <div className="relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200/60 dark:border-slate-600/60 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-500">
+            <div className="relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-amber-200/60 dark:border-amber-500/20 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-500">
               
               {/* Decorative elements */}
-              <div className="absolute top-4 right-4 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-purple-500 rounded-full animate-pulse delay-1000"></div>
+              <div className="absolute top-4 right-4 w-2 h-2 bg-amber-500 rounded-full animate-pulse"></div>
+              <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse delay-1000"></div>
               
               <h3 className="text-xl sm:text-2xl font-semibold mb-6 flex items-center gap-3">
-                <Send className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 dark:text-green-400" />
+                <Send className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600 dark:text-orange-400" />
                 {t('contact.form_title')}
               </h3>
 
@@ -273,7 +272,7 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/60 dark:bg-slate-700/60 border border-slate-200/60 dark:border-slate-600/60 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 backdrop-blur-sm text-slate-900 dark:text-slate-100"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/60 dark:bg-slate-700/60 border border-amber-200/60 dark:border-amber-500/20 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-all duration-300 backdrop-blur-sm text-slate-900 dark:text-slate-100"
                         placeholder={t('contact.placeholders.name')}
                       />
                     </div>
@@ -290,7 +289,7 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/60 dark:bg-slate-700/60 border border-slate-200/60 dark:border-slate-600/60 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 backdrop-blur-sm text-slate-900 dark:text-slate-100"
+                        className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/60 dark:bg-slate-700/60 border border-amber-200/60 dark:border-amber-500/20 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-all duration-300 backdrop-blur-sm text-slate-900 dark:text-slate-100"
                         placeholder={t('contact.placeholders.email')}
                       />
                     </div>
@@ -307,7 +306,7 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-white/60 dark:bg-slate-700/60 border border-slate-200/60 dark:border-slate-600/60 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 backdrop-blur-sm text-slate-900 dark:text-slate-100"
+                    className="w-full px-4 py-3 rounded-xl bg-white/60 dark:bg-slate-700/60 border border-amber-200/60 dark:border-amber-500/20 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-all duration-300 backdrop-blur-sm text-slate-900 dark:text-slate-100"
                     placeholder={t('contact.placeholders.subject')}
                   />
                 </div>
@@ -324,7 +323,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       rows={4}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/60 dark:bg-slate-700/60 border border-slate-200/60 dark:border-slate-600/60 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 transition-all duration-300 resize-none backdrop-blur-sm text-slate-900 dark:text-slate-100"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/60 dark:bg-slate-700/60 border border-amber-200/60 dark:border-amber-500/20 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-all duration-300 resize-none backdrop-blur-sm text-slate-900 dark:text-slate-100"
                       placeholder={t('contact.placeholders.message')}
                     />
                   </div>
@@ -333,7 +332,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 sm:py-4 px-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-medium transition-all duration-500 hover:shadow-lg hover:shadow-blue-500/25 hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 group animate-button-pulse"
+                  className="w-full py-3 sm:py-4 px-6 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-medium transition-all duration-500 hover:shadow-lg hover:shadow-amber-500/25 hover:scale-[1.02] disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 group animate-button-pulse"
                 >
                   {isSubmitting ? (
                     <>

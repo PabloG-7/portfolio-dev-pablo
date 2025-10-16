@@ -595,28 +595,61 @@
   }
 }
 
-/* Custom Scrollbar */
+/* ===== SCROLLBAR PERSONALIZADA - TEMA LARANJA/ÂMBER ===== */
+/* Para navegadores WebKit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--background));
+  background: #fffbeb; /* amber-50 - Light mode */
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary) / 0.6);
-  border-radius: 3px;
+  background: linear-gradient(180deg, #f59e0b, #d97706); /* gradiente âmbar */
+  border-radius: 10px;
+  border: 2px solid #fffbeb;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary) / 0.8);
+  background: linear-gradient(180deg, #d97706, #b45309); /* âmbar mais escuro */
+}
+
+/* Para modo escuro - CORRIGIDO */
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a; /* slate-900 - MUITO ESCURO */
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #f59e0b, #d97706);
+  border: 2px solid #0f172a; /* Borda muito escura */
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #fbbf24, #f59e0b);
 }
 
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--background));
+  scrollbar-color: #f59e0b #fffbeb;
+}
+
+.dark * {
+  scrollbar-color: #f59e0b #0f172a; /* MUITO ESCURO */
+}
+
+/* Scrollbar suave e elegante */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Performance para scroll */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 /* FIX PARA SCROLL MOBILE - REMOVER TRAVAMENTOS */
@@ -945,29 +978,6 @@ body {
   .grid-cols-3 {
     grid-template-columns: 1fr;
   }
-}
-
-/* Smooth Scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #1e293b;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #475569;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
 }
 
 /* Novas Animações para Neon Memory */
@@ -1455,4 +1465,130 @@ button, a, input, textarea {
 
 .animate-bounce-soft-delayed {
   animation: bounce-soft-delayed 4s ease-in-out infinite;
+}
+
+/* Animações suaves para o hero */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Transições suaves para todos os elementos */
+button, a, .group {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Estados hover refinados */
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Responsividade aprimorada */
+@media (max-width: 640px) {
+  .container-custom {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+  }
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 380px) {
+  h1 {
+    font-size: 2.25rem;
+  }
+  
+  .text-base {
+    font-size: 0.875rem;
+  }
+}
+
+/* Dark mode refinado */
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-slate-900 {
+    background-color: #0f172a;
+  }
+}
+
+/* Otimizações de performance */
+@media (prefers-reduced-motion: reduce) {
+  .animate-sparkle,
+  .group-hover\:scale-105,
+  .group-hover\:scale-110,
+  .hover\:scale-110 {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Novas animações para o hero */
+@keyframes text-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.1);
+  }
+}
+
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75%, 100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.animate-text-shimmer {
+  animation: text-shimmer 3s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 3s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-ping-slow {
+  animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
