@@ -31,7 +31,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       highlights: [
         'Multiplayer tempo real',
         '3 modos de jogo',
-        'Ranking online', 
+        'Memorize e Repita', 
         'Design responsivo',
         'Efeitos sonoros'
       ],
