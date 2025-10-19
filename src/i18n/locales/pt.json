@@ -8,24 +8,15 @@
     "contact": "Contato"
   },
   "hero": {
-    "greeting": "Olá!",
-    "name": "Pablo Gomes",
-    "role": "Desenvolvedor Front-end",
-    "description": "Transformando ideias em realidade digital.",
-    "description_highlight1": "rápidos e elegantes",
-    "description_highlight2": "tecnologias modernas",
-    "skills": {
-      "database": "Experiência do Usuário",
-      "tools": "UI/UX e Responsividade",
-      "fullstack": "Interfaces Modernas", 
-      "frontend": "Desenvolvedor Front-end",
-      "backend": "React & TypeScript"
-    },
-    "cta_projects": "Ver Projetos",
-    "cta_contact": "Vamos Conversar",
-    "scroll_indicator": "Deslize para explorar"
-  },
-   "about": {
+  "name": "Pablo Gomes",
+  "role": "Desenvolvedor Front-end",
+  "description": "Com foco em",
+  "description_highlight1": "Transformando interfaces modernas",
+  "description_highlight2": "criativas",
+  "cta_projects": "Ver Projetos",
+  "cta_contact": "Entrar em Contato"
+},
+  "about": {
     "title": "Sobre Mim",
     "subtitle": "Conheça minha jornada no desenvolvimento front-end",
     "description": "💻 Olá! Sou Pablo Gomes, desenvolvedor Front-end especializado em React, TypeScript e criação de interfaces modernas.",
@@ -55,7 +46,7 @@
       "python": "Python 3 – Curso em Vídeo (Mundo 1 de 3 – 2024)",
       "algorithms": "Algoritmos – Curso em Vídeo (2024)",
       "javascript": "JavaScript – Curso em Vídeo (2024)",
-       "react": "React do Zero a Maestria (c/ hooks, router, API, Projetos) – Udemy (2025)",
+      "react": "React do Zero a Maestria (c/ hooks, router, API, Projetos) – Udemy (2025)",
       "environmental": "Competência Transversal – Educação Ambiental (SENAI)",
       "industry": "Desvendando a Indústria 4.0 (SENAI)",
       "entrepreneurship": "Empreender (SENAI)",
@@ -133,13 +124,59 @@
     "view_project": "Ver Projeto",
     "code": "Código",
     "view_all": "Ver Todos os Projetos",
+    "view_all_github": "Ver Todos no GitHub",
+    "highlights": "Destaques",
+    "technologies": "Tecnologias",
+    "status_development": "Em desenvolvimento",
+    "client": "Cliente",
+    "category": {
+      "game": "Jogo",
+      "productivity": "Produtividade",
+      "ecommerce": "E-commerce",
+      "api": "Integração API"
+    },
+    "type": {
+      "personal": "Projeto Pessoal",
+      "freelance": "Freelance"
+    },
     "descriptions": {
-      "neon_memory": "Jogo de memória futurista com visual neon impressionante. Teste sua memória no futuro com efeitos visuais incríveis!",
-      "inabalavel": "Website imersivo sobre um herói cósmico e forças das trevas, com design espacial, efeitos visuais cósmicos e interações 3D.",
-      "pokedex": "Uma Pokédx interativa construída com React e PokéAPI, com design moderno e responsivo para explorar o mundo Pokémon.",
-      "taskforge": "TaskForge é a evolução do seu gerenciador de tarefas, agora com recursos avançados de produtividade e uma experiência ainda mais imersiva.",
-      "luckpet": "E-commerce para pets com foco em usabilidade e design responsivo. Experiência agradável na compra de produtos para animais.",
-      "kushi": "E-commerce especializado em moda masculina e feminina, com catálogo organizado, promoções sazonais e blog de tendências."
+      "neon_memory": "Jogo da memória moderno com tema neon revolucionário. Experimente multiplayer em tempo real, múltiplos modos de jogo e ranking online em uma experiência visual imersiva única.",
+      "dr_bruno": "Site institucional premium para fisioterapeuta especializado. Design moderno com foco em conversão, formulário de contato integrado e otimização SEO avançada.",
+      "hc_store": "E-commerce completo para influenciador digital. Plataforma moderna com catálogo integrado ao WhatsApp, design focado em conversão e experiência otimizada.",
+      "taskforge": "Aplicação de gerenciamento de tarefas premium com recursos avançados. Interface intuitiva com modo foco Pomodoro e sistema de tags inteligente.",
+      "luckpet": "E-commerce completo para petshop com sistema de autenticação, carrinho de compras e programa de fidelidade exclusivo.",
+      "pokedex": "Aplicação web interativa que consome a PokéAPI para exibir informações detalhadas sobre Pokémon. Interface moderna com busca avançada."
+    },
+    "clients": {
+      "dr_bruno": "Dr. Bruno Ribeiro - Fisioterapeuta",
+      "hc_store": "Hebert Criston - Influenciador Digital"
+    },
+    "highlights_list": {
+      "multiplayer": "Multiplayer tempo real",
+      "multiple_modes": "3 modos de jogo",
+      "memorize_repeat": "Memorize e Repita",
+      "responsive": "Design responsivo",
+      "sound_effects": "Efeitos sonoros",
+      "contact_form": "Formulário funcional",
+      "seo": "Otimizado SEO",
+      "animations": "Animações GSAP",
+      "performance": "Performance mobile",
+      "whatsapp": "Integração WhatsApp",
+      "dynamic_catalog": "Catálogo dinâmico",
+      "modern_design": "Design moderno",
+      "mobile_first": "Mobile first",
+      "conversion": "Focado em conversão",
+      "pomodoro": "Modo Pomodoro",
+      "tag_system": "Sistema de tags",
+      "dark_mode": "Dark mode",
+      "drag_drop": "Drag & Drop",
+      "authentication": "Autenticação segura",
+      "loyalty": "Programa fidelidade",
+      "persistent_cart": "Carrinho persistente",
+      "supabase": "Integração Supabase",
+      "api": "Consumo de API",
+      "search_filters": "Busca e filtros",
+      "themed_design": "Design Pokémon"
     }
   },
   "contact": {

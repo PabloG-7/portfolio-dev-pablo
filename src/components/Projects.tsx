@@ -17,8 +17,9 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
 
   const projects = useMemo(() => [
     {
+      id: 'neon_memory',
       title: 'NEON MEMORY',
-      description: 'Jogo da memória moderno com tema neon revolucionário. Experimente multiplayer em tempo real, múltiplos modos de jogo e ranking online em uma experiência visual imersiva única.',
+      description: t('projects.descriptions.neon_memory'),
       technologies: ['TypeScript', 'React', 'Supabase', 'Vite', 'Tailwind CSS', 'Web Audio API', 'PostgreSQL', 'PWA'],
       image: '/lovable-uploads/neon-linkedin.png',
       liveUrl: 'https://jogo-memoria-gold.vercel.app/',
@@ -29,18 +30,19 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       featuredStyle: "bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20 dark:border-blue-400/30 shadow-lg shadow-blue-500/10 dark:shadow-blue-400/10",
       animation: "animate-neon-glow",
       highlights: [
-        'Multiplayer tempo real',
-        '3 modos de jogo',
-        'Memorize e Repita', 
-        'Design responsivo',
-        'Efeitos sonoros'
+        t('projects.highlights_list.multiplayer'),
+        t('projects.highlights_list.multiple_modes'),
+        t('projects.highlights_list.memorize_repeat'), 
+        t('projects.highlights_list.responsive'),
+        t('projects.highlights_list.sound_effects')
       ],
       personal: true,
-      category: 'Jogo'
+      category: t('projects.category.game')
     },
     {
+      id: 'dr_bruno',
       title: 'DR. BRUNO RIBEIRO',
-      description: 'Site institucional premium para fisioterapeuta especializado. Design moderno com foco em conversão, formulário de contato integrado e otimização SEO avançada.',
+      description: t('projects.descriptions.dr_bruno'),
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'GSAP', 'FormSubmit', 'Responsive Design'],
       image: '/lovable-uploads/drbruno-portfolio.png',
       liveUrl: '#',
@@ -48,20 +50,21 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       icon: Stethoscope,
       featuredStyle: "bg-gradient-to-br from-orange-500/10 to-amber-500/10 border-orange-500/20 dark:border-orange-400/30",
       animation: "",
-      status: 'Em desenvolvimento',
+      status: t('projects.status_development'),
       freelance: true,
-      client: 'Dr. Bruno Ribeiro - Fisioterapeuta',
+      client: t('projects.clients.dr_bruno'),
       highlights: [
-        'Design responsivo',
-        'Formulário funcional',
-        'Otimizado SEO',
-        'Animações GSAP',
-        'Performance mobile'
+        t('projects.highlights_list.responsive'),
+        t('projects.highlights_list.contact_form'),
+        t('projects.highlights_list.seo'),
+        t('projects.highlights_list.animations'),
+        t('projects.highlights_list.performance')
       ]
     },
     {
+      id: 'hc_store',
       title: 'HC STORE',
-      description: 'E-commerce completo para influenciador digital. Plataforma moderna com catálogo integrado ao WhatsApp, design focado em conversão e experiência otimizada.',
+      description: t('projects.descriptions.hc_store'),
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'E-commerce', 'WhatsApp Integration', 'UI/UX Design'],
       image: '/lovable-uploads/hebert-portfolio.png',
       liveUrl: '#',
@@ -69,20 +72,21 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       icon: Shirt,
       featuredStyle: "bg-gradient-to-br from-orange-500/10 to-amber-500/10 border-orange-500/20 dark:border-orange-400/30",
       animation: "",
-      status: 'Em desenvolvimento',
+      status: t('projects.status_development'),
       freelance: true,
-      client: 'Hebert Criston - Influenciador Digital',
+      client: t('projects.clients.hc_store'),
       highlights: [
-        'Integração WhatsApp',
-        'Catálogo dinâmico',
-        'Design moderno',
-        'Mobile first',
-        'Focado em conversão'
+        t('projects.highlights_list.whatsapp'),
+        t('projects.highlights_list.dynamic_catalog'),
+        t('projects.highlights_list.modern_design'),
+        t('projects.highlights_list.mobile_first'),
+        t('projects.highlights_list.conversion')
       ]
     },
     {
+      id: 'taskforge',
       title: 'TASKFORGE',
-      description: 'Aplicação de gerenciamento de tarefas premium com recursos avançados. Interface intuitiva com modo foco Pomodoro e sistema de tags inteligente.',
+      description: t('projects.descriptions.taskforge'),
       technologies: ['React', 'TypeScript', 'Vite', 'Local Storage', 'Tailwind CSS'],
       image: '/lovable-uploads/taskforge-linkedin.png',
       liveUrl: 'https://gerenciador-de-tarefas-wine.vercel.app/',
@@ -91,18 +95,19 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       featuredStyle: "bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20 dark:border-blue-400/30",
       animation: "",
       highlights: [
-        'Modo Pomodoro',
-        'Sistema de tags',
-        'Dark mode',
-        'Drag & Drop',
-        'Animações fluidas'
+        t('projects.highlights_list.pomodoro'),
+        t('projects.highlights_list.tag_system'),
+        t('projects.highlights_list.dark_mode'),
+        t('projects.highlights_list.drag_drop'),
+        t('projects.highlights_list.animations')
       ],
       personal: true,
-      category: 'Produtividade'
+      category: t('projects.category.productivity')
     },
     {
+      id: 'luckpet',
       title: 'LUCKPET',
-      description: 'E-commerce completo para petshop com sistema de autenticação, carrinho de compras e programa de fidelidade exclusivo.',
+      description: t('projects.descriptions.luckpet'),
       technologies: ['JavaScript', 'CSS3', 'Supabase', 'HTML5', 'E-commerce'],
       image: '/lovable-uploads/luckpet-linkedin.png',
       liveUrl: 'https://projeto-luckpet.vercel.app/',
@@ -111,18 +116,19 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       featuredStyle: "bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20 dark:border-blue-400/30",
       animation: "",
       highlights: [
-        'Autenticação segura',
-        'Programa fidelidade',
-        'Carrinho persistente',
-        'Design responsivo',
-        'Integração Supabase'
+        t('projects.highlights_list.authentication'),
+        t('projects.highlights_list.loyalty'),
+        t('projects.highlights_list.persistent_cart'),
+        t('projects.highlights_list.responsive'),
+        t('projects.highlights_list.supabase')
       ],
       personal: true,
-      category: 'E-commerce'
+      category: t('projects.category.ecommerce')
     },
     {
+      id: 'pokedex',
       title: 'POKÉDEX',
-      description: 'Aplicação web interativa que consome a PokéAPI para exibir informações detalhadas sobre Pokémon. Interface moderna com busca avançada.',
+      description: t('projects.descriptions.pokedex'),
       technologies: ['React', 'PokéAPI', 'Axios', 'Tailwind CSS', 'Vercel'],
       image: '/lovable-uploads/pokedex-linkedin.png',
       liveUrl: 'https://pokedex-nine-vert.vercel.app/',
@@ -131,14 +137,14 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       featuredStyle: "bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20 dark:border-blue-400/30",
       animation: "",
       highlights: [
-        'Consumo de API',
-        'Busca e filtros',
-        'Design Pokémon',
-        'Responsivo',
-        'Performance mobile'
+        t('projects.highlights_list.api'),
+        t('projects.highlights_list.search_filters'),
+        t('projects.highlights_list.themed_design'),
+        t('projects.highlights_list.responsive'),
+        t('projects.highlights_list.performance')
       ],
       personal: true,
-      category: 'API Integration'
+      category: t('projects.category.api')
     },
   ], [t]);
 
@@ -149,15 +155,15 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
 
   return (
     <section
-      id="projetos"
+      id="projects"
       className="section-padding relative min-h-screen overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50/30 to-yellow-50/20 dark:from-slate-900 dark:via-orange-950/20 dark:to-amber-950/10"
     >
-      {/* Background EXATAMENTE igual ao HeroRevamp */}
+      {/* Background */}
       <div className="absolute inset-0 opacity-5 dark:opacity-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.15)_1px,transparent_0)] bg-[size:32px_32px] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.1)_1px,transparent_0)]"></div>
       </div>
 
-      {/* Partículas flutuantes - EXATAMENTE igual ao HeroRevamp */}
+      {/* Floating particles */}
       <div className="absolute inset-0">
         {[...Array(8)].map((_, i) => (
           <div
@@ -174,14 +180,14 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       </div>
 
       <div className="container-custom relative z-10">
-        {/* Header - MANTIDO ORIGINAL */}
+        {/* Header */}
         <div
           ref={elementRef as React.RefObject<HTMLDivElement>}
           className={`text-center mb-12 lg:mb-16 transition-all duration-1000 ${
             isVisible ? 'animate-fade-in-up opacity-100' : 'opacity-0 translate-y-8'
           }`}
         >
-          {/* Bolinhas coloridas */}
+          {/* Color dots */}
           <div className="inline-flex items-center gap-3 mb-4 animate-bounce-gentle">
             <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
             <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
@@ -208,7 +214,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
             
             return (
               <div
-                key={project.title}
+                key={project.id}
                 className={`group transition-all duration-1000 ${project.animation} ${
                   isVisible 
                     ? 'animate-scale-in opacity-100' 
@@ -235,14 +241,14 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                   {isFreelance && (
                     <div className="absolute top-3 left-3 z-20 px-3 py-1.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
                       <Building2 className="w-3 h-3" />
-                      <span>Freelance</span>
+                      <span>{t('projects.type.freelance')}</span>
                     </div>
                   )}
 
                   {isPersonal && !isFeatured && (
                     <div className="absolute top-3 left-3 z-20 px-3 py-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
                       <Code className="w-3 h-3" />
-                      <span>Projeto Pessoal</span>
+                      <span>{t('projects.type.personal')}</span>
                     </div>
                   )}
 
@@ -259,7 +265,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                     </div>
                   )}
 
-                  {/* Project Image - NOVO EFEITO HOVER */}
+                  {/* Project Image */}
                   <div className="relative overflow-hidden aspect-[4/3]">
                     <LazyImage
                       src={project.image}
@@ -269,16 +275,16 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                       } ${isFreelance ? 'opacity-90' : ''}`}
                     />
                     
-                    {/* Novo Overlay - Gradiente sutil + brilho */}
+                    {/* Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                     
-                    {/* Efeito de brilho nos cantos */}
+                    {/* Glow effect */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
                       <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-white/20 to-transparent rounded-full blur-xl transform -translate-x-1/2 -translate-y-1/2"></div>
                       <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-white/20 to-transparent rounded-full blur-xl transform translate-x-1/2 translate-y-1/2"></div>
                     </div>
                     
-                    {/* Botões de ação - Aparecem com slide up */}
+                    {/* Action buttons */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
                       <div className="flex space-x-3 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
                         {project.isGame ? (
@@ -340,7 +346,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
 
                     {isFreelance && project.client && (
                       <p className="text-sm text-orange-600 dark:text-orange-400 mb-2 font-medium">
-                        Cliente: {project.client}
+                        {t('projects.client')}: {project.client}
                       </p>
                     )}
 
@@ -356,7 +362,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                             isFeatured || isPersonal ? 'bg-blue-500' : 'bg-orange-500'
                           }`}></div>
                           <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">
-                            Destaques
+                            {t('projects.highlights')}
                           </p>
                         </div>
                         <div className="grid grid-cols-2 gap-1.5">
@@ -414,12 +420,12 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                             }`}
                           >
                             <Gamepad2 className="w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-300 group-hover/action:scale-110" />
-                            <span>Jogar Demo</span>
+                            <span>{t('projects.play_demo')}</span>
                           </button>
                         ) : isFreelance ? (
                           <span className="flex items-center space-x-1 lg:space-x-2 text-orange-600 dark:text-orange-400 font-medium text-sm">
                             <Clock className="w-3 h-3 lg:w-4 lg:h-4" />
-                            <span>Em desenvolvimento</span>
+                            <span>{project.status}</span>
                           </span>
                         ) : (
                           <a
@@ -433,7 +439,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                             }`}
                           >
                             <ExternalLink className="w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-300 group-hover/action:scale-110" />
-                            <span>Ver Projeto</span>
+                            <span>{t('projects.view_project')}</span>
                           </a>
                         )}
                       </div>
@@ -487,7 +493,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 lg:gap-3 px-6 lg:px-8 py-3 lg:py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-semibold transition-all duration-500 hover:shadow-lg hover:shadow-amber-500/25 hover:gap-3 lg:hover:gap-4 hover:scale-105 text-sm lg:text-base"
           >
-            <span>Ver Todos no GitHub</span>
+            <span>{t('projects.view_all_github')}</span>
             <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         </div>

@@ -109,7 +109,7 @@ const Contact = () => {
     },
     {
       icon: Instagram,
-      href: "https://www.instagram.com/pablogomesss__/",
+      href: "https://www.instagram.com/pablog.dev/",
       label: "Instagram",
       color: "text-red-600 dark:text-red-400",
       bgColor: "bg-red-500/10",

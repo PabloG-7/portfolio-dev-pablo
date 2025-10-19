@@ -8,23 +8,14 @@
     "contact": "Contact"
   },
   "hero": {
-    "greeting": "Hello!",
-    "name": "Pablo Gomes",
-    "role": "Front-end Developer",
-    "description": "Transforming ideas into digital reality.",
-    "description_highlight1": "fast and elegant",
-    "description_highlight2": "modern technologies",
-    "skills": {
-      "database": "User Experience",
-      "tools": "UI/UX and Responsiveness",
-      "fullstack": "Modern Interfaces", 
-      "frontend": "Front-end Developer",
-      "backend": "React | TypeScript"
-    },
-    "cta_projects": "View Projects",
-    "cta_contact": "Let's Talk",
-    "scroll_indicator": "Scroll to explore"
-  },
+  "name": "Pablo Gomes", 
+  "role": "Front-end Developer",
+  "description": "Focusing on",
+  "description_highlight1": "Transforming modern interfaces",
+  "description_highlight2": "creative",
+  "cta_projects": "View Projects",
+  "cta_contact": "Get in Touch"
+},
   "about": {
     "title": "About Me",
     "subtitle": "Get to know my front-end development journey",
@@ -133,13 +124,59 @@
     "view_project": "View Project",
     "code": "Code",
     "view_all": "View All Projects",
+    "view_all_github": "View All on GitHub",
+    "highlights": "Highlights",
+    "technologies": "Technologies",
+    "status_development": "In development",
+    "client": "Client",
+    "category": {
+      "game": "Game",
+      "productivity": "Productivity",
+      "ecommerce": "E-commerce",
+      "api": "API Integration"
+    },
+    "type": {
+      "personal": "Personal Project",
+      "freelance": "Freelance"
+    },
     "descriptions": {
-      "neon_memory": "Futuristic memory game with impressive neon visuals. Test your memory in the future with incredible visual effects!",
-      "inabalavel": "Immersive website about a cosmic hero and dark forces, with space design, cosmic visual effects and 3D interactions.",
-      "pokedex": "An interactive Pokédex built with React and PokéAPI, with modern and responsive design to explore the Pokémon world.",
-      "taskforge": "TaskForge is the evolution of your task manager, now with advanced productivity features and an even more immersive experience.",
-      "luckpet": "E-commerce for pets focusing on usability and responsive design. Pleasant experience when purchasing pet products.",
-      "kushi": "E-commerce specialized in men's and women's fashion, with organized catalog, seasonal promotions and trend blog."
+      "neon_memory": "Modern memory game with revolutionary neon theme. Experience real-time multiplayer, multiple game modes and online ranking in a unique immersive visual experience.",
+      "dr_bruno": "Premium institutional website for specialized physiotherapist. Modern design focused on conversion, integrated contact form and advanced SEO optimization.",
+      "hc_store": "Complete e-commerce for digital influencer. Modern platform with WhatsApp integrated catalog, conversion-focused design and optimized experience.",
+      "taskforge": "Premium task management application with advanced features. Intuitive interface with Pomodoro focus mode and smart tag system.",
+      "luckpet": "Complete e-commerce for pet shop with authentication system, shopping cart and exclusive loyalty program.",
+      "pokedex": "Interactive web application that consumes PokéAPI to display detailed Pokémon information. Modern interface with advanced search."
+    },
+    "clients": {
+      "dr_bruno": "Dr. Bruno Ribeiro - Physiotherapist",
+      "hc_store": "Hebert Criston - Digital Influencer"
+    },
+    "highlights_list": {
+      "multiplayer": "Real-time multiplayer",
+      "multiple_modes": "3 game modes",
+      "memorize_repeat": "Memorize and Repeat",
+      "responsive": "Responsive design",
+      "sound_effects": "Sound effects",
+      "contact_form": "Functional form",
+      "seo": "SEO optimized",
+      "animations": "GSAP animations",
+      "performance": "Mobile performance",
+      "whatsapp": "WhatsApp integration",
+      "dynamic_catalog": "Dynamic catalog",
+      "modern_design": "Modern design",
+      "mobile_first": "Mobile first",
+      "conversion": "Conversion focused",
+      "pomodoro": "Pomodoro mode",
+      "tag_system": "Tag system",
+      "dark_mode": "Dark mode",
+      "drag_drop": "Drag & Drop",
+      "authentication": "Secure authentication",
+      "loyalty": "Loyalty program",
+      "persistent_cart": "Persistent cart",
+      "supabase": "Supabase integration",
+      "api": "API consumption",
+      "search_filters": "Search and filters",
+      "themed_design": "Themed design"
     }
   },
   "contact": {

@@ -15,7 +15,7 @@ const HeroRevamp = memo(() => {
 
   // Efeito Typewriter simplificado
   useEffect(() => {
-    const texts = ['React Developer', 'UI/UX Designer', 'Front-end Specialist'];
+    const texts = ['React & TypeScript', 'UI/UX Designer', 'Front-end Developer', 'AI + Code + Creativity'];
     
     const tick = () => {
       const i = loopNum % texts.length;
@@ -77,7 +77,7 @@ const HeroRevamp = memo(() => {
             <div className="space-y-4 lg:space-y-6 mt-8 lg:mt-9">
               <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-7xl xl:text-7x1 font-bold leading-tight">
                 <span className="bg-gradient-to-r from-slate-800 via-orange-600 to-slate-800 dark:from-white dark:via-amber-200 dark:to-white bg-clip-text text-transparent">
-                  Pablo Gomes
+                  {t('hero.name')}
                 </span>
               </h1>
               
@@ -89,7 +89,7 @@ const HeroRevamp = memo(() => {
                 </div>
                 <div className="relative overflow-hidden">
                   <p className="text-lg sm:text-xl md:text-2xl text-slate-700 dark:text-slate-300 font-light animate-text-shimmer bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-clip-text text-transparent bg-[length:200%_auto]">
-                    Desenvolvedor Front-end
+                    {t('hero.role')}
                   </p>
                 </div>
               </div>
@@ -98,7 +98,7 @@ const HeroRevamp = memo(() => {
               <div className="flex justify-center lg:justify-start pt-2">
                 <div className="border-l-2 border-amber-500 pl-3 lg:pl-4">
                   <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400">
-                    Especializado em{' '}
+                    {t('hero.description')}{' '}
                     <span className="text-amber-600 dark:text-amber-400 font-semibold">
                       {currentText}
                       <span className="ml-0.5 animate-pulse">|</span>
@@ -111,17 +111,17 @@ const HeroRevamp = memo(() => {
             {/* Descrição atualizada exatamente como pediu */}
             <div className="max-w-xl mx-auto lg:mx-0">
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-base sm:text-lg font-medium">
-                Transformando interfaces modernas e criativas.
+                {t('hero.description_highlight1')} e {t('hero.description_highlight2')}.
               </p>
             </div>
 
             {/* CTAs com cores novas */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-4">
               <button
-                onClick={() => scrollTo('#projetos')}
+                onClick={() => scrollTo('#projects')}
                 className="group bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2 w-full sm:w-auto"
               >
-                <span>Ver Projetos</span>
+                <span>{t('hero.cta_projects')}</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
               
@@ -129,7 +129,7 @@ const HeroRevamp = memo(() => {
                 onClick={() => scrollTo('#contato')}
                 className="group bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 px-6 sm:px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:border-amber-500 dark:hover:border-amber-400 w-full sm:w-auto hover:bg-white dark:hover:bg-slate-800 hover:shadow-lg hover:scale-105"
               >
-                Entrar em Contato
+                {t('hero.cta_contact')}
               </button>
             </div>
 
@@ -144,7 +144,7 @@ const HeroRevamp = memo(() => {
                 },
                 { 
                   icon: Linkedin, 
-                  href: "https://linkedin.com/in/pablo-gomes-dev", 
+                  href: "https://www.linkedin.com/in/pablogomess/", 
                   name: "LinkedIn",
                   color: "hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-500/10"
                 },
