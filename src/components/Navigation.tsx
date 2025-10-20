@@ -20,7 +20,7 @@ const Navigation = () => {
     setScrollProgress(scrollPercent);
     setIsScrolled(scrollY > 20);
 
-    const sections = ["#inicio", "#sobre", "#habilidades", "#projetos", "#contato"];
+    const sections = ["#inicio", "#sobre", "#habilidades", "#projects", "#contato"];
     const scrollPosition = window.scrollY + 100;
 
     for (const section of sections) {
@@ -47,8 +47,8 @@ const Navigation = () => {
     () => [
       { name: t("nav.home"), href: "#inicio", icon: Home },
       { name: t("nav.about"), href: "#sobre", icon: User },
+     { name: t("nav.projects"), href: "#projects", icon: FolderKanban },
       { name: t("nav.skills"), href: "#habilidades", icon: Code },
-      { name: t("nav.projects"), href: "#projetos", icon: FolderKanban },
       { name: t("nav.contact"), href: "#contato", icon: Mail },
     ],
     [t]
@@ -73,8 +73,8 @@ const Navigation = () => {
           : "bg-transparent"
       }`}
     >
-      {/* Barra de progresso do scroll */}
-      <div className="absolute top-0 left-0 w-full h-[3px] bg-transparent">
+      {/* 🔸 Barra de progresso na parte inferior */}
+      <div className="absolute bottom-0 left-0 w-full h-[3px] bg-transparent">
         <div
           className="h-[3px] bg-gradient-to-r from-amber-500 to-orange-500 rounded-full transition-[width] duration-150 ease-linear"
           style={{ width: `${scrollProgress}%` }}

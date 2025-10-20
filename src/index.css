@@ -595,55 +595,24 @@
   }
 }
 
-/* ===== SCROLLBAR PERSONALIZADA - TEMA LARANJA/ÂMBER ===== */
-/* Para navegadores WebKit (Chrome, Safari, Edge) */
+/* ===== REMOVER SCROLLBAR COMPLETAMENTE ===== */
+
+/* Chrome, Safari, Edge e navegadores baseados em WebKit */
 ::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #fffbeb; /* amber-50 - Light mode */
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #f59e0b, #d97706); /* gradiente âmbar */
-  border-radius: 10px;
-  border: 2px solid #fffbeb;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #d97706, #b45309); /* âmbar mais escuro */
-}
-
-/* Para modo escuro - CORRIGIDO */
-.dark ::-webkit-scrollbar-track {
-  background: #0f172a; /* slate-900 - MUITO ESCURO */
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #f59e0b, #d97706);
-  border: 2px solid #0f172a; /* Borda muito escura */
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #fbbf24, #f59e0b);
+  display: none;
 }
 
 /* Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: #f59e0b #fffbeb;
-}
-
-.dark * {
-  scrollbar-color: #f59e0b #0f172a; /* MUITO ESCURO */
-}
-
-/* Scrollbar suave e elegante */
 html {
-  scroll-behavior: smooth;
+  scrollbar-width: none; /* esconde a scrollbar */
+  scroll-behavior: smooth; /* mantém o scroll suave */
 }
+
+/* Internet Explorer / Edge antigo */
+body {
+  -ms-overflow-style: none; /* esconde no IE/Edge antigo */
+}
+
 
 /* Performance para scroll */
 @media (prefers-reduced-motion: reduce) {

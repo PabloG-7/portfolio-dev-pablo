@@ -60,7 +60,7 @@ const Skills = () => {
     { name: 'React', logo: reactLogo, category: 'frontend', level: 84 },
     { name: 'Node.js', logo: nodejsLogo, category: 'backend', level: 80 },
     { name: 'Express', logo: expressLogo, category: 'backend', level: 60 },
-    { name: 'MySQL', logo: mysqlLogo, category: 'database', level: 85 },
+    { name: 'MySQL', logo: mysqlLogo, category: 'database', level: 75 },
     { name: 'Supabase', logo: supabaseLogo, category: 'database', level: 73 },
     { name: 'Git', logo: gitLogo, category: 'tools', level: 90 },
     { name: 'GitHub', logo: githubLogo, category: 'tools', level: 90 },
@@ -335,7 +335,6 @@ const Skills = () => {
         >
           <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-md rounded-2xl p-6 border border-amber-200/60 dark:border-amber-500/20 max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-3 mb-3">
-              <Zap className="w-5 h-5 text-amber-500 animate-pulse" />
               <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
                 Tecnologias em Constante Evolução
               </h3>
