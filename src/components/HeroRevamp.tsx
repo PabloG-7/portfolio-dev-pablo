@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback, memo } from 'react';
-import { ArrowRight, Github, Linkedin, Mail, Code, Palette, Rocket } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const HeroRevamp = memo(() => {
@@ -133,26 +133,26 @@ const HeroRevamp = memo(() => {
               </button>
             </div>
 
-            {/* Socials com cores novas */}
+            {/* Socials redesenhadas - Mais bonitas e que combinam com o site */}
             <div className="flex gap-3 sm:gap-4 pt-6 justify-center lg:justify-start">
               {[
                 { 
                   icon: Github, 
                   href: "https://github.com/PabloG-7",
                   name: "GitHub",
-                  color: "hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
+                  color: "bg-slate-800 hover:bg-slate-900 border-slate-700 text-white"
                 },
                 { 
                   icon: Linkedin, 
                   href: "https://www.linkedin.com/in/pablogomess/", 
                   name: "LinkedIn",
-                  color: "hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-500/10"
+                  color: "bg-blue-600 hover:bg-blue-700 border-blue-500 text-white"
                 },
                 { 
                   icon: Mail, 
                   href: "mailto:pablooliver853@gmail.com",
                   name: "Email",
-                  color: "hover:text-orange-600 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-500/10"
+                  color: "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 border-amber-400 text-white"
                 }
               ].map((social, index) => (
                 <a
@@ -160,7 +160,7 @@ const HeroRevamp = memo(() => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-3 text-slate-600 dark:text-slate-400 transition-all duration-300 hover:scale-110 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200 dark:border-slate-700 ${social.color}`}
+                  className={`p-3 transition-all duration-300 hover:scale-110 rounded-lg border ${social.color} shadow-lg hover:shadow-xl backdrop-blur-sm`}
                   aria-label={social.name}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
@@ -181,8 +181,8 @@ const HeroRevamp = memo(() => {
                 {/* Moldura gradiente */}
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
-                {/* Imagem com animações leves */}
-                <div className="relative w-full h-full rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
+                {/* Imagem com animação suave de flutuação SEMPRE ATIVA */}
+                <div className="relative w-full h-full rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 animate-gentle-float transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
                   <img
                     src="/lovable-uploads/274ab653-078c-4baf-9423-852622909aa4.png"
                     alt="Pablo Gomes - Desenvolvedor Front-End"
@@ -192,19 +192,6 @@ const HeroRevamp = memo(() => {
                   
                   {/* Overlay sutil no hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                </div>
-                
-                {/* Elementos flutuantes animados */}
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-amber-500/20 rounded-full animate-float-delayed flex items-center justify-center backdrop-blur-sm border border-amber-500/30">
-                  <Code className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                </div>
-                
-                <div className="absolute -bottom-4 -left-4 w-7 h-7 bg-orange-500/20 rounded-full animate-float-slow flex items-center justify-center backdrop-blur-sm border border-orange-500/30">
-                  <Palette className="w-3 h-3 text-orange-600 dark:text-orange-400" />
-                </div>
-
-                <div className="absolute top-8 -right-6 w-6 h-6 bg-red-500/20 rounded-full animate-float-slower flex items-center justify-center backdrop-blur-sm border border-red-500/30">
-                  <Rocket className="w-3 h-3 text-red-500 dark:text-red-400" />
                 </div>
               </div>
             </div>
