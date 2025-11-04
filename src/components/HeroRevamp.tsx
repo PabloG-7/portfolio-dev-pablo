@@ -71,25 +71,30 @@ const HeroRevamp = memo(() => {
 
       <header className="container-custom relative min-h-screen flex items-center justify-center pt-20 lg:pt-0">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full max-w-6xl mx-auto">
-          {/* Left - Content */}
+          {/* Left - Content - Sempre centralizado no mobile */}
           <article className="space-y-6 lg:space-y-8 text-center lg:text-left">
+            {/* Título Principal - Com margem superior no mobile */}
             <div className="space-y-4 lg:space-y-6 mt-8 lg:mt-9">
               <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-7xl xl:text-7x1 font-bold leading-tight">
                 <span className="bg-gradient-to-r from-slate-800 via-orange-600 to-slate-800 dark:from-white dark:via-amber-200 dark:to-white bg-clip-text text-transparent">
                   {t('hero.name')}
                 </span>
               </h1>
-
-              {/* Subtítulo aprimorado */}
-              <div className="flex justify-center lg:justify-start items-center gap-4">
-                <div className="h-px w-8 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full hidden sm:block"></div>
-                <p className="text-xl sm:text-2xl md:text-3xl font-medium bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-[length:200%_auto] animate-gradient-x bg-clip-text text-transparent tracking-wide">
-                  {t('hero.role')}
-                </p>
-                <div className="h-px w-8 bg-gradient-to-l from-amber-500 to-orange-500 rounded-full hidden sm:block"></div>
+              
+              {/* Subtítulo com animação especial */}
+              <div className="flex justify-center lg:justify-start items-center gap-3">
+                <div className="relative">
+                  <div className="w-2 h-2 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full animate-pulse"></div>
+                  <div className="absolute -inset-1 bg-amber-500/20 rounded-full animate-ping-slow"></div>
+                </div>
+                <div className="relative overflow-hidden">
+                  <p className="text-lg sm:text-xl md:text-2xl text-slate-700 dark:text-slate-300 font-light animate-text-shimmer bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-clip-text text-transparent bg-[length:200%_auto]">
+                    {t('hero.role')}
+                  </p>
+                </div>
               </div>
-
-              {/* Typewriter */}
+              
+              {/* Typewriter - Cores atualizadas */}
               <div className="flex justify-center lg:justify-start pt-2">
                 <div className="border-l-2 border-amber-500 pl-3 lg:pl-4">
                   <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400">
@@ -103,14 +108,14 @@ const HeroRevamp = memo(() => {
               </div>
             </div>
 
-            {/* Descrição */}
+            {/* Descrição atualizada exatamente como pediu */}
             <div className="max-w-xl mx-auto lg:mx-0">
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-base sm:text-lg font-medium">
                 {t('hero.description_highlight1')} e {t('hero.description_highlight2')}.
               </p>
             </div>
 
-            {/* CTAs */}
+            {/* CTAs com cores novas */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-4">
               <button
                 onClick={() => scrollTo('#projects')}
@@ -128,12 +133,27 @@ const HeroRevamp = memo(() => {
               </button>
             </div>
 
-            {/* Socials */}
+            {/* Socials redesenhadas - Mais bonitas e que combinam com o site */}
             <div className="flex gap-3 sm:gap-4 pt-6 justify-center lg:justify-start">
               {[
-                { icon: Github, href: "https://github.com/PabloG-7", name: "GitHub", color: "bg-slate-800 hover:bg-slate-900 border-slate-700 text-white" },
-                { icon: Linkedin, href: "https://www.linkedin.com/in/pablogomess/", name: "LinkedIn", color: "bg-blue-600 hover:bg-blue-700 border-blue-500 text-white" },
-                { icon: Mail, href: "mailto:pablooliver853@gmail.com", name: "Email", color: "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 border-amber-400 text-white" }
+                { 
+                  icon: Github, 
+                  href: "https://github.com/PabloG-7",
+                  name: "GitHub",
+                  color: "bg-slate-800 hover:bg-slate-900 border-slate-700 text-white"
+                },
+                { 
+                  icon: Linkedin, 
+                  href: "https://www.linkedin.com/in/pablogomess/", 
+                  name: "LinkedIn",
+                  color: "bg-blue-600 hover:bg-blue-700 border-blue-500 text-white"
+                },
+                { 
+                  icon: Mail, 
+                  href: "mailto:pablooliver853@gmail.com",
+                  name: "Email",
+                  color: "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 border-amber-400 text-white"
+                }
               ].map((social, index) => (
                 <a
                   key={social.href}
@@ -150,12 +170,18 @@ const HeroRevamp = memo(() => {
             </div>
           </article>
 
-          {/* Right - Visual */}
+          {/* Right - Visual Melhorado - Escondido no mobile */}
           <aside className="hidden lg:block relative mt-8 lg:mt-0">
             <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto">
+              {/* Container da imagem com animação sutil */}
               <div className="relative w-full h-full group">
+                {/* Efeito de brilho gradiente */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-red-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                
+                {/* Moldura gradiente */}
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Imagem com animação suave de flutuação SEMPRE ATIVA */}
                 <div className="relative w-full h-full rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 animate-gentle-float transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
                   <img
                     src="/lovable-uploads/274ab653-078c-4baf-9423-852622909aa4.png"
@@ -163,6 +189,8 @@ const HeroRevamp = memo(() => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     loading="eager"
                   />
+                  
+                  {/* Overlay sutil no hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
               </div>
