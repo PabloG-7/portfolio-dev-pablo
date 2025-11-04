@@ -7,14 +7,18 @@ const HeroRevamp = memo(() => {
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
+
   const [roleText, setRoleText] = useState('');
+  const [isDeletingRole, setIsDeletingRole] = useState(false);
+  const [loopRole, setLoopRole] = useState(0);
+
   const { t } = useTranslation();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Typewriter do texto descritivo (embaixo)
+  // Typewriter da descrição (parte de baixo)
   useEffect(() => {
     const texts = ['React & TypeScript', 'UI/UX Designer', 'Front-end Developer', 'AI + Code + Creativity'];
     
@@ -42,20 +46,34 @@ const HeroRevamp = memo(() => {
 
   // Typewriter do subtítulo (hero.role)
   useEffect(() => {
-    const fullText = t('hero.role');
-    if (!fullText) return;
+    const roles = [
+      t('hero.role') || 'Desenvolvedor Front-End',
+      'Criador de Interfaces Incríveis',
+      'Especialista em UI & UX',
+      'Apaixonado por Código e Design'
+    ];
 
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index < fullText.length) {
-        setRoleText(fullText.substring(0, index + 1));
-        index++;
-      } else {
-        clearInterval(timer);
+    const tickRole = () => {
+      const i = loopRole % roles.length;
+      const fullText = roles[i];
+
+      setRoleText(
+        isDeletingRole
+          ? fullText.substring(0, roleText.length - 1)
+          : fullText.substring(0, roleText.length + 1)
+      );
+
+      if (!isDeletingRole && roleText === fullText) {
+        setTimeout(() => setIsDeletingRole(true), 1200);
+      } else if (isDeletingRole && roleText === '') {
+        setIsDeletingRole(false);
+        setLoopRole(loopRole + 1);
       }
-    }, 100);
-    return () => clearInterval(timer);
-  }, [t]);
+    };
+
+    const timer = setTimeout(tickRole, isDeletingRole ? 50 : 100);
+    return () => clearTimeout(timer);
+  }, [roleText, isDeletingRole, loopRole, t]);
 
   const scrollTo = useCallback((hash: string) => {
     const el = document.querySelector(hash);
@@ -95,7 +113,7 @@ const HeroRevamp = memo(() => {
                 </span>
               </h1>
 
-              {/* 🔥 Subtítulo com typewriter e gradiente */}
+              {/* 🔥 Subtítulo com typewriter looping */}
               <div className="group flex justify-center lg:justify-start items-center gap-3 relative">
                 <div className="w-10 h-[2px] bg-gradient-to-r from-amber-500 to-orange-500 rounded-full transition-all duration-500 group-hover:w-14"></div>
                 <p className="text-lg sm:text-xl md:text-2xl font-medium bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-clip-text text-transparent tracking-wide transition-all duration-500 group-hover:brightness-125">
@@ -105,7 +123,7 @@ const HeroRevamp = memo(() => {
                 <div className="absolute -inset-x-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-20 bg-gradient-to-r from-amber-500/30 via-orange-400/30 to-transparent blur-xl rounded-full transition-all duration-700"></div>
               </div>
 
-              {/* Typewriter inferior */}
+              {/* Texto dinâmico abaixo */}
               <div className="flex justify-center lg:justify-start pt-2">
                 <div className="border-l-2 border-amber-500 pl-3 lg:pl-4">
                   <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400">
