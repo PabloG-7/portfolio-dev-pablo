@@ -7,12 +7,14 @@ const HeroRevamp = memo(() => {
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
+  const [roleText, setRoleText] = useState('');
   const { t } = useTranslation();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Typewriter do texto descritivo (embaixo)
   useEffect(() => {
     const texts = ['React & TypeScript', 'UI/UX Designer', 'Front-end Developer', 'AI + Code + Creativity'];
     
@@ -37,6 +39,23 @@ const HeroRevamp = memo(() => {
     const timer = setTimeout(tick, isDeleting ? 50 : 100);
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, loopNum]);
+
+  // Typewriter do subtítulo (hero.role)
+  useEffect(() => {
+    const fullText = t('hero.role');
+    if (!fullText) return;
+
+    let index = 0;
+    const timer = setInterval(() => {
+      if (index < fullText.length) {
+        setRoleText(fullText.substring(0, index + 1));
+        index++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 100);
+    return () => clearInterval(timer);
+  }, [t]);
 
   const scrollTo = useCallback((hash: string) => {
     const el = document.querySelector(hash);
@@ -75,17 +94,18 @@ const HeroRevamp = memo(() => {
                   {t('hero.name')}
                 </span>
               </h1>
-              
-              {/* 🔥 Subtítulo Modernizado */}
+
+              {/* 🔥 Subtítulo com typewriter e gradiente */}
               <div className="group flex justify-center lg:justify-start items-center gap-3 relative">
                 <div className="w-10 h-[2px] bg-gradient-to-r from-amber-500 to-orange-500 rounded-full transition-all duration-500 group-hover:w-14"></div>
                 <p className="text-lg sm:text-xl md:text-2xl font-medium bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-clip-text text-transparent tracking-wide transition-all duration-500 group-hover:brightness-125">
-                  {t('hero.role')}
+                  {roleText}
+                  <span className="ml-1 text-amber-500 animate-pulse">|</span>
                 </p>
                 <div className="absolute -inset-x-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-20 bg-gradient-to-r from-amber-500/30 via-orange-400/30 to-transparent blur-xl rounded-full transition-all duration-700"></div>
               </div>
 
-              {/* Typewriter */}
+              {/* Typewriter inferior */}
               <div className="flex justify-center lg:justify-start pt-2">
                 <div className="border-l-2 border-amber-500 pl-3 lg:pl-4">
                   <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400">
