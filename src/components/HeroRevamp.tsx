@@ -7,18 +7,13 @@ const HeroRevamp = memo(() => {
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
-
-  const [roleText, setRoleText] = useState('');
-  const [isDeletingRole, setIsDeletingRole] = useState(false);
-  const [loopRole, setLoopRole] = useState(0);
-
   const { t } = useTranslation();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Typewriter da descrição (parte de baixo)
+  // Efeito Typewriter simplificado
   useEffect(() => {
     const texts = ['React & TypeScript', 'UI/UX Designer', 'Front-end Developer', 'AI + Code + Creativity'];
     
@@ -44,37 +39,6 @@ const HeroRevamp = memo(() => {
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, loopNum]);
 
-  // Typewriter do subtítulo (hero.role)
-  useEffect(() => {
-    const roles = [
-      t('hero.role') || 'Desenvolvedor Front-End',
-      'Criador de Interfaces Incríveis',
-      'Especialista em UI & UX',
-      'Apaixonado por Código e Design'
-    ];
-
-    const tickRole = () => {
-      const i = loopRole % roles.length;
-      const fullText = roles[i];
-
-      setRoleText(
-        isDeletingRole
-          ? fullText.substring(0, roleText.length - 1)
-          : fullText.substring(0, roleText.length + 1)
-      );
-
-      if (!isDeletingRole && roleText === fullText) {
-        setTimeout(() => setIsDeletingRole(true), 1200);
-      } else if (isDeletingRole && roleText === '') {
-        setIsDeletingRole(false);
-        setLoopRole(loopRole + 1);
-      }
-    };
-
-    const timer = setTimeout(tickRole, isDeletingRole ? 50 : 100);
-    return () => clearTimeout(timer);
-  }, [roleText, isDeletingRole, loopRole, t]);
-
   const scrollTo = useCallback((hash: string) => {
     const el = document.querySelector(hash);
     if (el) {
@@ -84,10 +48,12 @@ const HeroRevamp = memo(() => {
 
   return (
     <section id="inicio" className="relative min-h-screen overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50/30 to-yellow-50/20 dark:from-slate-900 dark:via-orange-950/20 dark:to-amber-950/10">
+      {/* Background com padrão sutil */}
       <div className="absolute inset-0 opacity-5 dark:opacity-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.15)_1px,transparent_0)] bg-[size:32px_32px] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.1)_1px,transparent_0)]"></div>
       </div>
 
+      {/* Partículas flutuantes */}
       <div className="absolute inset-0">
         {[...Array(8)].map((_, i) => (
           <div
@@ -105,6 +71,7 @@ const HeroRevamp = memo(() => {
 
       <header className="container-custom relative min-h-screen flex items-center justify-center pt-20 lg:pt-0">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full max-w-6xl mx-auto">
+          {/* Left - Content */}
           <article className="space-y-6 lg:space-y-8 text-center lg:text-left">
             <div className="space-y-4 lg:space-y-6 mt-8 lg:mt-9">
               <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-7xl xl:text-7x1 font-bold leading-tight">
@@ -113,17 +80,16 @@ const HeroRevamp = memo(() => {
                 </span>
               </h1>
 
-              {/* 🔥 Subtítulo com typewriter looping */}
-              <div className="group flex justify-center lg:justify-start items-center gap-3 relative">
-                <div className="w-10 h-[2px] bg-gradient-to-r from-amber-500 to-orange-500 rounded-full transition-all duration-500 group-hover:w-14"></div>
-                <p className="text-lg sm:text-xl md:text-2xl font-medium bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-clip-text text-transparent tracking-wide transition-all duration-500 group-hover:brightness-125">
-                  {roleText}
-                  <span className="ml-1 text-amber-500 animate-pulse">|</span>
+              {/* Subtítulo aprimorado */}
+              <div className="flex justify-center lg:justify-start items-center gap-4">
+                <div className="h-px w-8 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full hidden sm:block"></div>
+                <p className="text-xl sm:text-2xl md:text-3xl font-medium bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-[length:200%_auto] animate-gradient-x bg-clip-text text-transparent tracking-wide">
+                  {t('hero.role')}
                 </p>
-                <div className="absolute -inset-x-4 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-20 bg-gradient-to-r from-amber-500/30 via-orange-400/30 to-transparent blur-xl rounded-full transition-all duration-700"></div>
+                <div className="h-px w-8 bg-gradient-to-l from-amber-500 to-orange-500 rounded-full hidden sm:block"></div>
               </div>
 
-              {/* Texto dinâmico abaixo */}
+              {/* Typewriter */}
               <div className="flex justify-center lg:justify-start pt-2">
                 <div className="border-l-2 border-amber-500 pl-3 lg:pl-4">
                   <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400">
@@ -137,12 +103,14 @@ const HeroRevamp = memo(() => {
               </div>
             </div>
 
+            {/* Descrição */}
             <div className="max-w-xl mx-auto lg:mx-0">
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-base sm:text-lg font-medium">
                 {t('hero.description_highlight1')} e {t('hero.description_highlight2')}.
               </p>
             </div>
 
+            {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-4">
               <button
                 onClick={() => scrollTo('#projects')}
@@ -160,26 +128,12 @@ const HeroRevamp = memo(() => {
               </button>
             </div>
 
+            {/* Socials */}
             <div className="flex gap-3 sm:gap-4 pt-6 justify-center lg:justify-start">
               {[
-                { 
-                  icon: Github, 
-                  href: "https://github.com/PabloG-7",
-                  name: "GitHub",
-                  color: "bg-slate-800 hover:bg-slate-900 border-slate-700 text-white"
-                },
-                { 
-                  icon: Linkedin, 
-                  href: "https://www.linkedin.com/in/pablogomess/", 
-                  name: "LinkedIn",
-                  color: "bg-blue-600 hover:bg-blue-700 border-blue-500 text-white"
-                },
-                { 
-                  icon: Mail, 
-                  href: "mailto:pablooliver853@gmail.com",
-                  name: "Email",
-                  color: "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 border-amber-400 text-white"
-                }
+                { icon: Github, href: "https://github.com/PabloG-7", name: "GitHub", color: "bg-slate-800 hover:bg-slate-900 border-slate-700 text-white" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/pablogomess/", name: "LinkedIn", color: "bg-blue-600 hover:bg-blue-700 border-blue-500 text-white" },
+                { icon: Mail, href: "mailto:pablooliver853@gmail.com", name: "Email", color: "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 border-amber-400 text-white" }
               ].map((social, index) => (
                 <a
                   key={social.href}
@@ -196,6 +150,7 @@ const HeroRevamp = memo(() => {
             </div>
           </article>
 
+          {/* Right - Visual */}
           <aside className="hidden lg:block relative mt-8 lg:mt-0">
             <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto">
               <div className="relative w-full h-full group">
