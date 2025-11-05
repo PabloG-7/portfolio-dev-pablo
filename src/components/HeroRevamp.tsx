@@ -74,10 +74,14 @@ const HeroRevamp = memo(() => {
           {/* Left - Content */}
           <article className="space-y-6 lg:space-y-8 text-center lg:text-left">
             <div className="space-y-4 lg:space-y-6 mt-8 lg:mt-9">
-              <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-7xl xl:text-7x1 font-bold leading-tight">
-                <span className="bg-gradient-to-r from-slate-800 via-orange-600 to-slate-800 dark:from-white dark:via-amber-200 dark:to-white bg-clip-text text-transparent">
+              
+              {/* NOME PRINCIPAL COM EFEITO MELHORADO */}
+              <h1 className="relative text-6xl sm:text-7xl md:text-8xl lg:text-7xl xl:text-7x1 font-extrabold leading-tight tracking-tight group transition-all duration-500">
+                <span className="bg-gradient-to-r from-slate-800 via-orange-600 to-slate-800 dark:from-white dark:via-amber-200 dark:to-white bg-[length:200%_auto] animate-gradient-x bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(255,166,0,0.15)] transition-all duration-700 group-hover:drop-shadow-[0_0_35px_rgba(255,180,80,0.25)]">
                   {t('hero.name')}
                 </span>
+                {/* linha decorativa sutil */}
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 rounded-full opacity-70 group-hover:opacity-100 transition-opacity duration-700"></div>
               </h1>
 
               {/* Subtítulo aprimorado */}
