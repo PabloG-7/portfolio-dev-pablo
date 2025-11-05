@@ -13,7 +13,7 @@ const HeroRevamp = memo(() => {
     setMounted(true);
   }, []);
 
-  // Efeito Typewriter simplificado
+  // Efeito Typewriter
   useEffect(() => {
     const texts = ['React & TypeScript', 'UI/UX Designer', 'Front-end Developer', 'AI + Code + Creativity'];
     
@@ -41,9 +41,7 @@ const HeroRevamp = memo(() => {
 
   const scrollTo = useCallback((hash: string) => {
     const el = document.querySelector(hash);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, []);
 
   return (
@@ -51,7 +49,7 @@ const HeroRevamp = memo(() => {
       id="inicio"
       className="relative min-h-screen overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50/30 to-yellow-50/20 dark:from-slate-900 dark:via-orange-950/20 dark:to-amber-950/10"
     >
-      {/* Background com padrão sutil */}
+      {/* Background sutil */}
       <div className="absolute inset-0 opacity-5 dark:opacity-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.15)_1px,transparent_0)] bg-[size:32px_32px] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.1)_1px,transparent_0)]"></div>
       </div>
@@ -74,12 +72,13 @@ const HeroRevamp = memo(() => {
 
       <header className="container-custom relative min-h-screen flex items-center justify-center pt-20 lg:pt-0">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full max-w-6xl mx-auto">
-          {/* Left - Content */}
+          
+          {/* Left - Conteúdo */}
           <article className="space-y-6 lg:space-y-8 text-center lg:text-left">
             <div className="space-y-4 lg:space-y-6 mt-8 lg:mt-9">
               
-              {/* Nome principal aprimorado */}
-              <h1 className="relative whitespace-nowrap text-7xl sm:text-8xl md:text-9xl lg:text-8xl xl:text-8xl font-extrabold leading-tight tracking-tight group transition-all duration-500">
+              {/* Nome principal */}
+              <h1 className="relative text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold leading-tight tracking-tight group transition-all duration-500 text-balance">
                 <span className="bg-gradient-to-r from-slate-800 via-orange-600 to-slate-800 dark:from-white dark:via-amber-200 dark:to-white bg-[length:200%_auto] animate-gradient-x bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(255,166,0,0.15)] transition-all duration-700 group-hover:drop-shadow-[0_0_35px_rgba(255,180,80,0.25)]">
                   {t('hero.name')}
                 </span>
@@ -89,16 +88,16 @@ const HeroRevamp = memo(() => {
               {/* Subtítulo aprimorado */}
               <div className="flex justify-center lg:justify-start items-center gap-4">
                 <div className="h-px w-8 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full hidden sm:block"></div>
-                <p className="text-2xl sm:text-3xl md:text-4xl font-medium bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-[length:200%_auto] animate-gradient-x bg-clip-text text-transparent tracking-wide">
+                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-[length:200%_auto] animate-gradient-x bg-clip-text text-transparent tracking-wide">
                   {t('hero.role')}
                 </p>
                 <div className="h-px w-8 bg-gradient-to-l from-amber-500 to-orange-500 rounded-full hidden sm:block"></div>
               </div>
 
-              {/* Typewriter */}
+              {/* Typewriter aumentado */}
               <div className="flex justify-center lg:justify-start pt-2">
                 <div className="border-l-2 border-amber-500 pl-3 lg:pl-4">
-                  <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400">
+                  <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-600 dark:text-slate-400 font-medium">
                     {t('hero.description')}{' '}
                     <span className="text-amber-600 dark:text-amber-400 font-semibold">
                       {currentText}
@@ -107,12 +106,13 @@ const HeroRevamp = memo(() => {
                   </p>
                 </div>
               </div>
+
             </div>
 
-            {/* Descrição */}
-            <div className="max-w-xl mx-auto lg:mx-0">
-              <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-base sm:text-lg font-medium">
-                {t('hero.description_highlight1')} e {t('hero.description_highlight2')}.
+            {/* Descrição secundária aumentada */}
+            <div className="max-w-xl mx-auto lg:mx-0 pt-4">
+              <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-base sm:text-lg md:text-xl lg:text-3xl font-medium">
+                Transformando interfaces modernas e criativas.
               </p>
             </div>
 
@@ -156,7 +156,7 @@ const HeroRevamp = memo(() => {
             </div>
           </article>
 
-          {/* Right - Visual */}
+          {/* Right - Imagem */}
           <aside className="hidden lg:block relative mt-8 lg:mt-0">
             <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto">
               <div className="relative w-full h-full group">
