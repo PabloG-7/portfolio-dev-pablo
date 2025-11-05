@@ -73,7 +73,7 @@ const HeroRevamp = memo(() => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full max-w-6xl mx-auto">
           {/* Left - Content */}
           <article className="space-y-6 lg:space-y-8 text-center lg:text-left">
-            <div className="space-y-4 lg:space-y-6 mt-8 lg:mt-9">
+            <div className="space-y-6 lg:space-y-6 mt-8 lg:mt-9">
               
               {/* NOME PRINCIPAL COM EFEITO MELHORADO */}
               <h1 className="relative text-6xl sm:text-7xl md:text-8xl lg:text-7xl xl:text-7x1 font-extrabold leading-tight tracking-tight group transition-all duration-500">
@@ -87,7 +87,7 @@ const HeroRevamp = memo(() => {
              {/* Subtítulo aprimorado */}
 <div className="flex justify-center lg:justify-start items-center gap-4">
   <div className="h-px w-8 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full hidden sm:block"></div>
-  <p className="text-2xl sm:text-3xl md:text-4xl font-medium bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-[length:200%_auto] animate-gradient-x bg-clip-text text-transparent tracking-wide">
+  <p className="text-2xl sm:text-3xl md:text-1xl font-medium bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 dark:from-amber-400 dark:via-orange-400 dark:to-amber-400 bg-[length:200%_auto] animate-gradient-x bg-clip-text text-transparent tracking-wide">
     {t('hero.role')}
   </p>
   <div className="h-px w-8 bg-gradient-to-l from-amber-500 to-orange-500 rounded-full hidden sm:block"></div>
