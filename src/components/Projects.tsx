@@ -1,5 +1,5 @@
 import { useState, memo, useMemo, useCallback } from 'react';
-import { ExternalLink, Github, Eye, ArrowRight, Gamepad2, Sparkles, Star, Code, Palette, Zap, Clock, Building2, Stethoscope, Shirt, Database, GamepadIcon, ShoppingCart, ListTodo, CheckCircle2, X, Calendar, Users, Target, ChevronRight, Play } from 'lucide-react';
+import { ExternalLink, Github, Eye, ArrowRight, Gamepad2, Sparkles, Star, Code, Palette, Zap, Clock, Building2, Stethoscope, Shirt, Database, GamepadIcon, ShoppingCart, ListTodo, CheckCircle2, X, Calendar, Target, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import LazyImage from './LazyImage';
@@ -9,7 +9,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
   const [gamePreview, setGamePreview] = useState<{ isOpen: boolean; gameData?: any }>({ isOpen: false });
   const [projectDetail, setProjectDetail] = useState<{ isOpen: boolean; projectData?: any }>({ isOpen: false });
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { elementRef, isIntersecting: isVisible } = useIntersectionObserver({ 
     threshold: 0.1,
     triggerOnce: true,
@@ -21,7 +21,9 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       id: 'neon_memory',
       title: 'NEON MEMORY',
       description: t('projects.descriptions.neon_memory'),
-      fullDescription: "Um jogo da memória revolucionário com tema neon que oferece uma experiência única de multiplayer em tempo real. Desenvolvido com tecnologias modernas para proporcionar performance excepcional e uma jogabilidade envolvente.",
+      fullDescription: i18n.language === 'pt' 
+        ? "Um jogo da memória revolucionário com tema neon que oferece uma experiência única de multiplayer em tempo real. Desenvolvido com tecnologias modernas para proporcionar performance excepcional e uma jogabilidade envolvente."
+        : "A revolutionary neon-themed memory game that offers a unique real-time multiplayer experience. Developed with modern technologies to provide exceptional performance and engaging gameplay.",
       technologies: ['TypeScript', 'React', 'Supabase', 'Vite', 'Tailwind CSS', 'Web Audio API', 'PostgreSQL', 'PWA'],
       image: '/lovable-uploads/neon-linkedin.png',
       liveUrl: 'https://jogo-memoria-gold.vercel.app/',
@@ -40,26 +42,42 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       ],
       personal: true,
       category: t('projects.category.game'),
-      status: 'Concluído',
-      timeline: '2 meses',
-      challenges: [
-        "Implementar multiplayer em tempo real com baixa latência",
-        "Criar sistema de áudio interativo com Web Audio API",
-        "Otimizar performance para dispositivos móveis"
-      ],
-      features: [
-        "Multiplayer em tempo real",
-        "Três modos de jogo diferentes",
-        "Sistema de ranking online",
-        "Efeitos visuais neon",
-        "Audio imersivo"
-      ]
+      status: i18n.language === 'pt' ? 'Concluído' : 'Completed',
+      timeline: i18n.language === 'pt' ? '2 meses' : '2 months',
+      challenges: i18n.language === 'pt' 
+        ? [
+            "Implementar multiplayer em tempo real com baixa latência",
+            "Criar sistema de áudio interativo com Web Audio API",
+            "Otimizar performance para dispositivos móveis"
+          ]
+        : [
+            "Implement real-time multiplayer with low latency",
+            "Create interactive audio system with Web Audio API",
+            "Optimize performance for mobile devices"
+          ],
+      features: i18n.language === 'pt'
+        ? [
+            "Multiplayer em tempo real",
+            "Três modos de jogo diferentes",
+            "Sistema de ranking online",
+            "Efeitos visuais neon",
+            "Audio imersivo"
+          ]
+        : [
+            "Real-time multiplayer",
+            "Three different game modes",
+            "Online ranking system",
+            "Neon visual effects",
+            "Immersive audio"
+          ]
     },
     {
       id: 'dr_bruno',
       title: 'DR. BRUNO RIBEIRO',
       description: t('projects.descriptions.dr_bruno'),
-      fullDescription: "Site institucional premium desenvolvido para um fisioterapeuta especializado, focando em converter visitantes em pacientes. Design moderno com animações fluidas e otimização completa para SEO.",
+      fullDescription: i18n.language === 'pt'
+        ? "Site institucional premium desenvolvido para um fisioterapeuta especializado, focando em converter visitantes em pacientes. Design moderno com animações fluidas e otimização completa para SEO."
+        : "Premium institutional website developed for a specialized physiotherapist, focusing on converting visitors into patients. Modern design with fluid animations and complete SEO optimization.",
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'GSAP', 'FormSubmit', 'Responsive Design'],
       image: '/lovable-uploads/drbruno-portfolio.png',
       liveUrl: '#',
@@ -77,23 +95,37 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
         t('projects.highlights_list.animations'),
         t('projects.highlights_list.performance')
       ],
-      timeline: 'Em andamento',
-      challenges: [
-        "Criar design que transmita profissionalismo e confiança",
-        "Implementar formulário de contato seguro e funcional",
-        "Otimizar para motores de busca locais"
-      ],
-      goals: [
-        "Aumentar conversão de visitantes em consultas",
-        "Melhorar posicionamento no Google para fisioterapia",
-        "Oferecer experiência mobile excepcional"
-      ]
+      timeline: i18n.language === 'pt' ? 'Em andamento' : 'In progress',
+      challenges: i18n.language === 'pt'
+        ? [
+            "Criar design que transmita profissionalismo e confiança",
+            "Implementar formulário de contato seguro e funcional",
+            "Otimizar para motores de busca locais"
+          ]
+        : [
+            "Create design that conveys professionalism and trust",
+            "Implement secure and functional contact form",
+            "Optimize for local search engines"
+          ],
+      goals: i18n.language === 'pt'
+        ? [
+            "Aumentar conversão de visitantes em consultas",
+            "Melhorar posicionamento no Google para fisioterapia",
+            "Oferecer experiência mobile excepcional"
+          ]
+        : [
+            "Increase visitor to appointment conversion",
+            "Improve Google ranking for physiotherapy",
+            "Provide exceptional mobile experience"
+          ]
     },
     {
       id: 'raeven',
       title: 'RAEVEN FASHION',
       description: t('projects.descriptions.raeven'),
-      fullDescription: "Plataforma inovadora de moda inteligente que utiliza IA para revolucionar a experiência de compra online. Oferece experimentação virtual, recomendações personalizadas e visualização 3D interativa de produtos.",
+      fullDescription: i18n.language === 'pt'
+        ? "Plataforma inovadora de moda inteligente que utiliza IA para revolucionar a experiência de compra online. Oferece experimentação virtual, recomendações personalizadas e visualização 3D interativa de produtos."
+        : "Innovative smart fashion platform that uses AI to revolutionize the online shopping experience. Offers virtual try-on, personalized recommendations and interactive 3D product visualization.",
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'E-commerce', 'AI Integration', 'Virtual Try-On', 'UI/UX Design', '3D Visualization'],
       image: '/lovable-uploads/raeven-portfolio.png',
       liveUrl: '#',
@@ -112,25 +144,41 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
         t('projects.highlights_list.modern_ui'),
         t('projects.highlights_list.in_development')
       ],
-      timeline: 'Desenvolvimento ativo',
-      features: [
-        "Sistema de experimentação virtual com upload de foto",
-        "Algoritmo de IA para recomendações personalizadas",
-        "Visualizador 3D interativo de produtos",
-        "Chatbot inteligente para atendimento",
-        "Dashboard administrativo completo"
-      ],
-      challenges: [
-        "Desenvolver sistema de IA para recomendações precisas",
-        "Implementar visualização 3D performática",
-        "Criar interface intuitiva para experimentação virtual"
-      ]
+      timeline: i18n.language === 'pt' ? 'Desenvolvimento ativo' : 'Active development',
+      features: i18n.language === 'pt'
+        ? [
+            "Sistema de experimentação virtual com upload de foto",
+            "Algoritmo de IA para recomendações personalizadas",
+            "Visualizador 3D interativo de produtos",
+            "Chatbot inteligente para atendimento",
+            "Dashboard administrativo completo"
+          ]
+        : [
+            "Virtual try-on system with photo upload",
+            "AI algorithm for personalized recommendations",
+            "Interactive 3D product viewer",
+            "Smart chatbot for customer service",
+            "Complete admin dashboard"
+          ],
+      challenges: i18n.language === 'pt'
+        ? [
+            "Desenvolver sistema de IA para recomendações precisas",
+            "Implementar visualização 3D performática",
+            "Criar interface intuitiva para experimentação virtual"
+          ]
+        : [
+            "Develop AI system for accurate recommendations",
+            "Implement performant 3D visualization",
+            "Create intuitive interface for virtual try-on"
+          ]
     },
     {
       id: 'taskforge',
       title: 'TASKFORGE',
       description: t('projects.descriptions.taskforge'),
-      fullDescription: "Aplicação de produtividade premium com foco em organização pessoal e profissional. Oferece sistema de tags inteligente, modo Pomodoro integrado e interface drag-and-drop intuitiva.",
+      fullDescription: i18n.language === 'pt'
+        ? "Aplicação de produtividade premium com foco em organização pessoal e profissional. Oferece sistema de tags inteligente, modo Pomodoro integrado e interface drag-and-drop intuitiva."
+        : "Premium productivity application focused on personal and professional organization. Offers smart tag system, integrated Pomodoro mode and intuitive drag-and-drop interface.",
       technologies: ['React', 'TypeScript', 'Vite', 'Local Storage', 'Tailwind CSS'],
       image: '/lovable-uploads/taskforge-linkedin.png',
       liveUrl: 'https://gerenciador-de-tarefas-wine.vercel.app/',
@@ -147,21 +195,31 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       ],
       personal: true,
       category: t('projects.category.productivity'),
-      status: 'Concluído',
-      timeline: '1.5 meses',
-      features: [
-        "Sistema de categorias e tags avançado",
-        "Modo Pomodoro com estatísticas",
-        "Drag-and-drop intuitivo",
-        "Dark/light mode automático",
-        "Exportação de dados"
-      ]
+      status: i18n.language === 'pt' ? 'Concluído' : 'Completed',
+      timeline: i18n.language === 'pt' ? '1.5 meses' : '1.5 months',
+      features: i18n.language === 'pt'
+        ? [
+            "Sistema de categorias e tags avançado",
+            "Modo Pomodoro com estatísticas",
+            "Drag-and-drop intuitivo",
+            "Dark/light mode automático",
+            "Exportação de dados"
+          ]
+        : [
+            "Advanced categories and tags system",
+            "Pomodoro mode with statistics",
+            "Intuitive drag-and-drop",
+            "Automatic dark/light mode",
+            "Data export"
+          ]
     },
     {
       id: 'luckpet',
       title: 'LUCKPET',
       description: t('projects.descriptions.luckpet'),
-      fullDescription: "E-commerce completo para petshop com foco em experiência do usuário e fidelização. Sistema de autenticação seguro, carrinho persistente e programa de recompensas integrado.",
+      fullDescription: i18n.language === 'pt'
+        ? "E-commerce completo para petshop com foco em experiência do usuário e fidelização. Sistema de autenticação seguro, carrinho persistente e programa de recompensas integrado."
+        : "Complete e-commerce for pet shop focused on user experience and loyalty. Secure authentication system, persistent shopping cart and integrated rewards program.",
       technologies: ['JavaScript', 'CSS3', 'Supabase', 'HTML5', 'E-commerce'],
       image: '/lovable-uploads/luckpet-linkedin.png',
       liveUrl: 'https://projeto-luckpet.vercel.app/',
@@ -178,21 +236,31 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       ],
       personal: true,
       category: t('projects.category.ecommerce'),
-      status: 'Concluído',
-      timeline: '2 meses',
-      features: [
-        "Sistema de autenticação com Supabase",
-        "Programa de fidelidade com pontos",
-        "Carrinho de compras persistente",
-        "Busca e filtros avançados",
-        "Dashboard de pedidos"
-      ]
+      status: i18n.language === 'pt' ? 'Concluído' : 'Completed',
+      timeline: i18n.language === 'pt' ? '2 meses' : '2 months',
+      features: i18n.language === 'pt'
+        ? [
+            "Sistema de autenticação com Supabase",
+            "Programa de fidelidade com pontos",
+            "Carrinho de compras persistente",
+            "Busca e filtros avançados",
+            "Dashboard de pedidos"
+          ]
+        : [
+            "Authentication system with Supabase",
+            "Loyalty program with points",
+            "Persistent shopping cart",
+            "Advanced search and filters",
+            "Orders dashboard"
+          ]
     },
     {
       id: 'pokedex',
       title: 'POKÉDEX',
       description: t('projects.descriptions.pokedex'),
-      fullDescription: "Aplicação web interativa que consome a PokéAPI para fornecer informações detalhadas sobre Pokémon. Interface moderna com sistema de busca avançado e design inspirado no universo Pokémon.",
+      fullDescription: i18n.language === 'pt'
+        ? "Aplicação web interativa que consome a PokéAPI para fornecer informações detalhadas sobre Pokémon. Interface moderna com sistema de busca avançado e design inspirado no universo Pokémon."
+        : "Interactive web application that consumes PokéAPI to provide detailed Pokémon information. Modern interface with advanced search system and Pokémon universe-inspired design.",
       technologies: ['React', 'PokéAPI', 'Axios', 'Tailwind CSS', 'Vercel'],
       image: '/lovable-uploads/pokedex-linkedin.png',
       liveUrl: 'https://pokedex-nine-vert.vercel.app/',
@@ -209,17 +277,25 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       ],
       personal: true,
       category: t('projects.category.api'),
-      status: 'Concluído',
-      timeline: '3 semanas',
-      features: [
-        "Consumo da PokéAPI RESTful",
-        "Sistema de busca em tempo real",
-        "Filtros por tipo, geração e região",
-        "Design responsivo e temático",
-        "Paginação otimizada"
-      ]
+      status: i18n.language === 'pt' ? 'Concluído' : 'Completed',
+      timeline: i18n.language === 'pt' ? '3 semanas' : '3 weeks',
+      features: i18n.language === 'pt'
+        ? [
+            "Consumo da PokéAPI RESTful",
+            "Sistema de busca em tempo real",
+            "Filtros por tipo, geração e região",
+            "Design responsivo e temático",
+            "Paginação otimizada"
+          ]
+        : [
+            "RESTful PokéAPI consumption",
+            "Real-time search system",
+            "Filters by type, generation and region",
+            "Responsive and themed design",
+            "Optimized pagination"
+          ]
     },
-  ], [t]);
+  ], [t, i18n.language]);
 
   const openGamePreview = useCallback((project: any) => {
     setGamePreview({ isOpen: true, gameData: project });
@@ -294,7 +370,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
             const isFeatured = project.featured;
             const isFreelance = project.freelance;
             const isPersonal = project.personal;
-            const hasStatus = project.status && project.status !== 'Concluído';
+            const hasStatus = project.status && project.status !== (i18n.language === 'pt' ? 'Concluído' : 'Completed');
             
             return (
               <div
@@ -365,7 +441,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                     {/* Glow effect */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700">
                       <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-white/20 to-transparent rounded-full blur-xl transform -translate-x-1/2 -translate-y-1/2"></div>
-                      <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-white/20 to-transparent rounded-full blur-xl transform translate-x-1/2 translate-y/1/2"></div>
+                      <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-white/20 to-transparent rounded-full blur-xl transform translate-x-1/2 translate-y-1/2"></div>
                     </div>
                     
                     {/* Action buttons */}
@@ -383,7 +459,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                             className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 hover:scale-110 cursor-not-allowed opacity-80 shadow-lg backdrop-blur-sm"
                             disabled
                           >
-                            <Clock className="w-4 h-4 lg:w-5 lg/h-5" />
+                            <Clock className="w-4 h-4 lg:w-5 lg:h-5" />
                           </button>
                         ) : (
                           <a
@@ -392,7 +468,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                             rel="noopener noreferrer"
                             className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 hover:scale-110 shadow-lg backdrop-blur-sm"
                           >
-                            <Eye className="w-4 h-4 lg:w-5 lg/h-5" />
+                            <Eye className="w-4 h-4 lg:w-5 lg:h-5" />
                           </a>
                         )}
                         
@@ -401,7 +477,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                           onClick={() => openProjectDetail(project)}
                           className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-110 shadow-lg backdrop-blur-sm"
                         >
-                          <Star className="w-4 h-4 lg:w-5 lg/h-5" />
+                          <Star className="w-4 h-4 lg:w-5 lg:h-5" />
                         </button>
 
                         {!isFreelance && !hasStatus && (
@@ -411,7 +487,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                             rel="noopener noreferrer"
                             className="p-3 bg-slate-800/90 text-white rounded-xl hover:bg-slate-700/90 transition-all duration-300 hover:scale-110 shadow-lg backdrop-blur-sm"
                           >
-                            <Github className="w-4 h-4 lg:w-5 lg/h-5" />
+                            <Github className="w-4 h-4 lg:w-5 lg:h-5" />
                           </a>
                         )}
                       </div>
@@ -546,7 +622,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                           }`}
                         >
                           <Star className="w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-300 group-hover/action:scale-110" />
-                          <span>Detalhes</span>
+                          <span>{t('projects.view_details')}</span>
                         </button>
                       </div>
                       <div className="flex space-x-2 lg:space-x-3">
@@ -592,6 +668,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
           <ProjectDetailModal
             project={projectDetail.projectData}
             onClose={closeProjectDetail}
+            t={t}
           />
         )}
 
@@ -608,7 +685,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
             className="inline-flex items-center justify-center gap-2 lg:gap-3 px-6 lg:px-8 py-3 lg:py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-semibold transition-all duration-500 hover:shadow-lg hover:shadow-amber-500/25 hover:gap-3 lg:hover:gap-4 hover:scale-105 text-sm lg:text-base"
           >
             <span>{t('projects.view_all_github')}</span>
-            <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 transition-transform duration-300 group-hover:translate/x-1" />
+            <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         </div>
       </div>
@@ -617,45 +694,45 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
 };
 
 // Componente Modal de Detalhes do Projeto
-const ProjectDetailModal = ({ project, onClose }: { project: any; onClose: () => void }) => {
+const ProjectDetailModal = ({ project, onClose, t }: { project: any; onClose: () => void; t: any }) => {
   const isFreelance = project.freelance;
   const isPersonal = project.personal;
-  const hasStatus = project.status && project.status !== 'Concluído';
+  const hasStatus = project.status && project.status !== (t('language.portuguese') === 'Português' ? 'Concluído' : 'Completed');
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-      <div className="relative bg-white dark:bg-slate-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/60 backdrop-blur-sm">
+      <div className="relative bg-white dark:bg-slate-900 rounded-2xl w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto border border-slate-200 dark:border-slate-700 shadow-2xl">
         {/* Header */}
-        <div className="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 rounded-t-2xl p-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className={`p-3 rounded-xl ${
+        <div className="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 rounded-t-2xl p-4 sm:p-6">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
+              <div className={`p-2 sm:p-3 rounded-xl flex-shrink-0 ${
                 isFreelance ? 'bg-orange-500/10 text-orange-500' : 'bg-blue-500/10 text-blue-500'
               }`}>
-                <project.icon className="w-6 h-6" />
+                <project.icon className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <div>
-                <h2 className="text-2xl font-bold text-slate-800 dark:text-white">
+              <div className="min-w-0 flex-1">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 dark:text-white truncate">
                   {project.title}
                 </h2>
-                <div className="flex items-center gap-3 mt-1">
+                <div className="flex flex-wrap gap-2 mt-2">
                   {project.featured && (
-                    <span className="px-2 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-lg">
-                      Destaque
+                    <span className="px-2 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-lg flex-shrink-0">
+                      {t('projects.featured')}
                     </span>
                   )}
-                  <span className={`px-2 py-1 text-xs font-bold rounded-lg ${
+                  <span className={`px-2 py-1 text-xs font-bold rounded-lg border flex-shrink-0 ${
                     isFreelance 
-                      ? 'bg-orange-500/10 text-orange-500 border border-orange-500/20' 
-                      : 'bg-blue-500/10 text-blue-500 border border-blue-500/20'
+                      ? 'bg-orange-500/10 text-orange-500 border-orange-500/20' 
+                      : 'bg-blue-500/10 text-blue-500 border-blue-500/20'
                   }`}>
-                    {isFreelance ? 'Freelance' : 'Projeto Pessoal'}
+                    {isFreelance ? t('projects.type.freelance') : t('projects.type.personal')}
                   </span>
                   {project.status && (
-                    <span className={`px-2 py-1 text-xs font-bold rounded-lg ${
+                    <span className={`px-2 py-1 text-xs font-bold rounded-lg border flex-shrink-0 ${
                       hasStatus
-                        ? 'bg-blue-500/10 text-blue-500 border border-blue-500/20'
-                        : 'bg-green-500/10 text-green-500 border border-green-500/20'
+                        ? 'bg-blue-500/10 text-blue-500 border-blue-500/20'
+                        : 'bg-green-500/10 text-green-500 border-green-500/20'
                     }`}>
                       {project.status}
                     </span>
@@ -665,45 +742,45 @@ const ProjectDetailModal = ({ project, onClose }: { project: any; onClose: () =>
             </div>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors"
+              className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors flex-shrink-0"
             >
-              <X className="w-6 h-6 text-slate-500" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6 text-slate-500" />
             </button>
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-6">
+        <div className="p-4 sm:p-6 space-y-6">
           {/* Imagem e Informações Básicas */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid lg:grid-cols-2 gap-4 sm:gap-6">
             <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
               <LazyImage
                 src={project.image}
                 alt={project.title}
-                className="w-full h-64 object-cover"
+                className="w-full h-48 sm:h-64 object-cover"
               />
             </div>
             <div className="space-y-4">
               <div>
                 <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-2">
-                  Descrição Completa
+                  {t('projects.modal.full_description')}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
                   {project.fullDescription}
                 </p>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 {project.timeline && (
                   <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-                    <Calendar className="w-4 h-4" />
-                    <span>{project.timeline}</span>
+                    <Calendar className="w-4 h-4 flex-shrink-0" />
+                    <span className="truncate">{project.timeline}</span>
                   </div>
                 )}
                 {project.category && (
                   <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-                    <Target className="w-4 h-4" />
-                    <span>{project.category}</span>
+                    <Target className="w-4 h-4 flex-shrink-0" />
+                    <span className="truncate">{project.category}</span>
                   </div>
                 )}
               </div>
@@ -713,13 +790,13 @@ const ProjectDetailModal = ({ project, onClose }: { project: any; onClose: () =>
           {/* Tecnologias */}
           <div>
             <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-3">
-              Tecnologias Utilizadas
+              {t('projects.modal.technologies_used')}
             </h3>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech: string, index: number) => (
                 <span
                   key={index}
-                  className={`px-3 py-1.5 text-sm rounded-full font-medium border ${
+                  className={`px-2 sm:px-3 py-1.5 text-xs rounded-full font-medium border ${
                     isPersonal || project.featured
                       ? 'bg-blue-100 dark:bg-blue-500/5 text-blue-700 dark:text-blue-300 border-blue-200/60 dark:border-blue-500/20' :
                       'bg-orange-100 dark:bg-orange-500/5 text-orange-700 dark:text-orange-300 border-orange-200/60 dark:border-orange-500/20'
@@ -734,12 +811,12 @@ const ProjectDetailModal = ({ project, onClose }: { project: any; onClose: () =>
           {/* Características Principais */}
           <div>
             <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-3">
-              Características Principais
+              {t('projects.modal.main_features')}
             </h3>
-            <div className="grid md:grid-cols-2 gap-2">
+            <div className="grid sm:grid-cols-2 gap-2">
               {project.highlights.map((highlight: string, index: number) => (
                 <div key={index} className="flex items-center gap-2">
-                  <CheckCircle2 className={`w-4 h-4 ${
+                  <CheckCircle2 className={`w-4 h-4 flex-shrink-0 ${
                     isPersonal || project.featured ? 'text-blue-500' : 'text-orange-500'
                   }`} />
                   <span className="text-slate-600 dark:text-slate-300 text-sm">
@@ -754,15 +831,15 @@ const ProjectDetailModal = ({ project, onClose }: { project: any; onClose: () =>
           {project.features && (
             <div>
               <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-3">
-                Funcionalidades
+                {t('projects.modal.functionalities')}
               </h3>
               <div className="space-y-2">
                 {project.features.map((feature: string, index: number) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <ChevronRight className={`w-4 h-4 ${
+                  <div key={index} className="flex items-start gap-2">
+                    <ChevronRight className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
                       isPersonal || project.featured ? 'text-blue-500' : 'text-orange-500'
                     }`} />
-                    <span className="text-slate-600 dark:text-slate-300">
+                    <span className="text-slate-600 dark:text-slate-300 text-sm">
                       {feature}
                     </span>
                   </div>
@@ -774,12 +851,12 @@ const ProjectDetailModal = ({ project, onClose }: { project: any; onClose: () =>
           {project.challenges && (
             <div>
               <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-3">
-                Desafios e Soluções
+                {t('projects.modal.challenges_solutions')}
               </h3>
               <div className="space-y-2">
                 {project.challenges.map((challenge: string, index: number) => (
                   <div key={index} className="flex items-start gap-2">
-                    <div className={`w-2 h-2 rounded-full mt-2 ${
+                    <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${
                       isPersonal || project.featured ? 'bg-blue-500' : 'bg-orange-500'
                     }`} />
                     <span className="text-slate-600 dark:text-slate-300 text-sm">
@@ -794,12 +871,12 @@ const ProjectDetailModal = ({ project, onClose }: { project: any; onClose: () =>
           {project.goals && (
             <div>
               <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-3">
-                Objetivos
+                {t('projects.modal.goals')}
               </h3>
               <div className="space-y-2">
                 {project.goals.map((goal: string, index: number) => (
                   <div key={index} className="flex items-center gap-2">
-                    <Target className={`w-4 h-4 ${
+                    <Target className={`w-4 h-4 flex-shrink-0 ${
                       isPersonal || project.featured ? 'text-blue-500' : 'text-orange-500'
                     }`} />
                     <span className="text-slate-600 dark:text-slate-300 text-sm">
@@ -812,16 +889,16 @@ const ProjectDetailModal = ({ project, onClose }: { project: any; onClose: () =>
           )}
 
           {/* Actions */}
-          <div className="flex gap-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+          <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-200 dark:border-slate-700">
             {!hasStatus && project.liveUrl !== '#' && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
+                className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 flex-1 text-center"
               >
                 <Eye className="w-4 h-4" />
-                Ver Projeto
+                {t('projects.modal.view_project')}
               </a>
             )}
             {!isFreelance && !hasStatus && project.githubUrl !== '#' && (
@@ -829,14 +906,14 @@ const ProjectDetailModal = ({ project, onClose }: { project: any; onClose: () =>
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-slate-800 text-white rounded-xl font-semibold transition-all duration-300 hover:bg-slate-700"
+                className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-slate-800 text-white rounded-xl font-semibold transition-all duration-300 hover:bg-slate-700 flex-1 text-center"
               >
                 <Github className="w-4 h-4" />
-                Ver Código
+                {t('projects.modal.view_code')}
               </a>
             )}
             {hasStatus && (
-              <div className="flex items-center gap-2 px-6 py-3 bg-blue-500/10 text-blue-500 rounded-xl font-semibold">
+              <div className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-blue-500/10 text-blue-500 rounded-xl font-semibold flex-1 text-center">
                 <Clock className="w-4 h-4" />
                 {project.status}
               </div>

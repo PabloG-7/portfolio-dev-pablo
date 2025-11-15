@@ -8,14 +8,14 @@
     "contact": "Contact"
   },
   "hero": {
-  "name": "Pablo Gomes", 
-  "role": "Front-end Developer",
-  "description": "Focusing on",
-  "description_highlight1": "Transforming modern interfaces",
-  "description_highlight2": "creative",
-  "cta_projects": "View Projects",
-  "cta_contact": "Get in Touch"
-},
+    "name": "Pablo Gomes", 
+    "role": "Front-end Developer",
+    "description": "Focusing on",
+    "description_highlight1": "Transforming modern interfaces",
+    "description_highlight2": "creative",
+    "cta_projects": "View Projects",
+    "cta_contact": "Get in Touch"
+  },
   "about": {
     "title": "About Me",
     "subtitle": "Get to know my front-end development journey",
@@ -123,6 +123,7 @@
     "play_demo": "Play Demo",
     "view_project": "View Project",
     "code": "Code",
+    "view_details": "View Details",
     "view_all": "View All Projects",
     "view_all_github": "View All on GitHub",
     "highlights": "Highlights",
@@ -142,7 +143,7 @@
     "descriptions": {
       "neon_memory": "Modern memory game with revolutionary neon theme. Experience real-time multiplayer, multiple game modes and online ranking in a unique immersive visual experience.",
       "dr_bruno": "Premium institutional website for specialized physiotherapist. Modern design focused on conversion, integrated contact form and advanced SEO optimization.",
-      "hc_store": "Complete e-commerce for digital influencer. Modern platform with WhatsApp integrated catalog, conversion-focused design and optimized experience.",
+      "raeven": "Intelligent fashion platform with AI in development. Offering virtual try-on, personalized recommendations and interactive 3D visualization of fashion products.",
       "taskforge": "Premium task management application with advanced features. Intuitive interface with Pomodoro focus mode and smart tag system.",
       "luckpet": "Complete e-commerce for pet shop with authentication system, shopping cart and exclusive loyalty program.",
       "pokedex": "Interactive web application that consumes PokéAPI to display detailed Pokémon information. Modern interface with advanced search."
@@ -176,7 +177,22 @@
       "supabase": "Supabase integration",
       "api": "API consumption",
       "search_filters": "Search and filters",
-      "themed_design": "Themed design"
+      "themed_design": "Themed design",
+      "virtual_tryon": "Virtual try-on",
+      "ai_recommendations": "AI recommendations",
+      "interactive_3d": "Interactive 3D visualization",
+      "modern_ui": "Modern and responsive UI",
+      "in_development": "Active development"
+    },
+    "modal": {
+      "full_description": "Full Description",
+      "technologies_used": "Technologies Used",
+      "main_features": "Main Features",
+      "functionalities": "Functionalities",
+      "challenges_solutions": "Challenges and Solutions",
+      "goals": "Goals",
+      "view_project": "View Project",
+      "view_code": "View Code"
     }
   },
   "contact": {

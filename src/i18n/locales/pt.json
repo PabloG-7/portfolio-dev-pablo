@@ -123,6 +123,7 @@
     "play_demo": "Jogar Demo",
     "view_project": "Ver Projeto",
     "code": "Código",
+    "view_details": "Ver Detalhes",
     "view_all": "Ver Todos os Projetos",
     "view_all_github": "Ver Todos no GitHub",
     "highlights": "Destaques",
@@ -182,6 +183,16 @@
       "interactive_3d": "Visualização 3D interativa",
       "modern_ui": "UI moderna e responsiva",
       "in_development": "Em desenvolvimento ativo"
+    },
+    "modal": {
+      "full_description": "Descrição Completa",
+      "technologies_used": "Tecnologias Utilizadas",
+      "main_features": "Características Principais",
+      "functionalities": "Funcionalidades",
+      "challenges_solutions": "Desafios e Soluções",
+      "goals": "Objetivos",
+      "view_project": "Ver Projeto",
+      "view_code": "Ver Código"
     }
   },
   "contact": {
