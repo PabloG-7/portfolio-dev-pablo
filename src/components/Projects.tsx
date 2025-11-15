@@ -1,4 +1,4 @@
-import { useState, memo, useMemo, useCallback } from 'react';
+import { useState, memo, useMemo, useCallback, useEffect } from 'react';
 import { ExternalLink, Github, Eye, ArrowRight, Gamepad2, Sparkles, Star, Code, Palette, Zap, Clock, Building2, Stethoscope, Shirt, Database, GamepadIcon, ShoppingCart, ListTodo, CheckCircle2, X, Calendar, Target, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
@@ -15,6 +15,19 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
     triggerOnce: true,
     rootMargin: '50px'
   });
+
+  // Efeito para controlar o overflow do body quando modais estão abertos
+  useEffect(() => {
+    if (gamePreview.isOpen || projectDetail.isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [gamePreview.isOpen, projectDetail.isOpen]);
 
   const projects = useMemo(() => [
     {
@@ -309,6 +322,11 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
 
   const closeProjectDetail = useCallback(() => {
     setProjectDetail({ isOpen: false });
+    onDemoStateChange?.(false);
+  }, [onDemoStateChange]);
+
+  const closeGamePreview = useCallback(() => {
+    setGamePreview({ isOpen: false });
     onDemoStateChange?.(false);
   }, [onDemoStateChange]);
 
@@ -653,10 +671,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
         {gamePreview.isOpen && gamePreview.gameData && (
           <GamePreview
             isOpen={gamePreview.isOpen}
-            onClose={() => {
-              setGamePreview({ isOpen: false });
-              onDemoStateChange?.(false);
-            }}
+            onClose={closeGamePreview}
             gameUrl={gamePreview.gameData.liveUrl}
             githubUrl={gamePreview.gameData.githubUrl}
             title={gamePreview.gameData.title}
@@ -699,40 +714,54 @@ const ProjectDetailModal = ({ project, onClose, t }: { project: any; onClose: ()
   const isPersonal = project.personal;
   const hasStatus = project.status && project.status !== (t('language.portuguese') === 'Português' ? 'Concluído' : 'Completed');
 
+  // 🔥 Impede que o site role quando o modal está aberto
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = "auto"; };
+  }, []);
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/60 backdrop-blur-sm">
-      <div className="relative bg-white dark:bg-slate-900 rounded-2xl w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto border border-slate-200 dark:border-slate-700 shadow-2xl">
+      <div className="relative rounded-2xl w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 shadow-2xl">
+
         {/* Header */}
-        <div className="sticky top-0 z-10 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 rounded-t-2xl p-4 sm:p-6">
+        <div className="sticky top-0 z-10 rounded-t-2xl p-4 sm:p-6 bg-white dark:bg-slate-900 border-b border-slate-300 dark:border-slate-700">
           <div className="flex items-start justify-between gap-4">
             <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
+
               <div className={`p-2 sm:p-3 rounded-xl flex-shrink-0 ${
-                isFreelance ? 'bg-orange-500/10 text-orange-500' : 'bg-blue-500/10 text-blue-500'
+                isFreelance
+                  ? 'bg-pink-500/20 text-pink-600 dark:bg-pink-500/10 dark:text-pink-500'
+                  : 'bg-yellow-600/20 text-yellow-600 dark:bg-yellow-600/10 dark:text-yellow-500'
               }`}>
                 <project.icon className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
+
               <div className="min-w-0 flex-1">
-                <h2 className="text-xl sm:text-2xl font-bold text-slate-800 dark:text-white truncate">
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-100 dark:text-white truncate">
                   {project.title}
                 </h2>
+
                 <div className="flex flex-wrap gap-2 mt-2">
                   {project.featured && (
-                    <span className="px-2 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-lg flex-shrink-0">
+                    <span className="px-2 py-1 text-xs font-bold rounded-lg bg-gradient-to-r from-yellow-500 to-yellow-700 text-white flex-shrink-0">
                       {t('projects.featured')}
                     </span>
                   )}
+
                   <span className={`px-2 py-1 text-xs font-bold rounded-lg border flex-shrink-0 ${
-                    isFreelance 
-                      ? 'bg-orange-500/10 text-orange-500 border-orange-500/20' 
-                      : 'bg-blue-500/10 text-blue-500 border-blue-500/20'
+                    isFreelance
+                      ? 'bg-pink-500/20 text-pink-700 border-pink-300 dark:bg-pink-500/10 dark:text-pink-500 dark:border-pink-500/20'
+                      : 'bg-yellow-600/20 text-yellow-700 border-yellow-400 dark:bg-yellow-600/10 dark:text-yellow-500 dark:border-yellow-600/20'
                   }`}>
                     {isFreelance ? t('projects.type.freelance') : t('projects.type.personal')}
                   </span>
+
                   {project.status && (
                     <span className={`px-2 py-1 text-xs font-bold rounded-lg border flex-shrink-0 ${
                       hasStatus
-                        ? 'bg-blue-500/10 text-blue-500 border-blue-500/20'
-                        : 'bg-green-500/10 text-green-500 border-green-500/20'
+                        ? 'bg-yellow-600/20 text-yellow-700 border-yellow-400 dark:bg-yellow-600/10 dark:text-yellow-500 dark:border-yellow-600/20'
+                        : 'bg-green-500/20 text-green-700 border-green-300 dark:bg-green-500/10 dark:text-green-500 dark:border-green-500/20'
                     }`}>
                       {project.status}
                     </span>
@@ -740,56 +769,61 @@ const ProjectDetailModal = ({ project, onClose, t }: { project: any; onClose: ()
                 </div>
               </div>
             </div>
+
             <button
               onClick={onClose}
-              className="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors flex-shrink-0"
+              className="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-800 text-gray-100 dark:text-slate-400 transition-colors flex-shrink-0"
             >
-              <X className="w-5 h-5 sm:w-6 sm:h-6 text-slate-500" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
           </div>
         </div>
 
         {/* Content */}
         <div className="p-4 sm:p-6 space-y-6">
-          {/* Imagem e Informações Básicas */}
+
+          {/* Imagem */}
           <div className="grid lg:grid-cols-2 gap-4 sm:gap-6">
-            <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
+            <div className="rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700">
               <LazyImage
                 src={project.image}
                 alt={project.title}
                 className="w-full h-48 sm:h-64 object-cover"
               />
             </div>
+
             <div className="space-y-4">
               <div>
-                <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-2">
+                <h3 className="text-lg font-semibold text-gray-100 dark:text-white mb-2">
                   {t('projects.modal.full_description')}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
+                <p className="text-gray-100 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
                   {project.fullDescription}
                 </p>
               </div>
-              
+
               <div className="grid grid-cols-2 gap-3">
                 {project.timeline && (
-                  <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                  <div className="flex items-center gap-2 text-gray-100 dark:text-slate-400 text-sm">
                     <Calendar className="w-4 h-4 flex-shrink-0" />
                     <span className="truncate">{project.timeline}</span>
                   </div>
                 )}
+
                 {project.category && (
-                  <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                  <div className="flex items-center gap-2 text-gray-100 dark:text-slate-400 text-sm">
                     <Target className="w-4 h-4 flex-shrink-0" />
                     <span className="truncate">{project.category}</span>
                   </div>
                 )}
               </div>
+
             </div>
           </div>
 
           {/* Tecnologias */}
           <div>
-            <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-3">
+            <h3 className="text-lg font-semibold text-gray-100 dark:text-white mb-3">
               {t('projects.modal.technologies_used')}
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -798,8 +832,8 @@ const ProjectDetailModal = ({ project, onClose, t }: { project: any; onClose: ()
                   key={index}
                   className={`px-2 sm:px-3 py-1.5 text-xs rounded-full font-medium border ${
                     isPersonal || project.featured
-                      ? 'bg-blue-100 dark:bg-blue-500/5 text-blue-700 dark:text-blue-300 border-blue-200/60 dark:border-blue-500/20' :
-                      'bg-orange-100 dark:bg-orange-500/5 text-orange-700 dark:text-orange-300 border-orange-200/60 dark:border-orange-500/20'
+                      ? 'bg-yellow-100 text-yellow-800 border-yellow-300 dark:bg-yellow-600/5 dark:text-yellow-400 dark:border-yellow-600/20'
+                      : 'bg-pink-100 text-pink-800 border-pink-300 dark:bg-pink-500/5 dark:text-pink-300 dark:border-pink-500/20'
                   }`}
                 >
                   {tech}
@@ -808,18 +842,19 @@ const ProjectDetailModal = ({ project, onClose, t }: { project: any; onClose: ()
             </div>
           </div>
 
-          {/* Características Principais */}
+          {/* Highlights */}
           <div>
-            <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-3">
+            <h3 className="text-lg font-semibold text-gray-100 dark:text-white mb-3">
               {t('projects.modal.main_features')}
             </h3>
+
             <div className="grid sm:grid-cols-2 gap-2">
               {project.highlights.map((highlight: string, index: number) => (
                 <div key={index} className="flex items-center gap-2">
                   <CheckCircle2 className={`w-4 h-4 flex-shrink-0 ${
-                    isPersonal || project.featured ? 'text-blue-500' : 'text-orange-500'
+                    isPersonal || project.featured ? 'text-yellow-500' : 'text-pink-500'
                   }`} />
-                  <span className="text-slate-600 dark:text-slate-300 text-sm">
+                  <span className="text-gray-100 dark:text-slate-300 text-sm">
                     {highlight}
                   </span>
                 </div>
@@ -827,19 +862,20 @@ const ProjectDetailModal = ({ project, onClose, t }: { project: any; onClose: ()
             </div>
           </div>
 
-          {/* Seções Dinâmicas */}
+          {/* Features */}
           {project.features && (
             <div>
-              <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-3">
+              <h3 className="text-lg font-semibold text-gray-100 dark:text-white mb-3">
                 {t('projects.modal.functionalities')}
               </h3>
+
               <div className="space-y-2">
                 {project.features.map((feature: string, index: number) => (
                   <div key={index} className="flex items-start gap-2">
                     <ChevronRight className={`w-4 h-4 mt-0.5 flex-shrink-0 ${
-                      isPersonal || project.featured ? 'text-blue-500' : 'text-orange-500'
+                      isPersonal || project.featured ? 'text-yellow-500' : 'text-pink-500'
                     }`} />
-                    <span className="text-slate-600 dark:text-slate-300 text-sm">
+                    <span className="text-gray-100 dark:text-slate-300 text-sm">
                       {feature}
                     </span>
                   </div>
@@ -848,18 +884,20 @@ const ProjectDetailModal = ({ project, onClose, t }: { project: any; onClose: ()
             </div>
           )}
 
+          {/* Challenges */}
           {project.challenges && (
             <div>
-              <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-3">
+              <h3 className="text-lg font-semibold text-gray-100 dark:text-white mb-3">
                 {t('projects.modal.challenges_solutions')}
               </h3>
+
               <div className="space-y-2">
                 {project.challenges.map((challenge: string, index: number) => (
                   <div key={index} className="flex items-start gap-2">
                     <div className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${
-                      isPersonal || project.featured ? 'bg-blue-500' : 'bg-orange-500'
+                      isPersonal || project.featured ? 'bg-yellow-500' : 'bg-pink-500'
                     }`} />
-                    <span className="text-slate-600 dark:text-slate-300 text-sm">
+                    <span className="text-gray-100 dark:text-slate-300 text-sm">
                       {challenge}
                     </span>
                   </div>
@@ -868,18 +906,20 @@ const ProjectDetailModal = ({ project, onClose, t }: { project: any; onClose: ()
             </div>
           )}
 
+          {/* Goals */}
           {project.goals && (
             <div>
-              <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-3">
+              <h3 className="text-lg font-semibold text-gray-100 dark:text-white mb-3">
                 {t('projects.modal.goals')}
               </h3>
+
               <div className="space-y-2">
                 {project.goals.map((goal: string, index: number) => (
                   <div key={index} className="flex items-center gap-2">
                     <Target className={`w-4 h-4 flex-shrink-0 ${
-                      isPersonal || project.featured ? 'text-blue-500' : 'text-orange-500'
+                      isPersonal || project.featured ? 'text-yellow-500' : 'text-pink-500'
                     }`} />
-                    <span className="text-slate-600 dark:text-slate-300 text-sm">
+                    <span className="text-gray-100 dark:text-slate-300 text-sm">
                       {goal}
                     </span>
                   </div>
@@ -889,35 +929,39 @@ const ProjectDetailModal = ({ project, onClose, t }: { project: any; onClose: ()
           )}
 
           {/* Actions */}
-          <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-200 dark:border-slate-700">
+          <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-slate-300 dark:border-slate-700">
+
             {!hasStatus && project.liveUrl !== '#' && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25 flex-1 text-center"
+                className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 rounded-xl font-semibold transition-all duration-300 flex-1 text-center bg-gradient-to-r from-yellow-500 to-yellow-700 text-white hover:shadow-lg hover:shadow-yellow-500/25"
               >
                 <Eye className="w-4 h-4" />
                 {t('projects.modal.view_project')}
               </a>
             )}
+
             {!isFreelance && !hasStatus && project.githubUrl !== '#' && (
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-slate-800 text-white rounded-xl font-semibold transition-all duration-300 hover:bg-slate-700 flex-1 text-center"
+                className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 rounded-xl font-semibold transition-all duration-300 flex-1 text-center bg-gray-100 text-gray-900 hover:bg-gray-300"
               >
                 <Github className="w-4 h-4" />
                 {t('projects.modal.view_code')}
               </a>
             )}
+
             {hasStatus && (
-              <div className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-blue-500/10 text-blue-500 rounded-xl font-semibold flex-1 text-center">
+              <div className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 rounded-xl font-semibold flex-1 text-center bg-yellow-600/20 text-yellow-700 border border-yellow-400 dark:bg-yellow-600/10 dark:text-yellow-500 dark:border-yellow-600/20">
                 <Clock className="w-4 h-4" />
                 {project.status}
               </div>
             )}
+
           </div>
         </div>
       </div>
