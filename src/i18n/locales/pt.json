@@ -8,14 +8,14 @@
     "contact": "Contato"
   },
   "hero": {
-  "name": "Pablo Gomes",
-  "role": "Desenvolvedor Front-end",
-  "description": "Com foco em",
-  "description_highlight1": "Transformando interfaces modernas",
-  "description_highlight2": "criativas",
-  "cta_projects": "Ver Projetos",
-  "cta_contact": "Entrar em Contato"
-},
+    "name": "Pablo Gomes",
+    "role": "Desenvolvedor Front-end",
+    "description": "Com foco em",
+    "description_highlight1": "Transformando interfaces modernas",
+    "description_highlight2": "criativas",
+    "cta_projects": "Ver Projetos",
+    "cta_contact": "Entrar em Contato"
+  },
   "about": {
     "title": "Sobre Mim",
     "subtitle": "Conheça minha jornada no desenvolvimento front-end",
@@ -142,7 +142,7 @@
     "descriptions": {
       "neon_memory": "Jogo da memória moderno com tema neon revolucionário. Experimente multiplayer em tempo real, múltiplos modos de jogo e ranking online em uma experiência visual imersiva única.",
       "dr_bruno": "Site institucional premium para fisioterapeuta especializado. Design moderno com foco em conversão, formulário de contato integrado e otimização SEO avançada.",
-      "hc_store": "E-commerce completo para influenciador digital. Plataforma moderna com catálogo integrado ao WhatsApp, design focado em conversão e experiência otimizada.",
+      "raeven": "Plataforma de moda inteligente com IA em desenvolvimento. Oferecendo experimentação virtual, recomendações personalizadas e visualização 3D interativa de produtos de moda.",
       "taskforge": "Aplicação de gerenciamento de tarefas premium com recursos avançados. Interface intuitiva com modo foco Pomodoro e sistema de tags inteligente.",
       "luckpet": "E-commerce completo para petshop com sistema de autenticação, carrinho de compras e programa de fidelidade exclusivo.",
       "pokedex": "Aplicação web interativa que consome a PokéAPI para exibir informações detalhadas sobre Pokémon. Interface moderna com busca avançada."
@@ -176,7 +176,12 @@
       "supabase": "Integração Supabase",
       "api": "Consumo de API",
       "search_filters": "Busca e filtros",
-      "themed_design": "Design Pokémon"
+      "themed_design": "Design Pokémon",
+      "virtual_tryon": "Experimentação virtual",
+      "ai_recommendations": "Recomendações por IA",
+      "interactive_3d": "Visualização 3D interativa",
+      "modern_ui": "UI moderna e responsiva",
+      "in_development": "Em desenvolvimento ativo"
     }
   },
   "contact": {

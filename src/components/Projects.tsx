@@ -62,25 +62,26 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
       ]
     },
     {
-      id: 'hc_store',
-      title: 'HC STORE',
-      description: t('projects.descriptions.hc_store'),
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'E-commerce', 'WhatsApp Integration', 'UI/UX Design'],
-      image: '/lovable-uploads/hebert-portfolio.png',
+      id: 'raeven',
+      title: 'RAEVEN FASHION',
+      description: t('projects.descriptions.raeven'),
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'E-commerce', 'AI Integration', 'Virtual Try-On', 'UI/UX Design', '3D Visualization'],
+      image: '/lovable-uploads/raeven-portfolio.png',
       liveUrl: '#',
       githubUrl: '#',
-      icon: Shirt,
-      featuredStyle: "bg-gradient-to-br from-orange-500/10 to-amber-500/10 border-orange-500/20 dark:border-orange-400/30",
+      icon: Palette,
+      featuredStyle: "bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-blue-500/20 dark:border-blue-400/30",
       animation: "",
       status: t('projects.status_development'),
-      freelance: true,
-      client: t('projects.clients.hc_store'),
+      personal: true,
+      category: t('projects.category.ecommerce'),
       highlights: [
-        t('projects.highlights_list.whatsapp'),
-        t('projects.highlights_list.dynamic_catalog'),
-        t('projects.highlights_list.modern_design'),
-        t('projects.highlights_list.mobile_first'),
-        t('projects.highlights_list.conversion')
+        t('projects.highlights_list.virtual_tryon'),
+        t('projects.highlights_list.ai_recommendations'),
+        t('projects.highlights_list.interactive_3d'),
+        t('projects.highlights_list.responsive'),
+        t('projects.highlights_list.modern_ui'),
+        t('projects.highlights_list.in_development')
       ]
     },
     {
@@ -211,6 +212,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
             const isFeatured = project.featured;
             const isFreelance = project.freelance;
             const isPersonal = project.personal;
+            const hasStatus = project.status;
             
             return (
               <div
@@ -252,14 +254,14 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                     </div>
                   )}
 
-                  {isFreelance && project.status && (
-                    <div className="absolute top-3 right-3 z-20 px-3 py-1.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
+                  {hasStatus && (
+                    <div className="absolute top-3 right-3 z-20 px-3 py-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
                       <Clock className="w-3 h-3" />
                       <span>{project.status}</span>
                     </div>
                   )}
 
-                  {isPersonal && project.category && (
+                  {isPersonal && project.category && !hasStatus && (
                     <div className="absolute top-3 right-3 z-20 px-3 py-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold rounded-lg shadow-lg flex items-center gap-1">
                       <span>{project.category}</span>
                     </div>
@@ -294,9 +296,9 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                           >
                             <Gamepad2 className="w-4 h-4 lg:w-5 lg:h-5" />
                           </button>
-                        ) : isFreelance ? (
+                        ) : hasStatus ? (
                           <button
-                            className="p-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white rounded-xl hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300 hover:scale-110 cursor-not-allowed opacity-80 shadow-lg backdrop-blur-sm"
+                            className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-xl hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 hover:scale-110 cursor-not-allowed opacity-80 shadow-lg backdrop-blur-sm"
                             disabled
                           >
                             <Clock className="w-4 h-4 lg:w-5 lg:h-5" />
@@ -311,7 +313,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                             <Eye className="w-4 h-4 lg:w-5 lg:h-5" />
                           </a>
                         )}
-                        {!isFreelance && (
+                        {!isFreelance && !hasStatus && (
                           <a
                             href={project.githubUrl}
                             target="_blank"
@@ -422,8 +424,8 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                             <Gamepad2 className="w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-300 group-hover/action:scale-110" />
                             <span>{t('projects.play_demo')}</span>
                           </button>
-                        ) : isFreelance ? (
-                          <span className="flex items-center space-x-1 lg:space-x-2 text-orange-600 dark:text-orange-400 font-medium text-sm">
+                        ) : hasStatus ? (
+                          <span className="flex items-center space-x-1 lg:space-x-2 text-blue-600 dark:text-blue-400 font-medium text-sm">
                             <Clock className="w-3 h-3 lg:w-4 lg:h-4" />
                             <span>{project.status}</span>
                           </span>
@@ -444,7 +446,7 @@ const Projects = ({ onDemoStateChange }: { onDemoStateChange?: (isOpen: boolean)
                         )}
                       </div>
                       <div className="flex space-x-2 lg:space-x-3">
-                        {!isFreelance && (
+                        {!isFreelance && !hasStatus && (
                           <a
                             href={project.githubUrl}
                             target="_blank"
