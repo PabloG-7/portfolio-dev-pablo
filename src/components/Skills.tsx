@@ -118,19 +118,19 @@ const Skills = () => {
     <section
       id="habilidades"
       ref={sectionRef}
-      className="section-padding relative min-h-screen overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50/30 to-yellow-50/20 dark:from-slate-900 dark:via-orange-950/20 dark:to-amber-950/10"
+      className="section-padding relative min-h-screen overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50/30 to-yellow-50/20 dark:from-slate-900 dark:via-orange-950/20 dark:to-amber-950/10 z-0" // Adicionei z-0 aqui
     >
       {/* Background EXATAMENTE igual ao HeroRevamp */}
-      <div className="absolute inset-0 opacity-5 dark:opacity-10">
+      <div className="absolute inset-0 opacity-5 dark:opacity-10 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.15)_1px,transparent_0)] bg-[size:32px_32px] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.1)_1px,transparent_0)]"></div>
       </div>
 
       {/* Partículas flutuantes - EXATAMENTE igual ao HeroRevamp */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 z-0">
         {[...Array(8)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-2 h-2 bg-amber-500/20 rounded-full animate-float-slow"
+            className="absolute w-2 h-2 bg-amber-500/20 rounded-full animate-float-slow z-0"
             style={{
               left: `${15 + i * 12}%`,
               top: `${20 + i * 10}%`,
@@ -141,7 +141,7 @@ const Skills = () => {
         ))}
       </div>
       
-      <div className="container-custom relative z-10">
+      <div className="container-custom relative z-1"> {/* Mudei para z-1 */}
         {/* Header */}
         <div
           className={`text-center mb-12 lg:mb-16 transition-all duration-1000 ${
@@ -200,7 +200,7 @@ const Skills = () => {
         </div>
 
         {/* Skills Cards */}
-        <div className="space-y-8">
+        <div className="space-y-8 z-1"> {/* Adicionei z-1 aqui */}
           {Object.entries(groupedSkills).map(([categoryKey, categorySkills], categoryIndex) => {
             const categoryInfo = categories[categoryKey as keyof typeof categories];
             const shouldShow = activeCategory === null || activeCategory === categoryKey;
@@ -209,9 +209,12 @@ const Skills = () => {
             return (
               <div
                 key={categoryKey}
-                className={`transition-all duration-700 ease-out ${
-                  shouldShow ? 'opacity-100 max-h-[2000px]' : 'opacity-0 max-h-0 overflow-hidden'
-                }`}
+                className={`transition-all duration-700 ease-out z-1`} // Adicionei z-1 aqui
+                style={{
+                  opacity: shouldShow ? 1 : 0,
+                  maxHeight: shouldShow ? '2000px' : '0',
+                  overflow: shouldShow ? 'visible' : 'hidden'
+                }}
               >
                 {/* Category Header */}
                 <div 
@@ -232,38 +235,38 @@ const Skills = () => {
                 </div>
 
                 {/* Skills Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 z-1"> {/* Adicionei z-1 aqui */}
                   {categorySkills.map((skill, skillIndex) => {
                     const isAnimated = animatedSkills.has(skill.name);
                     
                     return (
                       <div
                         key={skill.name}
-                        className={`group relative overflow-hidden transition-all duration-700 ease-out hover:scale-105 hover:-translate-y-2 ${
-                          isAnimated ? 'animate-scale-in opacity-100' : 'opacity-0 scale-95'
-                        }`}
+                        className={`group relative overflow-hidden transition-all duration-700 ease-out hover:scale-105 hover:-translate-y-2 z-1`} // Adicionei z-1 aqui
                         style={{ 
                           transitionDelay: `${500 + categoryIndex * 50 + skillIndex * 80}ms`,
+                          opacity: isAnimated ? 1 : 0,
+                          transform: isAnimated ? 'scale(1)' : 'scale(0.95)'
                         }}
                       >
                         {/* Card */}
-                        <div className="relative p-3 sm:p-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-amber-200/60 dark:border-amber-500/20 rounded-xl shadow-sm hover:shadow-lg transition-all duration-500 h-full">
+                        <div className="relative p-3 sm:p-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-amber-200/60 dark:border-amber-500/20 rounded-xl shadow-sm hover:shadow-lg transition-all duration-500 h-full z-1"> {/* Adicionei z-1 aqui */}
                           
                           {/* Animated Border on Hover */}
                           <div 
-                            className={`absolute inset-0 rounded-xl bg-gradient-to-r ${categoryInfo.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px]`}
+                            className={`absolute inset-0 rounded-xl bg-gradient-to-r ${categoryInfo.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px] z-0`} // Mantive z-0 aqui
                           >
                             <div className="w-full h-full bg-white dark:bg-slate-800 rounded-xl" />
                           </div>
 
                           {/* Content */}
-                          <div className="relative z-10 flex flex-col h-full">
+                          <div className="relative z-1 flex flex-col h-full"> {/* Mudei para z-1 */}
                             {/* Logo */}
                             <div className="flex justify-center mb-2 sm:mb-3">
                               <div className="relative group-hover:scale-110 transition-transform duration-500">
                                 {/* Glow effect */}
                                 <div 
-                                  className="absolute inset-0 rounded-lg blur-md opacity-0 group-hover:opacity-40 transition-all duration-500"
+                                  className="absolute inset-0 rounded-lg blur-md opacity-0 group-hover:opacity-40 transition-all duration-500 z-0"
                                   style={{ 
                                     backgroundColor: categoryInfo.color.includes('amber') ? '#f59e0b' : 
                                                    categoryInfo.color.includes('orange') ? '#f97316' :
@@ -271,7 +274,7 @@ const Skills = () => {
                                                    '#d97706'
                                   }}
                                 />
-                                <div className="relative p-2 bg-amber-100/60 dark:bg-amber-500/10 rounded-lg border border-amber-200/60 dark:border-amber-500/20">
+                                <div className="relative p-2 bg-amber-100/60 dark:bg-amber-500/10 rounded-lg border border-amber-200/60 dark:border-amber-500/20 z-1">
                                   <img 
                                     src={skill.logo} 
                                     alt={`${skill.name} logo`}
@@ -295,7 +298,7 @@ const Skills = () => {
                               <div className="relative h-1.5 bg-amber-200/60 dark:bg-amber-700/60 rounded-full overflow-hidden">
                                 {/* Progress Fill with Animation */}
                                 <div 
-                                  className="absolute top-0 left-0 h-full rounded-full transition-all duration-2000 ease-out"
+                                  className="absolute top-0 left-0 h-full rounded-full transition-all duration-2000 ease-out z-1"
                                   style={{
                                     width: isAnimated ? `${skill.level}%` : '0%',
                                     background: `linear-gradient(90deg, ${categoryInfo.color.includes('amber') ? '#f59e0b' : 
@@ -316,7 +319,7 @@ const Skills = () => {
                         </div>
 
                         {/* Floating element on hover */}
-                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-ping-slow" />
+                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-ping-slow z-10" />
                       </div>
                     );
                   })}
@@ -333,7 +336,7 @@ const Skills = () => {
           }`}
           style={{ transitionDelay: '1200ms' }}
         >
-          <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-md rounded-2xl p-6 border border-amber-200/60 dark:border-amber-500/20 max-w-2xl mx-auto">
+          <div className="bg-white/60 dark:bg-slate-800/60 backdrop-blur-md rounded-2xl p-6 border border-amber-200/60 dark:border-amber-500/20 max-w-2xl mx-auto z-1">
             <div className="flex items-center justify-center gap-3 mb-3">
               <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
                 Tecnologias em Constante Evolução
