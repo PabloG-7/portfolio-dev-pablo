@@ -8,7 +8,7 @@ Um portfólio moderno e responsivo desenvolvido para mostrar meus projetos, habi
 🔗 **Link do Projeto:** https://portfolio-dev-pablo.vercel.app/
 
 <div align="center">
-  <img src="https://via.placeholder.com/800x450/0a0a0a/FFD700?text=Portf%C3%B3lio+Pablo+Gomes" width="85%" style="border-radius: 12px;" />
+  <img src="https://raw.githubusercontent.com/PabloG-7/portfolio-dev-pablo/refs/heads/main/portfolio-linkedin.png" width="85%" style="border-radius: 12px;" />
 </div>
 
 ---
