@@ -3330,18 +3330,22 @@
 
 // ========== EMAILJS CONFIGURAÇÃO CORRIGIDA ==========
 (function() {
-    // Verifica se o EmailJS está carregado
-    if (typeof emailjs === 'undefined') {
-        console.error('❌ EmailJS não está carregado. Verifique se o script foi adicionado no <head>');
-        return;
-    }
+    // CREDENCIAIS CORRETAS
+    const EMAILJS_CONFIG = {
+        PUBLIC_KEY: "U91z1GoHHhCCuvVSH",
+        SERVICE_ID: "service_spittf6",
+        TEMPLATE_ID: "template_kvjajd5" // ← SEU TEMPLATE ID CORRETO!
+    };
+    
+    console.log('🔧 Configurando EmailJS:', EMAILJS_CONFIG);
     
     // Inicializa EmailJS
     try {
-        emailjs.init("U91z1GoHHhCCuvVSH");
+        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
         console.log('✅ EmailJS inicializado com sucesso');
     } catch (error) {
         console.error('❌ Erro ao inicializar EmailJS:', error);
+        showErrorMessage('Erro na configuração do sistema de email.');
         return;
     }
     
@@ -3354,11 +3358,9 @@
     const formMessage = document.getElementById('form-message');
     
     if (!contactForm) {
-        console.error('❌ Formulário de contato não encontrado');
+        console.error('❌ Formulário não encontrado');
         return;
     }
-    
-    console.log('✅ Formulário encontrado:', contactForm);
     
     // Torna o email clicável
     function makeEmailClickable() {
@@ -3367,9 +3369,9 @@
             if (el.textContent.includes('pablooliver853@gmail.com')) {
                 el.innerHTML = `
                     <a href="mailto:pablooliver853@gmail.com" class="email-link" 
-                       style="color: var(--text-gray); text-decoration: none; display: inline-flex; align-items: center; gap: 8px;"
-                       onmouseover="this.style.color='var(--accent-gold)'" 
-                       onmouseout="this.style.color='var(--text-gray)'">
+                       style="color: var(--text-gray); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 4px 8px; border-radius: 4px;"
+                       onmouseover="this.style.color='var(--accent-gold)'; this.style.background='rgba(255, 215, 0, 0.05)'" 
+                       onmouseout="this.style.color='var(--text-gray)'; this.style.background='transparent'">
                         <i class="fas fa-envelope"></i>
                         pablooliver853@gmail.com
                     </a>
@@ -3381,15 +3383,15 @@
     // Evento de submit do formulário
     contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        console.log('📤 Formulário enviado');
+        console.log('📤 Iniciando envio do formulário...');
         
-        // Valida o formulário
+        // Validação
         if (!validateForm()) {
             console.log('❌ Validação falhou');
             return;
         }
         
-        console.log('✅ Validação passou');
+        console.log('✅ Validação bem-sucedida');
         
         // Mostra estado de loading
         setLoadingState(true);
@@ -3402,62 +3404,71 @@
                 subject: document.getElementById('subject').value.trim(),
                 message: document.getElementById('message').value.trim(),
                 date: new Date().toLocaleDateString('pt-BR', {
+                    weekday: 'long',
                     day: '2-digit',
-                    month: '2-digit',
+                    month: 'long',
                     year: 'numeric',
                     hour: '2-digit',
                     minute: '2-digit'
                 }),
                 title: document.getElementById('subject').value.trim(),
-                name: document.getElementById('from_name').value.trim() // Adicionado para o template
+                name: document.getElementById('from_name').value.trim(),
+                time: new Date().toLocaleTimeString('pt-BR')
             };
             
             console.log('📝 Dados preparados:', templateParams);
-            
-            // Verifica credenciais antes de enviar
-            console.log('🔑 Service ID:', 'service_spittf6');
-            console.log('🔑 Template ID:', 'template_2qnqf1j');
+            console.log('🔑 Usando Template ID:', EMAILJS_CONFIG.TEMPLATE_ID);
             
             // Envia o email
-            console.log('🔄 Enviando email...');
+            console.log('🔄 Enviando para EmailJS...');
             const response = await emailjs.send(
-                'service_spittf6',     // Seu Service ID
-                'template_2qnqf1j',    // Seu Template ID
+                EMAILJS_CONFIG.SERVICE_ID,
+                EMAILJS_CONFIG.TEMPLATE_ID,
                 templateParams
             );
             
             console.log('✅ Email enviado com sucesso!', response);
             console.log('📊 Status:', response.status);
-            console.log('📄 Texto:', response.text);
+            console.log('📄 Response:', response.text);
             
             // Mensagem de sucesso
             showMessage(
-                '<i class="fas fa-check-circle"></i> ✅ Mensagem enviada com sucesso! Entrarei em contato em breve.',
+                '<i class="fas fa-check-circle"></i> <strong>Mensagem enviada com sucesso!</strong><br>Entrarei em contato em breve.',
                 'success'
             );
             
             // Reseta o formulário
             contactForm.reset();
             
-        } catch (error) {
-            console.error('❌ Erro ao enviar email:', error);
+            // Log adicional
+            setTimeout(() => {
+                console.log('🎉 Processo de envio completo!');
+            }, 1000);
             
-            // Detalhes do erro
+        } catch (error) {
+            console.error('❌ ERRO AO ENVIAR EMAIL:', error);
+            
+            // Log detalhado do erro
             if (error.text) {
                 console.error('📄 Detalhes do erro:', error.text);
             }
+            if (error.status) {
+                console.error('📊 Status do erro:', error.status);
+            }
             
-            // Mensagem de erro amigável baseada no tipo de erro
-            let errorMessage = '<i class="fas fa-exclamation-circle"></i> ❌ Ocorreu um erro ao enviar a mensagem.';
+            // Mensagem de erro específica
+            let errorMessage = '<i class="fas fa-exclamation-circle"></i> ';
             
             if (error.status === 0) {
-                errorMessage += ' Verifique sua conexão com a internet.';
+                errorMessage += '<strong>Problema de conexão</strong><br>Verifique sua internet e tente novamente.';
             } else if (error.status === 400) {
-                errorMessage += ' Dados do formulário inválidos.';
+                errorMessage += '<strong>Dados inválidos</strong><br>Verifique se preencheu todos os campos corretamente.';
             } else if (error.status === 401) {
-                errorMessage += ' Problema de autenticação. Verifique as credenciais do EmailJS.';
+                errorMessage += '<strong>Erro de autenticação</strong><br>As credenciais do EmailJS podem estar incorretas.';
             } else if (error.status === 404) {
-                errorMessage += ' Template ou serviço não encontrado.';
+                errorMessage += '<strong>Template não encontrado</strong><br>Verifique as configurações do template.';
+            } else {
+                errorMessage += '<strong>Erro ao enviar mensagem</strong><br>Tente novamente ou entre em contato diretamente por email.';
             }
             
             showMessage(errorMessage, 'error');
@@ -3468,27 +3479,28 @@
         }
     });
     
-    // Funções auxiliares
+    // Função de validação
     function validateForm() {
         let isValid = true;
         const requiredFields = contactForm.querySelectorAll('[required]');
         
-        // Resetar estilos
+        // Reset estilos
         requiredFields.forEach(field => {
             field.style.borderColor = '';
             field.style.boxShadow = '';
         });
         
-        // Validar campos obrigatórios
+        // Valida campos obrigatórios
         requiredFields.forEach(field => {
             if (!field.value.trim()) {
                 isValid = false;
                 field.style.borderColor = '#f44336';
                 field.style.boxShadow = '0 0 0 2px rgba(244, 67, 54, 0.2)';
+                field.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         });
         
-        // Validação específica para email
+        // Validação de email
         const emailField = document.getElementById('email');
         if (emailField && emailField.value.trim()) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -3503,6 +3515,7 @@
         return isValid;
     }
     
+    // Função para mostrar/ocultar loading
     function setLoadingState(isLoading) {
         if (!submitBtn || !btnIcon || !btnText || !btnSpinner) return;
         
@@ -3513,6 +3526,7 @@
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
             submitBtn.style.cursor = 'not-allowed';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         } else {
             btnIcon.style.display = 'inline';
             btnText.style.display = 'inline';
@@ -3520,37 +3534,69 @@
             submitBtn.disabled = false;
             submitBtn.style.opacity = '1';
             submitBtn.style.cursor = 'pointer';
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane" id="btn-icon"></i><span id="btn-text">Enviar Mensagem</span><span id="btn-spinner" style="display: none;"><i class="fas fa-spinner fa-spin"></i> Enviando...</span>';
         }
     }
     
+    // Função para mostrar mensagens
     function showMessage(htmlContent, type) {
         if (!formMessage) {
-            console.error('Elemento form-message não encontrado');
+            console.error('Elemento de mensagem não encontrado');
             return;
         }
         
         formMessage.innerHTML = htmlContent;
         formMessage.style.display = 'block';
-        formMessage.style.padding = '12px';
-        formMessage.style.borderRadius = '8px';
-        formMessage.style.marginTop = '15px';
+        formMessage.style.padding = '15px';
+        formMessage.style.borderRadius = '10px';
+        formMessage.style.marginTop = '20px';
         formMessage.style.textAlign = 'center';
-        formMessage.style.fontSize = '0.9em';
-        formMessage.style.transition = 'all 0.3s ease';
+        formMessage.style.fontSize = '0.95em';
+        formMessage.style.lineHeight = '1.5';
+        formMessage.style.animation = 'slideIn 0.3s ease';
         
         if (type === 'success') {
             formMessage.style.backgroundColor = 'rgba(76, 175, 80, 0.1)';
-            formMessage.style.color = '#4CAF50';
-            formMessage.style.border = '1px solid rgba(76, 175, 80, 0.3)';
+            formMessage.style.color = '#2E7D32';
+            formMessage.style.border = '2px solid rgba(76, 175, 80, 0.3)';
+            formMessage.style.boxShadow = '0 4px 12px rgba(76, 175, 80, 0.15)';
         } else {
             formMessage.style.backgroundColor = 'rgba(244, 67, 54, 0.1)';
-            formMessage.style.color = '#f44336';
-            formMessage.style.border = '1px solid rgba(244, 67, 54, 0.3)';
+            formMessage.style.color = '#C62828';
+            formMessage.style.border = '2px solid rgba(244, 67, 54, 0.3)';
+            formMessage.style.boxShadow = '0 4px 12px rgba(244, 67, 54, 0.15)';
         }
         
-        // Esconde a mensagem após 5 segundos
+        // Rola até a mensagem
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+        // Esconde após 8 segundos
         setTimeout(() => {
             formMessage.style.display = 'none';
+        }, 8000);
+    }
+    
+    // Função para mostrar erro crítico
+    function showErrorMessage(message) {
+        const errorDiv = document.createElement('div');
+        errorDiv.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            z-index: 9999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            max-width: 300px;
+            animation: slideInRight 0.3s ease;
+        `;
+        errorDiv.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${message}`;
+        document.body.appendChild(errorDiv);
+        
+        setTimeout(() => {
+            errorDiv.remove();
         }, 5000);
     }
     
@@ -3563,39 +3609,32 @@
                 formMessage.style.display = 'none';
             }
         });
+        
+        // Adiciona foco estilizado
+        input.addEventListener('focus', function() {
+            this.style.borderColor = 'var(--accent-gold)';
+            this.style.boxShadow = '0 0 0 3px rgba(255, 215, 0, 0.1)';
+        });
+        
+        input.addEventListener('blur', function() {
+            this.style.borderColor = '';
+            this.style.boxShadow = '';
+        });
     });
     
-    // Inicializa quando o DOM estiver pronto
+    // Inicialização quando o DOM estiver pronto
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('📱 DOM carregado, inicializando EmailJS...');
+        console.log('📱 DOM carregado - Inicializando sistema de contato...');
         makeEmailClickable();
         
-        // Verifica se o SDK foi carregado
-        if (typeof emailjs !== 'undefined') {
-            console.log('✅ EmailJS SDK carregado');
+        // Verifica se o EmailJS está carregado
+        if (typeof emailjs === 'undefined') {
+            console.error('EmailJS não carregado!');
+            showErrorMessage('Sistema de email não carregado. Recarregue a página.');
         } else {
-            console.error('❌ EmailJS SDK não carregado');
-            // Tenta carregar dinamicamente
-            loadEmailJSSDK();
+            console.log('✅ EmailJS carregado e pronto');
         }
     });
-    
-    // Função para carregar o SDK dinamicamente se necessário
-    function loadEmailJSSDK() {
-        if (typeof emailjs !== 'undefined') return;
-        
-        console.log('🔄 Carregando EmailJS SDK dinamicamente...');
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
-        script.onload = function() {
-            console.log('✅ EmailJS SDK carregado dinamicamente');
-            emailjs.init("U91z1GoHHhCCuvVSH");
-        };
-        script.onerror = function() {
-            console.error('❌ Falha ao carregar EmailJS SDK');
-        };
-        document.head.appendChild(script);
-    }
     
 })();
 
@@ -3603,39 +3642,17 @@
 const emailJSStyles = document.createElement('style');
 emailJSStyles.textContent = `
     .email-link {
-        color: var(--text-gray);
-        text-decoration: none;
-        transition: all 0.3s ease;
-        display: inline-flex;
-        align-items: center;
-        padding: 2px 4px;
-        border-radius: 4px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     .email-link:hover {
-        color: var(--accent-gold) !important;
-        background: rgba(255, 215, 0, 0.05);
-        transform: translateY(-1px);
-    }
-    
-    .fa-spinner {
-        margin-right: 8px;
-        animation: spin 1s linear infinite;
-    }
-    
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-    
-    #form-message {
-        animation: slideIn 0.3s ease;
+        transform: translateY(-2px);
     }
     
     @keyframes slideIn {
         from {
             opacity: 0;
-            transform: translateY(-10px);
+            transform: translateY(-20px);
         }
         to {
             opacity: 1;
@@ -3643,23 +3660,49 @@ emailJSStyles.textContent = `
         }
     }
     
-    .form-input:focus {
-        border-color: var(--accent-gold) !important;
-        box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.1) !important;
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    .fa-spinner {
+        animation: spin 1s linear infinite;
+        margin-right: 10px;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    #form-message i {
+        margin-right: 10px;
+        font-size: 1.2em;
+    }
+    
+    .form-input:valid {
+        border-color: rgba(255, 215, 0, 0.3) !important;
+    }
+    
+    .form-input:invalid:not(:focus):not(:placeholder-shown) {
+        border-color: rgba(244, 67, 54, 0.5) !important;
     }
     
     .btn-submit:disabled {
-        opacity: 0.7;
-        cursor: not-allowed !important;
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none !important;
     }
     
-    #btn-icon {
-        margin-right: 8px;
-        transition: transform 0.3s ease;
-    }
-    
-    .btn-submit:hover:not(:disabled) #btn-icon {
-        transform: translateX(3px);
+    .btn-submit:not(:disabled):hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3) !important;
     }
 `;
 document.head.appendChild(emailJSStyles);
