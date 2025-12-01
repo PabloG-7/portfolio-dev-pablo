@@ -1,9 +1,5 @@
 # 🚀 Portfólio - Pablo Gomes | Desenvolvedor Frontend
 
-![Status](https://img.shields.io/badge/Status-Online-success)
-![Tecnologias](https://img.shields.io/badge/Tecnologias-HTML%252FCSS%252FJS-blue)
-![Licença](https://img.shields.io/badge/Licen%C3%A7a-MIT-green)
-
 Um portfólio moderno e responsivo desenvolvido para mostrar meus projetos, habilidades e experiência como desenvolvedor Frontend.
 
 ---
