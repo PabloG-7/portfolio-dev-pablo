@@ -6,15 +6,17 @@
     <title>Pablo Gomes | Desenvolvedor Frontend</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- SDK do EmailJS -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-
-<meta property="og:image" content="https://pablog-7.github.io/portfolio/arquivos-portfolio/p.png">
+    <!-- Meta tags para redes sociais -->
+<meta property="og:image" content="https://pablog-7.github.io/portfolio/arquivos-portfolio/P.png">
 <meta property="og:site_name" content="Pablo Gomes - Front-end Developer">
 
 <meta property="og:title" content="Pablo Gomes - Desenvolvedor Front-end">
 <meta property="og:description" content="Portfólio profissional com projetos modernos, animações e experiência em React, TypeScript e UI/UX.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://SEU-SITE.com">
+<meta property="og:url" content="https://portfolio-dev-pablo.vercel.app/">
 
     
     <!-- Favicon personalizado -->
@@ -2919,83 +2921,76 @@
                             </div>
                             <div class="method-info">
                                 <h3>Localização</h3>
-                                <p>São Paulo, SP - Brasil</p>
+                                <p>São Bernardo do Campo, SP - Brasil</p>
                             </div>
                         </div>
                         
                         <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="method-info">
-                                <h3>Telefone</h3>
-                                <p>+55 (11) 99999-9999</p>
-                            </div>
+                        <div class="method-icon">
+                            <i class="fas fa-envelope"></i>
                         </div>
+                        <div class="method-info">
+                            <h3>Email</h3>
+                            <p>pablooliver853@gmail.com</p>
+                        </div>
+                    </div>
                         
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="method-info">
-                                <h3>Email</h3>
-                                <p>pablo.gomes@exemplo.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="method-info">
-                                <h3>Horário Disponível</h3>
-                                <p>Segunda - Sexta: 9:00 - 18:00</p>
-                            </div>
-                        </div>
                     </div>
                     
                     <div class="social-links">
-                        <a href="#" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/PabloG-7" class="social-link" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </div>
+    <a href="https://www.linkedin.com/in/pablogomess/" class="social-link" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+    <a href="https://github.com/PabloG-7" class="social-link" target="_blank">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.instagram.com/pablog.dev/" class="social-link" target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.facebook.com/people/Pablo-Gomes/pfbid0WoGbchzDcWwKtESvpZzzVdkXgcin8DuTK8HcNTaThF1ZWLzVZKCG1Zyqe8Pkb3cal/" class="social-link" target="_blank">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+</div>
                 </div>
                 
                 <div class="contact-form-wrapper fade-in">
-                    <h3 class="form-title">Envie uma Mensagem</h3>
-                    <form>
-                        <div class="form-group">
-                            <label class="form-label">Nome Completo</label>
-                            <input type="text" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Assunto</label>
-                            <input type="text" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Mensagem</label>
-                            <textarea class="form-input" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn-submit">Enviar Mensagem</button>
-                    </form>
-                </div>
+    <h3 class="form-title">Envie uma Mensagem</h3>
+    <form id="contact-form">
+        <div class="form-group">
+            <label class="form-label">Nome Completo *</label>
+            <input type="text" class="form-input" id="from_name" name="from_name" required 
+                   placeholder="Seu nome completo">
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label">Email *</label>
+            <input type="email" class="form-input" id="email" name="email" required 
+                   placeholder="seu@email.com">
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label">Assunto *</label>
+            <input type="text" class="form-input" id="subject" name="subject" required 
+                   placeholder="Sobre o que gostaria de conversar?">
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label">Mensagem *</label>
+            <textarea class="form-input" id="message" name="message" required 
+                      placeholder="Descreva sua proposta ou pergunta..." rows="5"></textarea>
+        </div>
+        
+        <button type="submit" class="btn-submit" id="submit-btn">
+            <i class="fas fa-paper-plane" id="btn-icon"></i>
+            <span id="btn-text">Enviar Mensagem</span>
+            <span id="btn-spinner" style="display: none;">
+                <i class="fas fa-spinner fa-spin"></i> Enviando...
+            </span>
+        </button>
+        
+        <div id="form-message" style="display: none; margin-top: 15px; padding: 12px; border-radius: 8px; text-align: center; font-size: 0.9em;"></div>
+    </form>
+</div>
             </div>
         </div>
     </section>
@@ -3005,14 +3000,14 @@
         <div class="footer-content">
             <div class="footer-logo">Pablo<span>Gomes</span></div>
             <div class="footer-social">
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/PabloG-7" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
+    <a href="https://www.linkedin.com/in/pablogomess/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://github.com/PabloG-7" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/pablog.dev/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/people/Pablo-Gomes/pfbid0WoGbchzDcWwKtESvpZzzVdkXgcin8DuTK8HcNTaThF1ZWLzVZKCG1Zyqe8Pkb3cal/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+</div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Pablo Gomes. Todos os direitos reservados.</p>
+            <p>&copy; 2025 Pablo Gomes. Todos os direitos reservados.</p>
         </div>
     </footer>
 
@@ -3345,6 +3340,252 @@
             e.preventDefault();
         }
     }, { passive: false });
+
+
+    // ========== EMAILJS CONFIGURAÇÃO COMPLETA ==========
+(function() {
+    // Inicializa EmailJS com SUAS CREDENCIAIS
+    emailjs.init("U91z1GoHHhCCuvVSH");
+    
+    // Configuração do formulário
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnIcon = document.getElementById('btn-icon');
+    const btnText = document.getElementById('btn-text');
+    const btnSpinner = document.getElementById('btn-spinner');
+    const formMessage = document.getElementById('form-message');
+    
+    // Torna o email clicável
+    function makeEmailClickable() {
+        const emailElements = document.querySelectorAll('.method-info p');
+        emailElements.forEach(el => {
+            if (el.textContent.includes('pablooliver853@gmail.com')) {
+                el.innerHTML = `
+                    <a href="mailto:pablooliver853@gmail.com" class="email-link">
+                        <i class="fas fa-envelope" style="margin-right: 8px;"></i>
+                        pablooliver853@gmail.com
+                    </a>
+                `;
+            }
+        });
+    }
+    
+    // Evento de submit do formulário
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Valida o formulário
+            if (!validateForm()) {
+                return;
+            }
+            
+            // Mostra estado de loading
+            setLoadingState(true);
+            
+            try {
+                // Prepara os dados para envio
+                const templateParams = {
+                    from_name: document.getElementById('from_name').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    subject: document.getElementById('subject').value.trim(),
+                    message: document.getElementById('message').value.trim(),
+                    date: new Date().toLocaleDateString('pt-BR', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    }),
+                    title: document.getElementById('subject').value.trim()
+                };
+                
+                // Envia o email
+                const response = await emailjs.send(
+                    'service_spittf6',     // Seu Service ID
+                    'template_2qnqf1j',    // Seu Template ID
+                    templateParams
+                );
+                
+                console.log('✅ Email enviado com sucesso!', response);
+                
+                // Mensagem de sucesso
+                showMessage(
+                    '<i class="fas fa-check-circle"></i> Mensagem enviada com sucesso! Entrarei em contato em breve.',
+                    'success'
+                );
+                
+                // Reseta o formulário
+                contactForm.reset();
+                
+            } catch (error) {
+                console.error('❌ Erro ao enviar email:', error);
+                
+                // Mensagem de erro amigável
+                showMessage(
+                    '<i class="fas fa-exclamation-circle"></i> Ocorreu um erro. Tente novamente ou entre em contato diretamente por email.',
+                    'error'
+                );
+                
+            } finally {
+                // Restaura estado normal
+                setLoadingState(false);
+            }
+        });
+        
+        // Remove mensagens de erro quando o usuário digita
+        contactForm.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('input', function() {
+                this.style.borderColor = '';
+                if (formMessage.style.display !== 'none') {
+                    formMessage.style.display = 'none';
+                }
+            });
+        });
+    }
+    
+    // Funções auxiliares
+    function validateForm() {
+        let isValid = true;
+        const requiredFields = contactForm.querySelectorAll('[required]');
+        
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                isValid = false;
+                field.style.borderColor = '#f44336';
+                field.style.boxShadow = '0 0 0 2px rgba(244, 67, 54, 0.2)';
+            } else {
+                field.style.borderColor = '';
+                field.style.boxShadow = '';
+            }
+        });
+        
+        // Validação específica para email
+        const emailField = document.getElementById('email');
+        if (emailField.value.trim()) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(emailField.value.trim())) {
+                isValid = false;
+                emailField.style.borderColor = '#f44336';
+                emailField.style.boxShadow = '0 0 0 2px rgba(244, 67, 54, 0.2)';
+                showMessage('Por favor, insira um endereço de email válido.', 'error');
+            }
+        }
+        
+        return isValid;
+    }
+    
+    function setLoadingState(isLoading) {
+        if (isLoading) {
+            btnIcon.style.display = 'none';
+            btnText.style.display = 'none';
+            btnSpinner.style.display = 'inline';
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+            submitBtn.style.cursor = 'not-allowed';
+        } else {
+            btnIcon.style.display = 'inline';
+            btnText.style.display = 'inline';
+            btnSpinner.style.display = 'none';
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = '1';
+            submitBtn.style.cursor = 'pointer';
+        }
+    }
+    
+    function showMessage(htmlContent, type) {
+        if (!formMessage) return;
+        
+        formMessage.innerHTML = htmlContent;
+        formMessage.style.display = 'block';
+        
+        if (type === 'success') {
+            formMessage.style.backgroundColor = 'rgba(76, 175, 80, 0.1)';
+            formMessage.style.color = '#4CAF50';
+            formMessage.style.border = '1px solid rgba(76, 175, 80, 0.3)';
+        } else {
+            formMessage.style.backgroundColor = 'rgba(244, 67, 54, 0.1)';
+            formMessage.style.color = '#f44336';
+            formMessage.style.border = '1px solid rgba(244, 67, 54, 0.3)';
+        }
+        
+        // Esconde a mensagem após 5 segundos
+        setTimeout(() => {
+            formMessage.style.display = 'none';
+        }, 5000);
+    }
+    
+    // Inicializa quando o DOM estiver pronto
+    document.addEventListener('DOMContentLoaded', function() {
+        makeEmailClickable();
+    });
+    
+})();
+
+// Adiciona estilos CSS
+const emailJSStyles = document.createElement('style');
+emailJSStyles.textContent = `
+    .email-link {
+        color: var(--text-gray);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        padding: 2px 4px;
+        border-radius: 4px;
+    }
+    
+    .email-link:hover {
+        color: var(--accent-gold) !important;
+        background: rgba(255, 215, 0, 0.05);
+        transform: translateY(-1px);
+    }
+    
+    .fa-spinner {
+        margin-right: 8px;
+        animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    #form-message {
+        animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .form-input:focus {
+        border-color: var(--accent-gold) !important;
+        box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.1) !important;
+    }
+    
+    .btn-submit:disabled {
+        opacity: 0.7;
+        cursor: not-allowed !important;
+    }
+    
+    #btn-icon {
+        margin-right: 8px;
+        transition: transform 0.3s ease;
+    }
+    
+    .btn-submit:hover:not(:disabled) #btn-icon {
+        transform: translateX(3px);
+    }
+`;
+document.head.appendChild(emailJSStyles);
 </script>
 </body>
 </html>
