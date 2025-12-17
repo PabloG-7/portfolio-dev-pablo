@@ -1183,62 +1183,6 @@
             flex-direction: column;
         }
 
-        .project-badges {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .project-badge {
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.75em;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .project-badge.featured {
-            background: linear-gradient(45deg, #FFD700, #FFEC8B);
-            color: var(--primary-black);
-        }
-
-        .project-badge.game {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-        }
-
-        .project-badge.personal {
-            background: linear-gradient(45deg, #4facfe, #00f2fe);
-            color: white;
-        }
-
-        .project-badge.social {
-            background: linear-gradient(45deg, #fa709a, #fee140);
-            color: white;
-        }
-
-        .project-badge.freelance {
-            background: linear-gradient(45deg, #ff9a9e, #fecfef);
-            color: var(--primary-black);
-        }
-
-        .project-badge.development {
-            background: linear-gradient(45deg, #ffecd2, #fcb69f);
-            color: var(--primary-black);
-        }
-
-        .project-badge.ecommerce {
-            background: linear-gradient(45deg, #a8edea, #fed6e3);
-            color: var(--primary-black);
-        }
-
-        .project-badge.productivity {
-            background: linear-gradient(45deg, #d299c2, #fef9d7);
-            color: var(--primary-black);
-        }
-
         .project-title {
             font-size: 1.4em;
             font-weight: 700;
@@ -1285,6 +1229,32 @@
             display: flex;
             align-items: center;
             gap: 8px;
+        }
+
+        /* NOVOS ESTILOS DISCRETOS PARA TIPO DE PROJETO */
+        .project-type {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 3;
+            padding: 4px 12px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent-gold);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-type {
+            background: rgba(0, 0, 0, 0.85);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
         /* Seção Skills */
@@ -2089,6 +2059,13 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+            
+            .project-type {
+                top: 12px;
+                right: 12px;
+                font-size: 0.7em;
+                padding: 3px 10px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -2176,6 +2153,13 @@
             
             .project-img {
                 padding-bottom: 70%;
+            }
+            
+            .project-type {
+                top: 10px;
+                right: 10px;
+                font-size: 0.65em;
+                padding: 3px 8px;
             }
         }
 
@@ -2294,6 +2278,13 @@
             
             .highlight {
                 font-size: 0.9em;
+            }
+            
+            .project-type {
+                top: 12px;
+                right: 12px;
+                font-size: 0.7em;
+                padding: 3px 10px;
             }
         }
 
@@ -2434,23 +2425,30 @@
                 padding: 18px;
             }
             
-            .project-badges {
-                margin-bottom: 12px;
+            .project-title {
+                font-size: 1.2em;
+                margin-bottom: 10px;
             }
             
-            .project-badge {
-                padding: 5px 12px;
+            .project-desc {
+                font-size: 0.9em;
+                margin-bottom: 10px;
+            }
+            
+            .tech-tag {
+                padding: 4px 10px;
                 font-size: 0.8em;
             }
             
-            .project-links {
-                gap: 12px;
+            .highlight {
+                font-size: 0.85em;
             }
             
-            .project-link {
-                width: 48px;
-                height: 48px;
-                font-size: 1.1em;
+            .project-type {
+                top: 10px;
+                right: 10px;
+                font-size: 0.65em;
+                padding: 3px 8px;
             }
         }
 
@@ -2524,6 +2522,13 @@
             
             .highlight {
                 font-size: 0.85em;
+            }
+            
+            .project-type {
+                top: 8px;
+                right: 8px;
+                font-size: 0.6em;
+                padding: 2px 6px;
             }
         }
     </style>
@@ -2706,6 +2711,7 @@
             <!-- NEON MEMORY -->
             <div class="project-card">
                 <div class="project-img">
+                    <div class="project-type">Jogo</div>
                     <img src="img-projetos/neon-linkedin.png" alt="NEON MEMORY">
                     <div class="project-overlay">
                         <div class="project-links">
@@ -2719,10 +2725,6 @@
                     </div>
                 </div>
                 <div class="project-info">
-                    <div class="project-badges">
-                        <span class="project-badge featured">Destaque</span>
-                        <span class="project-badge game">Jogo</span>
-                    </div>
                     <h3 class="project-title">NEON MEMORY</h3>
                     <p class="project-desc">Jogo da memória revolucionário com tema neon que oferece uma experiência única de multiplayer em tempo real.</p>
                     <div class="project-tech">
@@ -2742,6 +2744,7 @@
             <!-- PGFLOW -->
             <div class="project-card">
                 <div class="project-img">
+                    <div class="project-type">Pessoal</div>
                     <img src="img-projetos/pgflow-linkedin.png" alt="PGFLOW">
                     <div class="project-overlay">
                         <div class="project-links">
@@ -2755,10 +2758,6 @@
                     </div>
                 </div>
                 <div class="project-info">
-                    <div class="project-badges">
-                        <span class="project-badge personal">Pessoal</span>
-                        <span class="project-badge social">Social</span>
-                    </div>
                     <h3 class="project-title">PGFLOW</h3>
                     <p class="project-desc">Plataforma social full-stack com sistema completo de autenticação JWT, CRUD de posts e comentários.</p>
                     <div class="project-tech">
@@ -2778,6 +2777,7 @@
             <!-- DR. BRUNO RIBEIRO -->
             <div class="project-card">
                 <div class="project-img">
+                    <div class="project-type">Freelance</div>
                     <img src="img-projetos/drbruno-portfolio.png" alt="Dr. Bruno Ribeiro">
                     <div class="project-overlay">
                         <div class="project-links">
@@ -2788,10 +2788,6 @@
                     </div>
                 </div>
                 <div class="project-info">
-                    <div class="project-badges">
-                        <span class="project-badge freelance">Freelance</span>
-                        <span class="project-badge development">Em Desenvolvimento</span>
-                    </div>
                     <h3 class="project-title">DR. BRUNO RIBEIRO</h3>
                     <p class="project-desc">Site institucional premium desenvolvido para um fisioterapeuta especializado, focando em converter visitantes em pacientes.</p>
                     <div class="project-tech">
@@ -2811,6 +2807,7 @@
             <!-- RAEVEN FASHION -->
             <div class="project-card">
                 <div class="project-img">
+                    <div class="project-type">Pessoal</div>
                     <img src="img-projetos/raeven-portfolio.png" alt="RAEVEN FASHION">
                     <div class="project-overlay">
                         <div class="project-links">
@@ -2821,10 +2818,6 @@
                     </div>
                 </div>
                 <div class="project-info">
-                    <div class="project-badges">
-                        <span class="project-badge personal">Pessoal</span>
-                        <span class="project-badge development">Em Desenvolvimento</span>
-                    </div>
                     <h3 class="project-title">RAEVEN FASHION</h3>
                     <p class="project-desc">Plataforma inovadora de moda inteligente que utiliza IA para revolucionar a experiência de compra online.</p>
                     <div class="project-tech">
@@ -2844,6 +2837,7 @@
             <!-- TASKFORGE -->
             <div class="project-card">
                 <div class="project-img">
+                    <div class="project-type">Pessoal</div>
                     <img src="img-projetos/taskforge-linkedin.png" alt="TASKFORGE">
                     <div class="project-overlay">
                         <div class="project-links">
@@ -2857,10 +2851,6 @@
                     </div>
                 </div>
                 <div class="project-info">
-                    <div class="project-badges">
-                        <span class="project-badge personal">Pessoal</span>
-                        <span class="project-badge productivity">Produtividade</span>
-                    </div>
                     <h3 class="project-title">TASKFORGE</h3>
                     <p class="project-desc">Aplicação de produtividade premium com foco em organização pessoal e profissional com sistema de tags inteligente.</p>
                     <div class="project-tech">
@@ -2880,6 +2870,7 @@
             <!-- LUCKPET -->
             <div class="project-card">
                 <div class="project-img">
+                    <div class="project-type">Pessoal</div>
                     <img src="img-projetos/luckpet-linkedin.png" alt="LUCKPET">
                     <div class="project-overlay">
                         <div class="project-links">
@@ -2893,10 +2884,6 @@
                     </div>
                 </div>
                 <div class="project-info">
-                    <div class="project-badges">
-                        <span class="project-badge personal">Pessoal</span>
-                        <span class="project-badge ecommerce">E-commerce</span>
-                    </div>
                     <h3 class="project-title">LUCKPET</h3>
                     <p class="project-desc">E-commerce completo para petshop com foco em experiência do usuário e fidelização com sistema de autenticação seguro.</p>
                     <div class="project-tech">
