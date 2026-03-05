@@ -568,7 +568,7 @@
             visibility: visible; 
         }
 
-        /* ===== HERO SECTION ===== */
+        /* ===== HERO SECTION COM WALLPAPER ===== */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -580,22 +580,16 @@
             margin-top: 0;
         }
 
-        @media (max-width: 991px) { .hero { padding: calc(var(--header-height) + 30px) clamp(20px, 5vw, 5%) 50px; } }
-        @media (max-width: 768px) { .hero { padding: calc(var(--header-height) + 25px) clamp(18px, 4vw, 20px) 45px; } }
-        @media (max-width: 600px) { .hero { padding: calc(var(--header-height) + 20px) 16px 40px; } }
-        @media (max-width: 480px) { .hero { padding: calc(var(--header-height) + 15px) 14px 35px; } }
-        @media (max-width: 360px) { .hero { padding: calc(var(--header-height) + 10px) 12px 30px; } }
-
-        .hero-bg {
+        /* wallpaper/placa de fundo */
+        .hero::before {
+            content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 70% 30%, rgba(197, 165, 114, 0.05) 0%, transparent 50%),
-                        radial-gradient(circle at 30% 70%, rgba(197, 165, 114, 0.05) 0%, transparent 50%);
-            z-index: 1;
+            inset: 0;
+            background:
+                radial-gradient(circle at 50% 30%, rgba(197,165,114,0.10) 0%, transparent 55%),
+                radial-gradient(circle at 15% 80%, rgba(197,165,114,0.06) 0%, transparent 50%);
             pointer-events: none;
+            z-index: 1;
         }
 
         .hero-container {
@@ -615,6 +609,13 @@
                 grid-template-columns: 1fr;
                 text-align: center;
                 gap: 30px;
+            }
+            
+            /* imagem primeiro no mobile para dar impacto */
+            .hero-image { 
+                order: -1; 
+                margin-top: 6px;
+                margin-bottom: 10px;
             }
         }
 
@@ -2319,7 +2320,7 @@
             50% { stroke: var(--accent-light); filter: blur(1px); }
         }
 
-        /* ===== MODAL SUPER ESTÁVEL (MOBILE SAFE) ===== */
+        /* ===== MODAL CENTRALIZADO + SAFE AREA (iPhone) ===== */
         .modal {
             display: none;
             position: fixed;
@@ -2328,14 +2329,24 @@
             background: rgba(3, 0, 20, 0.92);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            padding: 12px;
+
+            /* centraliza */
+            place-items: center;
+
+            /* safe-area + respiro */
+            padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
+                     max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+
             overflow: hidden;
+        }
+
+        .modal[style*="display: block"] {
+            display: grid;
         }
 
         .modal-content {
             width: min(720px, 100%);
-            height: min(80vh, 720px);
-            margin: calc(var(--header-height) + 12px) auto 12px;
+            max-height: calc(100dvh - (max(12px, env(safe-area-inset-top)) + max(12px, env(safe-area-inset-bottom))));
             background: var(--secondary-dark);
             border: 1px solid var(--glass-border);
             border-radius: 22px;
@@ -2387,12 +2398,7 @@
         }
 
         @media (max-width: 480px) {
-            .modal { padding: 10px; }
-            .modal-content {
-                height: min(82vh, 680px);
-                border-radius: 16px;
-                margin: calc(var(--header-height) + 10px) auto 10px;
-            }
+            .modal-content { border-radius: 16px; }
             .modal-body { padding: 16px 14px 18px; }
         }
 
@@ -3047,167 +3053,165 @@
     </section>
 
     <!-- Projects Section -->
-    <section class="section" id="projects">
-        <div class="container">
-            <div class="section-header fade-in">
-                <span class="section-subtitle">PROJETOS</span>
-                <h2 class="section-title">Trabalhos em Destaque</h2>
-                <p class="section-description">Clique em cada projeto para explorar os detalhes.</p>
+<section class="section" id="projects">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-subtitle">PROJETOS</span>
+            <h2 class="section-title">Trabalhos em Destaque</h2>
+            <p class="section-description">Clique em cada projeto para explorar os detalhes.</p>
+        </div>
+
+        <div class="projects-grid">
+            <!-- DR. BRUNO RIBEIRO -->
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <img src="img-projetos/figma-drbruno.png" alt="Dr. Bruno Ribeiro - Site institucional" loading="lazy">
+                </div>
+                <div class="project-overlay">
+                    <span class="project-type">FREELANCE</span>
+                    <h3 class="project-title">DR. BRUNO RIBEIRO</h3>
+                    <p class="project-description">Site institucional para fisioterapeuta com foco em conversão e SEO.</p>
+                    <div class="project-tech">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                        <span>EmailJS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link coming-soon">
+                            <i class="fas fa-clock"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <div class="projects-grid">
-                <!-- NEON MEMORY -->
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="img-projetos/figma-neonmemory.png" alt="NEON MEMORY - Jogo da memória neon" loading="lazy">
+            <!-- MAX SORVETES -->
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <img src="img-projetos/figma-maxsorvetes.png" alt="MAX SORVETES - Site institucional" loading="lazy">
+                </div>
+                <div class="project-overlay">
+                    <span class="project-type">FREELANCE</span>
+                    <h3 class="project-title">MAX SORVETES</h3>
+                    <p class="project-description">Site para rede de sorveterias com cardápio digital e integração com maps.</p>
+                    <div class="project-tech">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                        <span>SEO</span>
                     </div>
-                    <div class="project-overlay">
-                        <span class="project-type">JOGO</span>
-                        <h3 class="project-title">NEON MEMORY</h3>
-                        <p class="project-description">Jogo da memória multiplayer com tema neon, sistema de áudio e modos de jogo.</p>
-                        <div class="project-tech">
-                            <span>TypeScript</span>
-                            <span>React</span>
-                            <span>Supabase</span>
-                            <span>Vite</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://jogo-memoria-gold.vercel.app/" class="project-link" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="https://github.com/PabloG-7/jogo-memoria" class="project-link" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link coming-soon">
+                            <i class="fas fa-clock"></i>
+                        </a>
                     </div>
                 </div>
+            </div>
 
-                <!-- PGFLOW -->
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="img-projetos/figma-pgflow.png" alt="PGFLOW - Plataforma social" loading="lazy">
+            <!-- BNB PLAZA - Property Management System -->
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <img src="img-projetos/figma-bnbplaza.png" alt="BNB Plaza - Property Management System" loading="lazy">
+                </div>
+                <div class="project-overlay">
+                    <span class="project-type">FREELANCE</span>
+                    <h3 class="project-title">BNBPLAZA</h3>
+                    <p class="project-description">Property Management System completo para locação imobiliária na Bolívia. Dashboard financeiro, calendário de ocupação e relatórios automatizados em PDF.</p>
+                    <div class="project-tech">
+                        <span>React</span>
+                        <span>TypeScript</span>
+                        <span>Supabase</span>
+                        <span>PostgreSQL</span>
+                        <span>Vite</span>
                     </div>
-                    <div class="project-overlay">
-                        <span class="project-type">FULL STACK</span>
-                        <h3 class="project-title">PGFLOW</h3>
-                        <p class="project-description">Plataforma social com autenticação JWT, CRUD de posts e upload de imagens.</p>
-                        <div class="project-tech">
-                            <span>Node.js</span>
-                            <span>Express</span>
-                            <span>MongoDB</span>
-                            <span>JWT</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://pgflow.onrender.com/" class="project-link" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="https://github.com/PabloG-7/pgflow" class="project-link" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link coming-soon">
+                            <i class="fas fa-clock"></i>
+                        </a>
                     </div>
                 </div>
+            </div>
 
-                <!-- TASKFORGE -->
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="img-projetos/taskforge-linkedin.png" alt="TASKFORGE - Gerenciador de tarefas" loading="lazy">
+            <!-- PGFLOW -->
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <img src="img-projetos/figma-pgflow.png" alt="PGFLOW - Plataforma social" loading="lazy">
+                </div>
+                <div class="project-overlay">
+                    <span class="project-type">FULL STACK</span>
+                    <h3 class="project-title">PGFLOW</h3>
+                    <p class="project-description">Plataforma social com autenticação JWT, CRUD de posts e upload de imagens.</p>
+                    <div class="project-tech">
+                        <span>Node.js</span>
+                        <span>Express</span>
+                        <span>MongoDB</span>
+                        <span>JWT</span>
                     </div>
-                    <div class="project-overlay">
-                        <span class="project-type">PRODUTIVIDADE</span>
-                        <h3 class="project-title">TASKFORGE</h3>
-                        <p class="project-description">Gerenciador de tarefas com Pomodoro, sistema de tags e drag & drop.</p>
-                        <div class="project-tech">
-                            <span>React</span>
-                            <span>TypeScript</span>
-                            <span>Tailwind</span>
-                            <span>DnD</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://gerenciador-de-tarefas-wine.vercel.app/" class="project-link" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="https://github.com/PabloG-7/taskforge" class="project-link" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
+                    <div class="project-links">
+                        <a href="https://pgflow.onrender.com/" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <a href="https://github.com/PabloG-7/pgflow" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
                 </div>
+            </div>
 
-                <!-- LUCKPET -->
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="img-projetos/figma-luckpet.png" alt="LUCKPET - E-commerce para petshop" loading="lazy">
+            <!-- NEON MEMORY -->
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <img src="img-projetos/figma-neonmemory.png" alt="NEON MEMORY - Jogo da memória neon" loading="lazy">
+                </div>
+                <div class="project-overlay">
+                    <span class="project-type">JOGO</span>
+                    <h3 class="project-title">NEON MEMORY</h3>
+                    <p class="project-description">Jogo da memória multiplayer com tema neon, sistema de áudio e modos de jogo.</p>
+                    <div class="project-tech">
+                        <span>TypeScript</span>
+                        <span>React</span>
+                        <span>Supabase</span>
+                        <span>Vite</span>
                     </div>
-                    <div class="project-overlay">
-                        <span class="project-type">E-COMMERCE</span>
-                        <h3 class="project-title">LUCKPET</h3>
-                        <p class="project-description">E-commerce para petshop com carrinho persistente e autenticação.</p>
-                        <div class="project-tech">
-                            <span>React</span>
-                            <span>Firebase</span>
-                            <span>Redux</span>
-                            <span>Stripe</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://luckpet.vercel.app/" class="project-link" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="https://github.com/PabloG-7/petshop" class="project-link" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
+                    <div class="project-links">
+                        <a href="https://jogo-memoria-gold.vercel.app/" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <a href="https://github.com/PabloG-7/jogo-memoria" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
                 </div>
+            </div>
 
-                <!-- DR. BRUNO RIBEIRO -->
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="img-projetos/figma-drbruno.png" alt="Dr. Bruno Ribeiro - Site institucional" loading="lazy">
-                    </div>
-                    <div class="project-overlay">
-                        <span class="project-type">FREELANCE</span>
-                        <h3 class="project-title">DR. BRUNO RIBEIRO</h3>
-                        <p class="project-description">Site institucional para fisioterapeuta com foco em conversão e SEO.</p>
-                        <div class="project-tech">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                            <span>EmailJS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link coming-soon">
-                                <i class="fas fa-clock"></i>
-                            </a>
-                        </div>
-                    </div>
+            <!-- LUCKPET -->
+            <div class="project-card fade-in">
+                <div class="project-image">
+                    <img src="img-projetos/figma-luckpet.png" alt="LUCKPET - E-commerce para petshop" loading="lazy">
                 </div>
-
-                <!-- MAX SORVETES -->
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="img-projetos/figma-maxsorvetes.png" alt="MAX SORVETES - Site institucional" loading="lazy">
+                <div class="project-overlay">
+                    <span class="project-type">E-COMMERCE</span>
+                    <h3 class="project-title">LUCKPET</h3>
+                    <p class="project-description">E-commerce para petshop com carrinho persistente e autenticação.</p>
+                    <div class="project-tech">
+                        <span>React</span>
+                        <span>Firebase</span>
+                        <span>Redux</span>
+                        <span>Stripe</span>
                     </div>
-                    <div class="project-overlay">
-                        <span class="project-type">FREELANCE</span>
-                        <h3 class="project-title">MAX SORVETES</h3>
-                        <p class="project-description">Site para rede de sorveterias com cardápio digital e integração com maps.</p>
-                        <div class="project-tech">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                            <span>SEO</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link coming-soon">
-                                <i class="fas fa-clock"></i>
-                            </a>
-                        </div>
+                    <div class="project-links">
+                        <a href="https://luckpet.vercel.app/" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        <a href="https://github.com/PabloG-7/petshop" class="project-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Skills Section -->
     <section class="section" id="skills">
