@@ -4,15 +4,6 @@ Um portfólio moderno e responsivo desenvolvido para mostrar meus projetos, habi
 
 ---
 
-## ✨ Demonstração
-🔗 **Link do Projeto:** https://pablogomes-dev.vercel.app/
-
-<div align="center">
-  <img src="https://raw.githubusercontent.com/PabloG-7/portfolio-dev-pablo/refs/heads/main/portfolio-linkedin.png" width="85%" style="border-radius: 12px;" />
-</div>
-
----
-
 ## 🎯 Características Principais
 
 ### 🎨 Design Moderno
