@@ -66,7 +66,7 @@
             font-family: 'Inter', sans-serif;
             background: var(--primary-dark);
             color: var(--text-primary);
-            overflow-x: hidden;
+            overflow-x: clip;
             line-height: 1.6;
             width: 100%;
             position: relative;
@@ -79,6 +79,15 @@
             max-width: 100%;
             height: auto;
             display: block;
+        }
+
+        /* ===== ANTI OVERFLOW ===== */
+        .hero, .section, header, footer { 
+            width: 100%; 
+            max-width: 100%; 
+        }
+        .project-card, .skill-card, .about-card, .timeline-content { 
+            min-width: 0; 
         }
 
         /* ===== SCROLLBAR ===== */
@@ -105,7 +114,7 @@
             width: 100%;
         }
 
-        /* ===== HEADER REDESIGNED ===== */
+        /* ===== HEADER REDESIGNED (CORRIGIDO) ===== */
         header {
             position: fixed;
             top: 0;
@@ -204,6 +213,7 @@
             z-index: 1;
         }
 
+        /* Efeito de background gradient nos links */
         .nav-link::before {
             content: '';
             position: absolute;
@@ -227,6 +237,7 @@
             opacity: 1;
         }
 
+        /* Efeito de brilho nos links */
         .nav-link::after {
             content: '';
             position: absolute;
@@ -265,11 +276,13 @@
             transform: translateY(-1px);
         }
 
+        /* Indicador de link ativo */
         .nav-link.active {
             background: rgba(197, 165, 114, 0.1);
             box-shadow: 0 2px 10px rgba(197, 165, 114, 0.2);
         }
 
+        /* Container dos botões sociais */
         .nav-social {
             display: flex;
             align-items: center;
@@ -282,6 +295,7 @@
             -webkit-backdrop-filter: blur(10px);
         }
 
+        /* Botões sociais com design aprimorado */
         .social-nav-btn {
             display: flex;
             align-items: center;
@@ -302,6 +316,7 @@
             letter-spacing: 0.3px;
         }
 
+        /* Efeito de brilho nos botões sociais */
         .social-nav-btn::before {
             content: '';
             position: absolute;
@@ -335,6 +350,7 @@
             z-index: 2;
         }
 
+        /* Estilo específico para GitHub */
         .social-nav-btn.github-btn {
             background: linear-gradient(135deg, rgba(197, 165, 114, 0.15), rgba(0, 0, 0, 0.3));
             border-color: rgba(197, 165, 114, 0.25);
@@ -352,6 +368,7 @@
             color: var(--accent-gold);
         }
 
+        /* Estilo específico para LinkedIn */
         .social-nav-btn.linkedin-btn {
             background: linear-gradient(135deg, rgba(0, 119, 181, 0.15), rgba(0, 0, 0, 0.3));
             border-color: rgba(0, 119, 181, 0.25);
@@ -369,6 +386,7 @@
             color: #0077b5;
         }
 
+        /* Efeito de ripple nos botões */
         .social-nav-btn::after {
             content: '';
             position: absolute;
@@ -390,6 +408,7 @@
             transition: 0s;
         }
 
+        /* Separador visual entre links e botões sociais */
         .nav-separator {
             width: 1px;
             height: 24px;
@@ -560,7 +579,7 @@
             visibility: visible; 
         }
 
-        /* ===== HERO SECTION ===== */
+        /* ===== HERO SECTION (mantido igual) ===== */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -699,6 +718,7 @@
 
         .highlight { color: var(--accent-gold); font-weight: 600; }
 
+        /* ===== HERO STATS ===== */
         .experience-tag {
             margin-bottom: 20px;
         }
@@ -1305,7 +1325,7 @@
             flex-shrink: 0;
         }
 
-        /* ===== PROJECTS SECTION - CORRIGIDO ===== */
+        /* ===== PROJECTS SECTION ===== */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -1313,12 +1333,7 @@
             margin-top: 30px;
         }
 
-        @media (max-width: 991px) { 
-            .projects-grid { 
-                grid-template-columns: 1fr; 
-                gap: 25px; 
-            }
-        }
+        @media (max-width: 991px) { .projects-grid { grid-template-columns: 1fr; gap: 20px; } }
 
         .project-card {
             position: relative;
@@ -1326,17 +1341,11 @@
             overflow: hidden;
             aspect-ratio: 16/12;
             cursor: pointer;
-            background: var(--secondary-dark);
         }
 
         @media (max-width: 991px) { .project-card { aspect-ratio: 16/10; } }
         @media (max-width: 768px) { .project-card { aspect-ratio: 16/11; } }
-        @media (max-width: 480px) { 
-            .project-card { 
-                aspect-ratio: 16/12; 
-                border-radius: 20px;
-            }
-        }
+        @media (max-width: 480px) { .project-card { aspect-ratio: 16/12; border-radius: 20px; } }
 
         .project-image {
             width: 100%;
@@ -1350,13 +1359,9 @@
             object-fit: cover;
             object-position: top;
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            filter: brightness(0.9);
         }
 
-        .project-card:hover .project-image img { 
-            transform: scale(1.05);
-            filter: brightness(1);
-        }
+        .project-card:hover .project-image img { transform: scale(1.05); }
 
         .project-overlay {
             position: absolute;
@@ -1366,9 +1371,9 @@
             height: 100%;
             background: linear-gradient(
                 to top,
-                rgba(3, 0, 20, 0.85) 0%,
+                rgba(3, 0, 20, 0.95) 0%,
                 rgba(3, 0, 20, 0.4) 50%,
-                rgba(3, 0, 20, 0.1) 100%
+                transparent 100%
             );
             display: flex;
             flex-direction: column;
@@ -1378,25 +1383,31 @@
             transition: opacity 0.4s ease;
         }
 
-        /* CORREÇÃO: Overlay sempre visível no mobile com fundo mais suave */
-        @media (max-width: 991px) {
-            .project-overlay {
+        @media (hover: hover) { .project-card:hover .project-overlay { opacity: 1; } }
+        
+        /* ===== OVERLAY CORRIGIDO PARA MOBILE ===== */
+        @media (hover: none) {
+            .project-overlay{
                 opacity: 1;
                 background: linear-gradient(
                     to top,
-                    rgba(3, 0, 20, 0.75) 0%,
-                    rgba(3, 0, 20, 0.3) 70%,
-                    transparent 100%
+                    rgba(3, 0, 20, 0.88) 0%,
+                    rgba(3, 0, 20, 0.35) 55%,
+                    rgba(3, 0, 20, 0.00) 100%
                 );
             }
             
-            .project-image img {
-                filter: brightness(0.8);
-            }
-            
-            .project-type, .project-title, .project-description, .project-tech, .project-links {
+            .project-type, 
+            .project-title, 
+            .project-description, 
+            .project-tech, 
+            .project-links{
                 transform: translateY(0);
                 opacity: 1;
+            }
+            
+            .project-image img{
+                filter: brightness(1.08) contrast(1.03);
             }
         }
 
@@ -1414,13 +1425,9 @@
             opacity: 0;
             transition: all 0.4s ease 0.1s;
             align-self: flex-start;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        .project-card:hover .project-type { 
-            transform: translateY(0); 
-            opacity: 1; 
-        }
+        .project-card:hover .project-type { transform: translateY(0); opacity: 1; }
 
         .project-title {
             font-size: clamp(16px, 3vw, 24px);
@@ -1431,13 +1438,9 @@
             opacity: 0;
             transition: all 0.4s ease 0.2s;
             word-break: break-word;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
-        .project-card:hover .project-title { 
-            transform: translateY(0); 
-            opacity: 1; 
-        }
+        .project-card:hover .project-title { transform: translateY(0); opacity: 1; }
 
         .project-description {
             color: var(--text-secondary);
@@ -1449,13 +1452,9 @@
             opacity: 0;
             transition: all 0.4s ease 0.3s;
             word-break: break-word;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
 
-        .project-card:hover .project-description { 
-            transform: translateY(0); 
-            opacity: 1; 
-        }
+        .project-card:hover .project-description { transform: translateY(0); opacity: 1; }
 
         .project-tech {
             display: flex;
@@ -1467,21 +1466,17 @@
             transition: all 0.4s ease 0.4s;
         }
 
-        .project-card:hover .project-tech { 
-            transform: translateY(0); 
-            opacity: 1; 
-        }
+        .project-card:hover .project-tech { transform: translateY(0); opacity: 1; }
 
         .project-tech span {
             padding: 3px 10px;
-            background: rgba(197, 165, 114, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 30px;
             color: var(--text-primary);
             font-size: clamp(9px, 1.5vw, 11px);
             font-weight: 500;
             letter-spacing: 0.3px;
-            backdrop-filter: blur(5px);
         }
 
         .project-links {
@@ -1492,10 +1487,7 @@
             transition: all 0.4s ease 0.5s;
         }
 
-        .project-card:hover .project-links { 
-            transform: translateY(0); 
-            opacity: 1; 
-        }
+        .project-card:hover .project-links { transform: translateY(0); opacity: 1; }
 
         .project-link {
             width: clamp(32px, 6vw, 40px);
@@ -1509,7 +1501,6 @@
             text-decoration: none;
             font-size: clamp(13px, 2vw, 16px);
             transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .project-link:hover {
@@ -1518,16 +1509,12 @@
         }
 
         .project-link.coming-soon {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.1);
             color: var(--text-secondary);
             cursor: not-allowed;
-            border: 1px solid rgba(255,255,255,0.2);
         }
 
-        .project-link.coming-soon:hover { 
-            transform: none; 
-            background: rgba(255, 255, 255, 0.2); 
-        }
+        .project-link.coming-soon:hover { transform: none; background: rgba(255, 255, 255, 0.1); }
 
         /* ===== EXPERIENCE SECTION ===== */
         .timeline {
@@ -1846,100 +1833,307 @@
             color: #F44336;
         }
 
-        /* ===== BOTÕES ESPECIAIS ===== */
-        .btn-morph {
+        /* ===== FOOTER REDESIGN ===== */
+        footer {
+            background: linear-gradient(180deg, var(--primary-dark) 0%, #050210 100%);
+            padding: 70px 0 25px;
             position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 14px 32px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--primary-dark);
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            transform-style: preserve-3d;
-            perspective: 500px;
+            overflow: hidden;
+            border-top: 1px solid rgba(197, 165, 114, 0.1);
         }
 
-        .morph-bg {
+        footer::before {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--gradient-gold);
-            border-radius: 50px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
-            box-shadow: 0 5px 15px rgba(197, 165, 114, 0.3);
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(197, 165, 114, 0.03) 0%, transparent 50%);
+            animation: rotateGradient 20s linear infinite;
         }
 
-        .morph-text {
+        @keyframes rotateGradient {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .footer-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
-        .morph-icon {
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid rgba(197, 165, 114, 0.1);
+        }
+
+        @media (max-width: 991px) {
+            .footer-main {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px 30px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+        }
+
+        .footer-info {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 20px;
             display: inline-block;
-            position: relative;
-            z-index: 1;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        .btn-morph:hover .morph-icon {
-            transform: translateX(5px) rotate(90deg);
+        .footer-description {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
 
-        .btn-liquid {
-            position: relative;
+        .footer-cta {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            padding: 14px 32px;
-            background: transparent;
-            border: none;
+            gap: 8px;
+            color: var(--accent-gold);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 10px 0;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .footer-cta i {
+            transition: transform 0.3s ease;
+        }
+
+        .footer-cta:hover {
+            color: var(--accent-light);
+            border-bottom-color: var(--accent-gold);
+        }
+
+        .footer-cta:hover i {
+            transform: translateX(5px);
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-title {
             color: var(--text-primary);
-            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-link i {
+            color: var(--accent-gold);
+            font-size: 12px;
+            opacity: 0;
+            transform: translateX(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-light);
+            transform: translateX(5px);
+        }
+
+        .footer-link:hover i {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon-small {
+            width: 36px;
+            height: 36px;
+            background: rgba(197, 165, 114, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-contact-item:hover .contact-icon-small {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .contact-text-small {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .contact-text-small strong {
+            display: block;
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .footer-social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(197, 165, 114, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            position: relative;
             overflow: hidden;
         }
 
-        .liquid-btn {
+        .footer-social-link::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
+            background: var(--gradient-gold);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
         }
 
-        .liquid-rect {
-            width: 100%;
-            height: 100%;
-            fill: none;
-            stroke: var(--accent-gold);
-            stroke-width: 2;
-            stroke-dasharray: 100%;
-            stroke-dashoffset: 100%;
-            transition: stroke-dashoffset 0.6s ease;
+        .footer-social-link i {
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
         }
 
-        .btn-liquid:hover .liquid-rect {
-            stroke-dashoffset: 0;
-            animation: liquidWave 1s ease-in-out;
+        .footer-social-link:hover::before {
+            opacity: 1;
         }
 
-        @keyframes liquidWave {
-            0%, 100% { stroke: var(--accent-gold); }
-            50% { stroke: var(--accent-light); filter: blur(1px); }
+        .footer-social-link:hover i {
+            color: var(--primary-dark);
+            transform: scale(1.2);
+        }
+
+        .footer-bottom {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .copyright i {
+            color: var(--accent-gold);
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .legal-link:hover {
+            color: var(--accent-gold);
         }
 
         /* ===== HIGHLIGHT WRAPPER ===== */
@@ -2032,7 +2226,96 @@
             to { left: 100%; }
         }
 
-        /* ===== MODAL ===== */
+        /* ===== BOTÕES ESPECIAIS ===== */
+        .btn-morph {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px 32px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            transform-style: preserve-3d;
+            perspective: 500px;
+        }
+
+        .morph-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-gold);
+            border-radius: 50px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+            box-shadow: 0 5px 15px rgba(197, 165, 114, 0.3);
+        }
+
+        .morph-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-morph:hover .morph-icon {
+            transform: translateX(5px) rotate(90deg);
+        }
+
+        .btn-liquid {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            background: transparent;
+            border: none;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .liquid-btn {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .liquid-rect {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: var(--accent-gold);
+            stroke-width: 2;
+            stroke-dasharray: 100%;
+            stroke-dashoffset: 100%;
+            transition: stroke-dashoffset 0.6s ease;
+        }
+
+        .btn-liquid:hover .liquid-rect {
+            stroke-dashoffset: 0;
+            animation: liquidWave 1s ease-in-out;
+        }
+
+        @keyframes liquidWave {
+            0%, 100% { stroke: var(--accent-gold); }
+            50% { stroke: var(--accent-light); filter: blur(1px); }
+        }
+
+        /* ===== MODAL RESPONSIVO CORRIGIDO ===== */
         .modal {
             display: none;
             position: fixed;
@@ -2044,13 +2327,16 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             z-index: 2000;
-            padding: 15px;
+            padding: 12px;
             overflow-y: auto;
         }
 
         .modal-content {
-            max-width: 600px;
-            margin: calc(var(--header-height) + 15px) auto 30px;
+            width: min(680px, 100%);
+            margin: calc(var(--header-height) + 12px) auto 16px;
+            max-height: calc(100vh - (var(--header-height) + 24px));
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
             background: var(--secondary-dark);
             border: 1px solid var(--glass-border);
             border-radius: 25px;
@@ -2058,17 +2344,11 @@
             position: relative;
         }
 
-        @media (max-width: 480px) {
-            .modal-content {
-                padding: 20px;
-                margin: calc(var(--header-height) + 10px) auto 20px;
-            }
-        }
-
         .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
+            position: sticky;
+            top: 10px;
+            margin-left: auto;
+            z-index: 5;
             width: clamp(32px, 6vw, 40px);
             height: clamp(32px, 6vw, 40px);
             background: var(--glass-bg);
@@ -2085,6 +2365,14 @@
         .modal-close:hover {
             background: var(--accent-gold);
             color: var(--primary-dark);
+        }
+
+        @media (max-width: 480px) {
+            .modal { padding: 10px; }
+            .modal-content {
+                border-radius: 18px;
+                padding: 18px;
+            }
         }
 
         .cert-category { margin-bottom: 25px; }
@@ -2141,7 +2429,7 @@
         }
         .scale-in.visible { opacity: 1; transform: scale(1); }
 
-        /* ===== FOOTER SIMPLIFICADO - CORRIGIDO ===== */
+        /* Footer Simplificado - 100% Responsivo e Clicável */
         .footer {
             background: transparent;
             padding: 2rem 1.5rem 1.5rem;
@@ -2173,6 +2461,7 @@
             gap: 1.2rem 2rem;
         }
 
+        /* Área da marca - CLICÁVEL */
         .footer-brand {
             display: flex;
             align-items: center;
@@ -2211,6 +2500,7 @@
             line-height: 1.2;
         }
 
+        /* Copyright - LINKS CLICÁVEIS */
         .footer-copyright {
             color: #6B6B7A;
             font-size: 0.9rem;
@@ -2238,6 +2528,7 @@
             transform: translateY(1px);
         }
 
+        /* Redes sociais - LINKS EXTERNOS */
         .footer-social-minimal {
             display: flex;
             gap: 0.5rem;
@@ -2269,12 +2560,15 @@
             transform: translateY(0);
         }
 
+        /* ===== Atualizações visuais de algumas seções daqui pra baixo ===== */
+        /* Telas grandes */
         @media (min-width: 1200px) {
             .footer-container {
                 padding: 0 2rem;
             }
         }
 
+        /* Tablets e desktop pequeno */
         @media (max-width: 991px) {
             .footer {
                 padding: 1.8rem 1.5rem 1.2rem;
@@ -2285,6 +2579,7 @@
             }
         }
 
+        /* Tablets em pé e mobile grande */
         @media (max-width: 768px) {
             .footer-container {
                 flex-direction: column;
@@ -2327,6 +2622,7 @@
             }
         }
 
+        /* Mobile médio */
         @media (max-width: 600px) {
             .footer {
                 padding: 1.5rem 1.2rem 1rem;
@@ -2354,6 +2650,7 @@
             }
         }
 
+        /* Mobile pequeno */
         @media (max-width: 480px) {
             .footer {
                 padding: 1.2rem 1rem 0.8rem;
@@ -2394,6 +2691,7 @@
             }
         }
 
+        /* Mobile muito pequeno (até 360px) */
         @media (max-width: 360px) {
             .footer {
                 padding: 1rem 0.8rem 0.6rem;
@@ -2423,6 +2721,7 @@
             }
         }
 
+        /* Ajustes para telas muito largas */
         @media (min-width: 1600px) {
             .footer-container {
                 max-width: 1400px;
@@ -2437,6 +2736,7 @@
             }
         }
 
+        /* Garantir que links sejam clicáveis em qualquer lugar */
         .footer a,
         .footer button,
         .footer [role="button"],
@@ -2448,6 +2748,7 @@
             touch-action: manipulation;
         }
 
+        /* Feedback visual para clique em mobile */
         @media (max-width: 768px) {
             .footer-brand:active,
             .copyright-link:active,
@@ -2509,13 +2810,14 @@
             bottom: -1px;
             left: 0;
             width: 0%;
-            height: 2px;
+            height: 1.6px;
             background: linear-gradient(90deg, #C5A572, #E2C28B, #C5A572);
             transition: width 0.1s ease;
             box-shadow: 0 0 10px rgba(197, 165, 114, 0.5);
             z-index: 1001;
         }
 
+        /* Ajuste para mobile */
         @media (max-width: 991px) {
             .progress-bar {
                 height: 2px;
@@ -2535,15 +2837,25 @@
             }
         }
 
+        /* Para o header quando estiver com scrolled */
         header.scrolled .progress-bar {
             bottom: -1px;
+        }
+
+        /* ===== ANTI OVERFLOW EXTRA ===== */
+        .hero, .section, header, footer { 
+            width: 100%; 
+            max-width: 100%; 
+        }
+        .project-card, .skill-card, .about-card, .timeline-content { 
+            min-width: 0; 
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header CORRIGIDO (sem duplicação) -->
     <header>
-        <a href="#" class="logo">
+        <a href="#home" class="logo">
             <span class="logo-text">PG.Dev</span>
             <span class="role-dash"></span>
         </a>
@@ -2557,25 +2869,23 @@
                 <a href="#experience" class="nav-link">Experiência</a>
                 <a href="#contact" class="nav-link">Contato</a>
             </div>
-            
+
             <div class="nav-separator"></div>
-            
+
             <div class="nav-social">
-                <a href="https://github.com/PabloG-7" class="social-nav-btn github-btn" target="_blank">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
+                <a href="https://github.com/PabloG-7" class="social-nav-btn github-btn" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i><span>GitHub</span>
                 </a>
-                <a href="https://www.linkedin.com/in/pablogomess/" class="social-nav-btn linkedin-btn" target="_blank">
-                    <i class="fab fa-linkedin-in"></i>
-                    <span>LinkedIn</span>
+                <a href="https://www.linkedin.com/in/pablogomess/" class="social-nav-btn linkedin-btn" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin-in"></i><span>LinkedIn</span>
                 </a>
             </div>
         </nav>
 
-        <div class="menu-btn">
+        <button class="menu-btn" type="button" aria-label="Abrir menu">
             <i class="fas fa-bars"></i>
-        </div>
-        
+        </button>
+
         <div class="progress-bar" id="progressBar"></div>
     </header>
 
@@ -3172,21 +3482,25 @@
         <i class="fas fa-arrow-up"></i>
     </a>
 
-    <!-- Footer Simplificado -->
+    <!-- Footer Simplificado - 100% Responsivo e Clicável -->
     <footer class="footer">
+        <!-- Linha decorativa sutil -->
         <div class="footer-divider"></div>
         
         <div class="footer-container">
+            <!-- Logo e frase - ÁREA CLICÁVEL (volta ao topo) -->
             <a href="#home" class="footer-brand" aria-label="Voltar ao topo">
                 <span class="footer-logo">PG.Dev</span>
                 <span class="footer-quote">Código limpo, design inovador.</span>
             </a>
 
+            <!-- Copyright - Links clicáveis -->
             <div class="footer-copyright">
                 <span>© 2025</span>
                 <a href="#home" class="copyright-link">Pablo Gomes</a>
             </div>
 
+            <!-- Redes sociais - Links externos -->
             <div class="footer-social-minimal">
                 <a href="https://github.com/PabloG-7" class="social-minimal-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <i class="fab fa-github"></i>
@@ -3339,6 +3653,7 @@
         menuBtn.addEventListener('click', toggleMobileMenu);
         mobileOverlay.addEventListener('click', toggleMobileMenu);
 
+        // Close mobile menu on link click
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
                 if (mobileMenu.classList.contains('active')) {
@@ -3382,9 +3697,6 @@
             });
         }
 
-        window.addEventListener('scroll', updateActiveLink);
-        window.addEventListener('load', updateActiveLink);
-
         // Scroll animations
         const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
 
@@ -3399,8 +3711,14 @@
             });
         }
 
-        window.addEventListener('scroll', checkScroll);
-        window.addEventListener('load', checkScroll);
+        // REMOVIDOS os listeners duplicados - agora apenas o debounce cuida disso
+        // window.addEventListener('scroll', updateActiveLink);
+        // window.addEventListener('scroll', checkScroll);
+
+        window.addEventListener('load', () => {
+            updateActiveLink();
+            checkScroll();
+        });
 
         // Modal
         const modal = document.getElementById('certModal');
@@ -3429,25 +3747,24 @@
             }
         });
 
-        // Smooth scroll for anchor links
+        // ===== SMOOTH SCROLL CORRIGIDO (offset dinâmico) =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
                 const targetId = this.getAttribute('href');
-                
-                if (targetId === '#') return;
-                
-                const target = document.querySelector(targetId);
-                if (target) {
-                    const headerOffset = 80;
-                    const elementPosition = target.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                if (!targetId || targetId === '#') return;
 
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
+                const target = document.querySelector(targetId);
+                if (!target) return;
+
+                e.preventDefault();
+
+                const header = document.querySelector('header');
+                const headerOffset = header ? header.getBoundingClientRect().height : 0;
+
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             });
         });
 
@@ -3516,10 +3833,12 @@
             }
         });
 
+        // Touch device detection
         if ('ontouchstart' in window) {
             document.body.classList.add('touch-device');
         }
 
+        // Performance optimization - DEBOUNCE ÚNICO para scroll
         function debounce(func, wait) {
             let timeout;
             return function executedFunction(...args) {
@@ -3532,40 +3851,24 @@
             };
         }
 
+        // Único listener de scroll com debounce que chama todas as funções necessárias
         window.addEventListener('scroll', debounce(() => {
             updateActiveLink();
             checkScroll();
-        }, 10));
-
-        setTimeout(checkScroll, 100);
-
-        // Back to top button
-        const backToTop = document.getElementById('backToTop');
-
-        window.addEventListener('scroll', () => {
+            
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
             if (window.scrollY > 500) {
                 backToTop.classList.add('show');
             } else {
                 backToTop.classList.remove('show');
             }
-        });
-
-        backToTop.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Barra de progresso
-        const progressBar = document.getElementById('progressBar');
-
-        window.addEventListener('scroll', () => {
+            
+            // Progress bar
+            const progressBar = document.getElementById('progressBar');
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
-            
             progressBar.style.width = scrolled + '%';
             
             if (scrolled > 5) {
@@ -3573,6 +3876,18 @@
             } else {
                 progressBar.style.opacity = '0.5';
             }
+        }, 10));
+
+        setTimeout(checkScroll, 100);
+
+        // Back to top button (já incluso no debounce, mas mantemos o click handler)
+        const backToTop = document.getElementById('backToTop');
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     </script>
 </body>
