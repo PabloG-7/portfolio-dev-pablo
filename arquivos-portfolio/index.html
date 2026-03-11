@@ -6,6 +6,8 @@
     <title>Pablo Gomes | Desenvolvedor Frontend & UI/UX</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon corrigido -->
     <link rel="icon" href="logopgdev.jpeg" type="image/jpeg">
     
     <!-- Meta tags otimizadas -->
@@ -15,7 +17,6 @@
     <meta property="og:description" content="Portfólio profissional com projetos em React, TypeScript, Node.js e UI/UX design.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://portfolio-dev-pablo.vercel.app/">
-    <link rel="icon" type="image/svg+xml" href="logopgdev.jpeg">
     
     <style>
    /* ===== RESET E VARIÁVEIS ===== */
@@ -518,15 +519,23 @@ header.scrolled {
     right: 0;
 }
 
+/* ===== MOBILE HEADER COM BOTÃO FECHAR ===== */
+.mobile-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0 20px;
+    border-bottom: 1px solid rgba(197, 165, 114, 0.1);
+    margin-bottom: 12px;
+}
+
 .mobile-logo-container {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 0 0 auto;
-    padding: 20px 0 20px;
-    border-bottom: 1px solid rgba(197, 165, 114, 0.1);
-    margin-bottom: 12px;
 }
 
 .mobile-logo {
@@ -540,7 +549,37 @@ header.scrolled {
     z-index: 2;
 }
 
-/* Partículas */
+.mobile-close-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    background: rgba(197, 165, 114, 0.1);
+    border: 1px solid rgba(197, 165, 114, 0.2);
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C5A572;
+    font-size: 20px;
+    transition: all 0.2s ease;
+    z-index: 1002;
+}
+
+.mobile-close-btn:hover {
+    background: rgba(197, 165, 114, 0.2);
+    border-color: #C5A572;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.mobile-close-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Partículas - reduzidas no mobile */
 .mobile-logo-container::before,
 .mobile-logo-container::after {
     content: '';
@@ -696,6 +735,12 @@ header.scrolled {
         width: 140px;
         height: 140px;
     }
+    
+    .mobile-close-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -707,9 +752,15 @@ header.scrolled {
         padding-right: 14px;
     }
 
-    .mobile-logo-container {
+    .mobile-header {
         padding: 14px 0 16px;
         margin-bottom: 10px;
+    }
+
+    .mobile-logo {
+        width: 110px;
+        height: 110px;
+        border-radius: 70px;
     }
 
     .mobile-link {
@@ -735,6 +786,12 @@ header.scrolled {
         border-radius: 12px;
         font-size: 17px;
     }
+    
+    .mobile-close-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 17px;
+    }
 }
 
 @media (max-width: 360px) {
@@ -744,9 +801,9 @@ header.scrolled {
     }
 
     .mobile-logo {
-        width: 82px;
-        height: 82px;
-        border-radius: 18px;
+        width: 90px;
+        height: 90px;
+        border-radius: 24px;
     }
 
     .mobile-link {
@@ -757,6 +814,12 @@ header.scrolled {
     .mobile-social-link {
         height: 44px;
         min-height: 44px;
+        font-size: 16px;
+    }
+    
+    .mobile-close-btn {
+        width: 34px;
+        height: 34px;
         font-size: 16px;
     }
 }
@@ -2865,93 +2928,95 @@ footer::before {
     }
 }
 
-/* ===== BARRA DE PROGRESSO ===== */
+/* ===== BARRA DE PROGRESSO OTIMIZADA ===== */
 .progress-bar {
     position: absolute;
     bottom: -1px;
     left: 0;
-    width: 0%;
-    height: 1.6px;
+    width: 100%;
+    height: 2px;
     background: linear-gradient(90deg, #C5A572, #E2C28B, #C5A572);
-    transition: width 0.1s ease;
-    box-shadow: 0 0 10px rgba(197, 165, 114, 0.5);
+    box-shadow: 0 0 10px rgba(197, 165, 114, 0.35);
     z-index: 1001;
+    transform: scaleX(0);
+    transform-origin: left center;
+    will-change: transform;
 }
 
-@media (max-width: 991px) {
-    .progress-bar {
-        height: 2px;
-        background: linear-gradient(90deg, #C5A572, #E2C28B);
+/* ===== OTIMIZAÇÕES PARA MOBILE ===== */
+@media (max-width: 768px) {
+    /* Reduzir animações infinitas */
+    .dot-1,
+    .dot-2,
+    .dot-1::before,
+    .image-wrapper::before,
+    .image-wrapper::after,
+    .image-glow,
+    .particle,
+    .role-arrows i,
+    .experience-badge,
+    footer::before,
+    .mobile-logo,
+    .mobile-logo-container::before,
+    .mobile-logo-container::after,
+    .particle-dot {
+        animation-duration: 6s !important;
     }
-}
-@media (max-width: 768px) { .progress-bar { height: 2px; } }
-@media (max-width: 480px) { .progress-bar { height: 2px; } }
 
-header.scrolled .progress-bar { bottom: -1px; }
-
-/* ===== MOBILE HEADER COM BOTÃO FECHAR ===== */
-.mobile-header {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0 20px;
-    border-bottom: 1px solid rgba(197, 165, 114, 0.1);
-    margin-bottom: 12px;
-}
-
-.mobile-logo-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 0 0 auto;
-}
-
-.mobile-close-btn {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 42px;
-    height: 42px;
-    background: rgba(197, 165, 114, 0.1);
-    border: 1px solid rgba(197, 165, 114, 0.2);
-    border-radius: 12px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #C5A572;
-    font-size: 20px;
-    transition: all 0.2s ease;
-    z-index: 1002;
-}
-
-.mobile-close-btn:hover {
-    background: rgba(197, 165, 114, 0.2);
-    border-color: #C5A572;
-    transform: translateY(-50%) scale(1.05);
-}
-
-.mobile-close-btn:active {
-    transform: translateY(-50%) scale(0.95);
-}
-
-@media (max-width: 480px) {
-    .mobile-close-btn {
-        width: 38px;
-        height: 38px;
-        font-size: 18px;
+    /* Desligar elementos pesados */
+    .image-glow,
+    .image-wrapper::after,
+    footer::before,
+    .image-wrapper::before,
+    .particle,
+    .dot-1::before {
+        display: none;
+    }
+    
+    /* Remover backdrop-filter no mobile */
+    header,
+    .nav-links-container,
+    .nav-social,
+    .about-card,
+    .skill-card,
+    .timeline-content,
+    .contact-info-card,
+    .contact-form-card,
+    .modal,
+    .modal-topbar {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
     }
 }
 
-@media (max-width: 360px) {
-    .mobile-close-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 17px;
+/* ===== PREFERE-REDUCED-MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
     }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* ===== WILL-CHANGE OTIMIZADO ===== */
+.logo-dots,
+.dot,
+.project-image img,
+.project-overlay,
+.back-to-top,
+.progress-bar,
+.mobile-menu,
+.menu-btn,
+.image-container,
+.stat-card,
+.skill-card,
+.project-card {
+    will-change: transform, opacity;
 }
     </style>
 </head>
@@ -3809,15 +3874,87 @@ function unlockScroll() {
     window.scrollTo(0, __scrollY);
 }
 
-// ===== HEADER SCROLL EFFECT =====
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
+// ===== INTERSECTION OBSERVER PARA ANIMAÇÕES =====
+const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
+
+const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
 });
+
+animatedElements.forEach(el => observer.observe(el));
+
+// ===== SCROLL UNIFICADO COM REQUESTANIMATIONFRAME =====
+const header = document.querySelector('header');
+const progressBar = document.getElementById('progressBar');
+const backToTopBtn = document.getElementById('backToTop');
+
+let ticking = false;
+
+function handleScroll() {
+    const y = window.scrollY || window.pageYOffset;
+
+    header.classList.toggle('scrolled', y > 50);
+    backToTopBtn.classList.toggle('show', y > 500);
+
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = height > 0 ? y / height : 0;
+
+    progressBar.style.transform = `scaleX(${scrolled})`;
+    progressBar.style.opacity = scrolled > 0.05 ? '1' : '0.5';
+
+    updateActiveLink();
+    ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        requestAnimationFrame(handleScroll);
+        ticking = true;
+    }
+}, { passive: true });
+
+// ===== ACTIVE NAV LINK ON SCROLL =====
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+
+function updateActiveLink() {
+    let current = '';
+    const scrollPosition = window.scrollY + 100;
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href').substring(1);
+        if (href === current) {
+            link.classList.add('active');
+        }
+    });
+
+    mobileLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href').substring(1);
+        if (href === current) {
+            link.classList.add('active');
+        }
+    });
+}
 
 // Mobile menu corrigido com botão X
 const menuBtn = document.querySelector('.menu-btn');
@@ -3863,60 +4000,6 @@ document.querySelectorAll('.mobile-link').forEach(link => {
             closeMobileMenu();
         }
     });
-});
-
-// ===== ACTIVE NAV LINK ON SCROLL =====
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
-const mobileLinks = document.querySelectorAll('.mobile-link');
-
-function updateActiveLink() {
-    let current = '';
-    const scrollPosition = window.scrollY + 100;
-
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        const href = link.getAttribute('href').substring(1);
-        if (href === current) {
-            link.classList.add('active');
-        }
-    });
-
-    mobileLinks.forEach(link => {
-        link.classList.remove('active');
-        const href = link.getAttribute('href').substring(1);
-        if (href === current) {
-            link.classList.add('active');
-        }
-    });
-}
-
-// ===== SCROLL ANIMATIONS =====
-const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
-
-function checkScroll() {
-    animatedElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-
-        if (elementTop < window.innerHeight - elementVisible) {
-            element.classList.add('visible');
-        }
-    });
-}
-
-window.addEventListener('load', () => {
-    updateActiveLink();
-    checkScroll();
 });
 
 // ===== MODAL CERTIFICAÇÕES =====
@@ -4060,7 +4143,6 @@ window.addEventListener('resize', () => {
         if (window.innerWidth > 991 && mobileMenu.classList.contains('active')) {
             closeMobileMenu();
         }
-        checkScroll();
     }, 250);
 });
 
@@ -4081,46 +4163,6 @@ if ('ontouchstart' in window) {
     document.body.classList.add('touch-device');
 }
 
-// ===== DEBOUNCE PARA SCROLL =====
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-window.addEventListener('scroll', debounce(() => {
-    updateActiveLink();
-    checkScroll();
-
-    const backToTop = document.getElementById('backToTop');
-    if (window.scrollY > 500) {
-        backToTop.classList.add('show');
-    } else {
-        backToTop.classList.remove('show');
-    }
-
-    const progressBar = document.getElementById('progressBar');
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
-    progressBar.style.width = scrolled + '%';
-
-    if (scrolled > 5) {
-        progressBar.style.opacity = '1';
-    } else {
-        progressBar.style.opacity = '0.5';
-    }
-}, 10));
-
-// ===== INITIAL CHECKS =====
-setTimeout(checkScroll, 100);
-
 // ===== BACK TO TOP BUTTON =====
 const backToTop = document.getElementById('backToTop');
 if (backToTop) {
@@ -4132,6 +4174,11 @@ if (backToTop) {
         });
     });
 }
+
+// ===== LOAD INITIAL =====
+window.addEventListener('load', () => {
+    updateActiveLink();
+});
     </script>
 </body>
 </html>
