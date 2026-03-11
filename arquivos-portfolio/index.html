@@ -2887,6 +2887,71 @@ footer::before {
 @media (max-width: 480px) { .progress-bar { height: 2px; } }
 
 header.scrolled .progress-bar { bottom: -1px; }
+
+/* ===== MOBILE HEADER COM BOTÃO FECHAR ===== */
+.mobile-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0 20px;
+    border-bottom: 1px solid rgba(197, 165, 114, 0.1);
+    margin-bottom: 12px;
+}
+
+.mobile-logo-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.mobile-close-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 42px;
+    height: 42px;
+    background: rgba(197, 165, 114, 0.1);
+    border: 1px solid rgba(197, 165, 114, 0.2);
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C5A572;
+    font-size: 20px;
+    transition: all 0.2s ease;
+    z-index: 1002;
+}
+
+.mobile-close-btn:hover {
+    background: rgba(197, 165, 114, 0.2);
+    border-color: #C5A572;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.mobile-close-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+@media (max-width: 480px) {
+    .mobile-close-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 360px) {
+    .mobile-close-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 17px;
+    }
+}
     </style>
 </head>
 <body>
@@ -2932,11 +2997,14 @@ header.scrolled .progress-bar { bottom: -1px; }
  <!-- Mobile Menu -->
 <div class="mobile-overlay"></div>
 <div class="mobile-menu">
-   <div class="mobile-logo-container">
-    <div class="particle-dot particle-1"></div>
-    <div class="particle-dot particle-2"></div>
-    <img src="logopgdev.jpeg" alt="Logo" class="mobile-logo">
-</div>
+    <div class="mobile-header">
+        <div class="mobile-logo-container">
+            <img src="logopg.jpeg" alt="Logo" class="mobile-logo">
+        </div>
+        <button class="mobile-close-btn" type="button" aria-label="Fechar menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
     
     <div class="mobile-links">
         <a href="#home" class="mobile-link"><i class="fas fa-home"></i> Início</a>
@@ -2948,11 +3016,13 @@ header.scrolled .progress-bar { bottom: -1px; }
     </div>
     
     <div class="mobile-social">
-        <a href="https://github.com/PabloG-7" class="mobile-social-link" target="_blank">
+        <a href="https://github.com/PabloG-7" class="mobile-social-link mobile-social-btn" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-github"></i>
+            <span>GitHub</span>
         </a>
-        <a href="https://www.linkedin.com/in/pablogomess/" class="mobile-social-link" target="_blank">
+        <a href="https://www.linkedin.com/in/pablogomess/" class="mobile-social-link mobile-social-btn" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-linkedin-in"></i>
+            <span>LinkedIn</span>
         </a>
     </div>
 </div>
@@ -3748,10 +3818,11 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ===== MOBILE MENU CORRIGIDO =====
+// Mobile menu corrigido com botão X
 const menuBtn = document.querySelector('.menu-btn');
 const mobileMenu = document.querySelector('.mobile-menu');
 const mobileOverlay = document.querySelector('.mobile-overlay');
+const mobileCloseBtn = document.querySelector('.mobile-close-btn');
 const menuIcon = menuBtn.querySelector('i');
 
 function openMobileMenu() {
@@ -3780,6 +3851,9 @@ function toggleMobileMenu() {
 
 menuBtn.addEventListener('click', toggleMobileMenu);
 mobileOverlay.addEventListener('click', closeMobileMenu);
+if (mobileCloseBtn) {
+    mobileCloseBtn.addEventListener('click', closeMobileMenu);
+}
 
 // Fechar menu ao clicar nos links
 document.querySelectorAll('.mobile-link').forEach(link => {
